@@ -17,8 +17,8 @@ class LaunchController: UIViewController {
         super.viewDidLoad()
 
         navigationController?.setNavigationBarHidden(true, animated: false )
-        view.backgroundColor = #colorLiteral(red: 0.9892832637, green: 0.6514198184, blue: 0.4338295162, alpha: 1)
-        
+        view.backgroundColor = #colorLiteral(red: 0.9829886556, green: 0.6544682384, blue: 0.4333807528, alpha: 1)
+        //view.backgroundColor = #colorLiteral(red: 0.9892832637, green: 0.6514198184, blue: 0.4338295162, alpha: 1)
         createPulse()
         createLabel()
 
@@ -55,7 +55,7 @@ class LaunchController: UIViewController {
                                             endAngle: 2 * .pi, clockwise: true)
             let pulseLayer = CAShapeLayer()
             pulseLayer.path = circularPath.cgPath
-            pulseLayer.lineWidth = 35
+            pulseLayer.lineWidth = 55
             pulseLayer.fillColor = UIColor.clear.cgColor
             pulseLayer.lineCap = CAShapeLayerLineCap.round
             pulseLayer.position = view.center
@@ -67,9 +67,9 @@ class LaunchController: UIViewController {
             self.animatePulse(index: 0)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                 self.animatePulse(index: 1)
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-//                    self.animatePulse(index: 2)
-//                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                    self.animatePulse(index: 2)
+                }
             }
         }
     }
