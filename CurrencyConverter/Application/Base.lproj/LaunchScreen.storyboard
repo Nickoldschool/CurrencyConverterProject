@@ -16,16 +16,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Welcome" translatesAutoresizingMaskIntoConstraints="NO" id="MMB-Fs-z8f">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Round" translatesAutoresizingMaskIntoConstraints="NO" id="UDB-AB-bHW">
+                                <rect key="frame" x="117" y="358" width="180" height="180"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.98431372549019602" green="0.65490196078431373" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="MMB-Fs-z8f" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-44" id="2Sm-65-hVa"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="MMB-Fs-z8f" secondAttribute="bottom" constant="-34" id="95t-Zx-UYc"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MMB-Fs-z8f" secondAttribute="trailing" id="ePU-N2-zL1"/>
-                            <constraint firstItem="MMB-Fs-z8f" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="y6b-SH-N2y"/>
+                            <constraint firstItem="UDB-AB-bHW" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="0b8-Ji-3h3"/>
+                            <constraint firstItem="UDB-AB-bHW" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-5" id="Ln7-0o-gIh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -36,6 +35,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Welcome" width="375" height="812"/>
+        <image name="Round" width="180" height="180"/>
     </resources>
 </document>

@@ -85,7 +85,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         button.setTitleColor( .black, for: .normal )
         button.setTitle("Next", for: .normal)
         button.backgroundColor =  #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        button.addTarget(self, action: #selector(tap), for: .touchUpInside)
+        button.addTarget(self, action: #selector(moveToExchangeController), for: .touchUpInside)
         view.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -98,7 +98,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     //MARK: - Call button for moving to next view
     
-    @objc func tap() {
+    @objc func moveToExchangeController() {
         
         let vc = ExchangeTableController()
         navigationController?.pushViewController(vc,animated: true)

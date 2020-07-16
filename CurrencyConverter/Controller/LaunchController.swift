@@ -17,11 +17,42 @@ class LaunchController: UIViewController {
         super.viewDidLoad()
 
         navigationController?.setNavigationBarHidden(true, animated: false )
-        view.backgroundColor = #colorLiteral(red: 0.9829886556, green: 0.6544682384, blue: 0.4333807528, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.9843137255, green: 0.6549019608, blue: 0.4352941176, alpha: 1)
         //view.backgroundColor = #colorLiteral(red: 0.9892832637, green: 0.6514198184, blue: 0.4338295162, alpha: 1)
         createPulse()
-        createLabel()
+        createButton()
 
+    }
+    
+    private func createButton() {
+        
+        let button = UIButton()
+        button.backgroundColor = #colorLiteral(red: 0.3421914876, green: 0.02416796796, blue: 0.4802301526, alpha: 1)
+        button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
+        button.setTitle("Currency Converter", for: .normal)
+        button.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        button.titleLabel?.font = UIFont(name: "Times New Roman", size:27)
+        button.titleLabel?.textAlignment = .center
+        button.layer.cornerRadius = 90
+        button.layer.masksToBounds = true
+        button.addTarget(self, action: #selector(moveToViewController), for: .touchUpInside)
+        view.addSubview(button)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            button.heightAnchor.constraint(equalToConstant: 180),
+            button.widthAnchor.constraint(equalToConstant: 180),
+        ])
+    }
+    
+    //MARK: - Call button for moving to next view
+    
+    @objc func moveToViewController() {
+        
+        let vc = ViewController()
+        navigationController?.pushViewController(vc,animated: true)
+        
     }
     
     private func createLabel() {
@@ -39,8 +70,8 @@ class LaunchController: UIViewController {
         view.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            label.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             label.heightAnchor.constraint(equalToConstant: 180),
             label.widthAnchor.constraint(equalToConstant: 180),
         ])
