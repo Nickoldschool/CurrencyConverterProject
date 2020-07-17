@@ -17,6 +17,7 @@
 		403D5E0524BF49BE002F4B88 /* LaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D5E0424BF49BE002F4B88 /* LaunchController.swift */; };
 		403D5E0724BF4AA0002F4B88 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D5E0624BF4AA0002F4B88 /* LocationManager.swift */; };
 		403D5E0924BF4B29002F4B88 /* ExchangeTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D5E0824BF4B29002F4B88 /* ExchangeTableController.swift */; };
+		4091081F24C1A9F0007F37FF /* NewTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4091081E24C1A9F0007F37FF /* NewTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		403D5E0424BF49BE002F4B88 /* LaunchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchController.swift; sourceTree = "<group>"; };
 		403D5E0624BF4AA0002F4B88 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		403D5E0824BF4B29002F4B88 /* ExchangeTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeTableController.swift; sourceTree = "<group>"; };
+		4091081E24C1A9F0007F37FF /* NewTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				403D5E0424BF49BE002F4B88 /* LaunchController.swift */,
 				403D5DD524BF4964002F4B88 /* ViewController.swift */,
 				403D5E0824BF4B29002F4B88 /* ExchangeTableController.swift */,
+				4091081E24C1A9F0007F37FF /* NewTabBarController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				403D5DD624BF4964002F4B88 /* ViewController.swift in Sources */,
 				403D5E0724BF4AA0002F4B88 /* LocationManager.swift in Sources */,
 				403D5E0924BF4B29002F4B88 /* ExchangeTableController.swift in Sources */,
+				4091081F24C1A9F0007F37FF /* NewTabBarController.swift in Sources */,
 				403D5DDC24BF4964002F4B88 /* CurrencyConverter.xcdatamodeld in Sources */,
 				403D5DD224BF4964002F4B88 /* AppDelegate.swift in Sources */,
 			);

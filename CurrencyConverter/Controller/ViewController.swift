@@ -27,6 +27,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         createLabel()
         createButton()
         setCurrentLocation()
+        
+        
     }
 
     
@@ -98,10 +100,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     //MARK: - Call button for moving to next view
     
-    @objc func moveToExchangeController() {
+    @objc private func moveToExchangeController() {
         
         let vc = ExchangeTableController()
         navigationController?.pushViewController(vc,animated: true)
+        
+    }
+    
+    private func showUserLocation() {
+    
         
     }
 

@@ -50,7 +50,7 @@ class LaunchController: UIViewController {
     
     @objc func moveToViewController() {
         
-        let vc = ViewController()
+        let vc = NewTabBarController()
         navigationController?.pushViewController(vc,animated: true)
         
     }

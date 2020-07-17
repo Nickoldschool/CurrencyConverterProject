@@ -18,10 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let navController = UINavigationController()
-        window = UIWindow(frame: UIScreen.main.bounds)
         let launchController = LaunchController()
-        let viewController = ViewController()
         navController.viewControllers = [launchController]
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
         
