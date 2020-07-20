@@ -40,8 +40,9 @@ class HomePageViewController: UIViewController {
         
         createLabel()
         createButton()
-        setCurrentLocation()
         showUserLocation()
+        presenter?.viewready()
+        setCurrentLocation()
         checkLocationEnabled()
         
     }
