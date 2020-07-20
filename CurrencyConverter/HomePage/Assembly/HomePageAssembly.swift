@@ -9,5 +9,24 @@
 import UIKit
 
 class HomePageAssembly: NSObject {
+    
+    static func assembly() -> UIViewController {
+        
+        
+        let view = HomePageViewController()
+        let presenter = HomePagePresenter()
+        
+        view.presenter = presenter
+        presenter.view = view as! HomePageViewInput
+        
+        let interactor = HomePageInteractor()
+        interactor.presenter = presenter as! HomePageInteractorOutput
+        presenter.interactor = interactor as! HomePageInteractorInput
+        
+        let router = HomePageRouter(view: view)
+        presenter.router = router
+        
+        return view
+    }
 
 }
