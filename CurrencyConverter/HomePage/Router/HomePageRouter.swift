@@ -8,6 +8,21 @@
 
 import UIKit
 
-class HomePageRouter: NSObject {
+protocol HomePageRouterInput {
+    
+    func closeModule()
+}
 
+class HomePageRouter: HomePageRouterInput {
+
+    unowned let view: UIViewController
+       
+       init(view: UIViewController) {
+           self.view = view
+       }
+    
+    func closeModule() {
+           view.dismiss(animated: true, completion: nil)
+       }
+    
 }

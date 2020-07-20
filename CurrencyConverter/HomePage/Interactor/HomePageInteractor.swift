@@ -8,6 +8,20 @@
 
 import UIKit
 
+protocol HomePageInteractorInput {
+    func loadInfo()
+}
+
+protocol HomePageInteractorOutput: AnyObject {
+    func infoLoaded()
+}
+
 class HomePageInteractor: NSObject {
+    
+    weak var presenter: HomePageInteractorOutput?
+    
+    func loadInfo() {
+           presenter?.infoLoaded()
+       }
 
 }

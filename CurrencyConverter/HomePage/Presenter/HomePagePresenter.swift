@@ -8,6 +8,24 @@
 
 import UIKit
 
-class HomePagePresenter: NSObject {
-
+class HomePagePresenter: HomePageViewOutput {
+    
+    weak var view: HomePageViewInput?
+    var interactor: HomePageInteractorInput?
+    var router: HomePageRouterInput?
+    
+    func viewready() {
+        
+        interactor?.loadInfo()
+    }
+    
+    func nextPage() {
+        
+        router?.closeModule()
+    }
+    
+    func infoLoaded() {
+        view?.updateView()
+    }
+    
 }
