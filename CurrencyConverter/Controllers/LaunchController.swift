@@ -16,7 +16,7 @@ class LaunchController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //navigationController?.setNavigationBarHidden(true, animated: false )
+        navigationController?.setNavigationBarHidden(true, animated: false )
         
         view.backgroundColor = #colorLiteral(red: 0.9843137255, green: 0.6549019608, blue: 0.4352941176, alpha: 1)
         //view.backgroundColor = #colorLiteral(red: 0.9892832637, green: 0.6514198184, blue: 0.4338295162, alpha: 1)

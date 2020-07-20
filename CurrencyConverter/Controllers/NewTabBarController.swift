@@ -19,7 +19,7 @@ class NewTabBarController: UITabBarController {
         tabBar.barTintColor = .white
         
         let firstController = UINavigationController()
-        firstController.pushViewController(HomeViewController(), animated: false)
+        firstController.pushViewController(HomePageViewController(), animated: false)
         firstController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "time"), tag: 0)
       
         let secondController = UINavigationController()

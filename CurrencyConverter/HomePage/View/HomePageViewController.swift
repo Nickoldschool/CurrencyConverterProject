@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class HomeViewController: UIViewController {
+class HomePageViewController: UIViewController {
     
     // - Outlets
     let locationLabel = UILabel()
@@ -27,9 +27,9 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .white
         
         createLabel()
-        //createButton()                                            //  depricated
+        createButton()                                            //  depricated
         setCurrentLocation()
-        showUserLocation()
+        //showUserLocation()
         
     }
 
@@ -81,26 +81,26 @@ class HomeViewController: UIViewController {
     
     //No need(An Excess of functionality)
     
-//    private func createButton() {
-//
-//        let button = UIButton()
-//        button.layer.borderWidth = 2
-//        button.layer.cornerRadius = 75
-//        button.layer.masksToBounds = true
-//        button.layer.borderColor =  #colorLiteral(red: 0.9920709729, green: 0.8178209662, blue: 0, alpha: 1)
-//        button.setTitleColor( .black, for: .normal )
-//        button.setTitle("Next", for: .normal)
-//        button.backgroundColor =  #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-//        button.addTarget(self, action: #selector(moveToExchangeController), for: .touchUpInside)
-//        view.addSubview(button)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            button.topAnchor.constraint(equalTo: view.topAnchor, constant: 400),
-//            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            button.heightAnchor.constraint(equalToConstant: 150),
-//            button.widthAnchor.constraint(equalToConstant: 150),
-//        ])
-//    }
+    private func createButton() {
+
+        let button = UIButton()
+        button.layer.borderWidth = 2
+        button.layer.cornerRadius = 75
+        button.layer.masksToBounds = true
+        button.layer.borderColor =  #colorLiteral(red: 0.9920709729, green: 0.8178209662, blue: 0, alpha: 1)
+        button.setTitleColor( .black, for: .normal )
+        button.setTitle("Next", for: .normal)
+        button.backgroundColor =  #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        button.addTarget(self, action: #selector(moveToExchangeController), for: .touchUpInside)
+        view.addSubview(button)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            button.topAnchor.constraint(equalTo: view.topAnchor, constant: 400),
+            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            button.heightAnchor.constraint(equalToConstant: 150),
+            button.widthAnchor.constraint(equalToConstant: 150),
+        ])
+    }
     
     //MARK: - Call button for moving to next view
     
@@ -129,7 +129,7 @@ class HomeViewController: UIViewController {
 
 }
 
-extension HomeViewController: CLLocationManagerDelegate  {
+extension HomePageViewController: CLLocationManagerDelegate  {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
