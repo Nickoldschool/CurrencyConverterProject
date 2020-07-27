@@ -13,19 +13,24 @@ class HomePagePresenter: HomePageViewOutput {
     weak var view: HomePageViewInput?
     var interactor: HomePageInteractorInput?
     var router: HomePageRouterInput?
+  
+    
+}
+
+extension HomePagePresenter {
     
     func viewready() {
-        
-        interactor?.loadInfo()
-    }
-    
-    func nextPage() {
-        
-        router?.closeModule()
-    }
-    
-    func infoLoaded() {
-        view?.updateView()
-    }
+          
+          interactor?.loadInfo()
+      }
+      
+      func nextPage() {
+          
+          router?.closeModule()
+      }
+      
+      func infoLoaded() {
+          view?.updateView()
+      }
     
 }

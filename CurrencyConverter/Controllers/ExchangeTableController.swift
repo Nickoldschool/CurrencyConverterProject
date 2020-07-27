@@ -9,6 +9,8 @@
 import UIKit
 
 class ExchangeTableController: UITableViewController {
+    
+    let network = ApiClient()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,18 +31,18 @@ class ExchangeTableController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return network.rates.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath as IndexPath)
+        //cell.textLabel?.text = network.rates[indexPath.row]
 
         // Configure the cell...
 
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.

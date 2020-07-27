@@ -22,6 +22,9 @@
 		403D5E0524BF49BE002F4B88 /* LaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D5E0424BF49BE002F4B88 /* LaunchController.swift */; };
 		403D5E0724BF4AA0002F4B88 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D5E0624BF4AA0002F4B88 /* LocationManager.swift */; };
 		403D5E0924BF4B29002F4B88 /* ExchangeTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D5E0824BF4B29002F4B88 /* ExchangeTableController.swift */; };
+		405C77DA24CEC31200E2DD01 /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C77D924CEC31200E2DD01 /* CurrencyModel.swift */; };
+		405C77DC24CEC3AA00E2DD01 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C77DB24CEC3AA00E2DD01 /* ApiClient.swift */; };
+		405C77DE24CF019000E2DD01 /* ExchangeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C77DD24CF019000E2DD01 /* ExchangeCollectionViewController.swift */; };
 		4091081F24C1A9F0007F37FF /* NewTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4091081E24C1A9F0007F37FF /* NewTabBarController.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +67,9 @@
 		403D5E0424BF49BE002F4B88 /* LaunchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchController.swift; sourceTree = "<group>"; };
 		403D5E0624BF4AA0002F4B88 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		403D5E0824BF4B29002F4B88 /* ExchangeTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeTableController.swift; sourceTree = "<group>"; };
+		405C77D924CEC31200E2DD01 /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
+		405C77DB24CEC3AA00E2DD01 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		405C77DD24CF019000E2DD01 /* ExchangeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeCollectionViewController.swift; sourceTree = "<group>"; };
 		4091081E24C1A9F0007F37FF /* NewTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,6 +98,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		40231CD424CE2596000D50CC /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				405C77D924CEC31200E2DD01 /* CurrencyModel.swift */,
+				405C77DB24CEC3AA00E2DD01 /* ApiClient.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		40347B9624C51ABF00E3BA84 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				403D5E0A24BF4CD7002F4B88 /* Application */,
+				40231CD424CE2596000D50CC /* Network */,
 				403D5E0B24BF4D4C002F4B88 /* Model */,
 				403D5E0C24BF4D6A002F4B88 /* Controllers */,
 				40347B9624C51ABF00E3BA84 /* HomePage */,
@@ -227,6 +243,7 @@
 			children = (
 				403D5E0424BF49BE002F4B88 /* LaunchController.swift */,
 				403D5E0824BF4B29002F4B88 /* ExchangeTableController.swift */,
+				405C77DD24CF019000E2DD01 /* ExchangeCollectionViewController.swift */,
 				4091081E24C1A9F0007F37FF /* NewTabBarController.swift */,
 			);
 			path = Controllers;
@@ -369,7 +386,10 @@
 				403D5E0724BF4AA0002F4B88 /* LocationManager.swift in Sources */,
 				403D5E0924BF4B29002F4B88 /* ExchangeTableController.swift in Sources */,
 				4091081F24C1A9F0007F37FF /* NewTabBarController.swift in Sources */,
+				405C77DE24CF019000E2DD01 /* ExchangeCollectionViewController.swift in Sources */,
+				405C77DC24CEC3AA00E2DD01 /* ApiClient.swift in Sources */,
 				403D5DDC24BF4964002F4B88 /* CurrencyConverter.xcdatamodeld in Sources */,
+				405C77DA24CEC31200E2DD01 /* CurrencyModel.swift in Sources */,
 				403D5DD224BF4964002F4B88 /* AppDelegate.swift in Sources */,
 				40347BA224C51FEE00E3BA84 /* HomePagePresenter.swift in Sources */,
 				40347BA624C5201E00E3BA84 /* HomePageRouter.swift in Sources */,
