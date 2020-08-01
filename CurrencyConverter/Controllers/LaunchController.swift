@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LaunchController: UIViewController {
+final class LaunchController: UIViewController {
     
     let label = UILabel()
     var pulseLayers = [CAShapeLayer]()
@@ -49,7 +49,7 @@ class LaunchController: UIViewController {
     
     //MARK: - Call button for moving to next view
     
-    @objc func moveToViewController() {
+    @objc private func moveToViewController() {
         
         let vc = NewTabBarController()
         navigationController?.pushViewController(vc,animated: true)
