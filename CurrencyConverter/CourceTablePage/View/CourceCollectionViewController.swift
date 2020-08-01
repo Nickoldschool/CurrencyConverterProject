@@ -76,7 +76,7 @@ final class CourceCollectionViewController: UIViewController {
         myCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         myCollectionView.delegate   = self
         myCollectionView.dataSource = self
-        myCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: identifier)
+        myCollectionView.register(CourceCollectionViewCell.self, forCellWithReuseIdentifier: identifier)
         myCollectionView.backgroundColor = UIColor.white
         if let flowLayout = myCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.scrollDirection = .vertical
@@ -106,8 +106,7 @@ extension CourceCollectionViewController: UICollectionViewDelegate, UICollection
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = myCollectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) //as! CourceCollectionViewCell
-        cell.backgroundColor = .orange
+        let cell = myCollectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! CourceCollectionViewCell
         return cell
     }
     

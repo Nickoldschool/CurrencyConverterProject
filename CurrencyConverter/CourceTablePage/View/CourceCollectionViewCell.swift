@@ -53,7 +53,7 @@ class CourceCollectionViewCell: UICollectionViewCell {
     
     fileprivate func style(view: UIView) {
            view.layer.masksToBounds        = false
-           view.backgroundColor            = .white
+           view.backgroundColor            = .orange
            view.layer.cornerRadius         = 5
            view.layer.shadowColor          = UIColor.black.cgColor
            view.layer.shadowOffset         = CGSize(width: 1, height: 5)

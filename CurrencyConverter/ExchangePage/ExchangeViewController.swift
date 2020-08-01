@@ -35,10 +35,10 @@ final class ExchangeViewController: UIViewController {
     private func addEditField() {
         
         purpleView.backgroundColor =  #colorLiteral(red: 0.6621792912, green: 2.986973641e-06, blue: 0.941290319, alpha: 1)
-        fromLabel.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        toLabel.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         fromLabel.text = "From"
         toLabel.text = "To"
+        fromLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        toLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         enterValueFrom.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         enterValueTo.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         exchangeButton.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -100,16 +100,16 @@ final class ExchangeViewController: UIViewController {
         
         fromLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            fromLabel.topAnchor.constraint(equalTo: purpleView.topAnchor, constant: 40),
-            fromLabel.trailingAnchor.constraint(equalTo: purpleView.trailingAnchor, constant: 40),
+            fromLabel.topAnchor.constraint(equalTo: purpleView.topAnchor, constant: 10),
+            fromLabel.trailingAnchor.constraint(equalTo: purpleView.leadingAnchor, constant: 100),
             fromLabel.heightAnchor.constraint(equalToConstant: 40),
             fromLabel.widthAnchor.constraint(equalToConstant: 70),
         ])
         
         toLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            toLabel.topAnchor.constraint(equalTo: purpleView.topAnchor, constant: 130),
-            toLabel.trailingAnchor.constraint(equalTo: purpleView.trailingAnchor, constant: 40),
+            toLabel.topAnchor.constraint(equalTo: purpleView.topAnchor, constant: 100),
+            toLabel.leadingAnchor.constraint(equalTo: purpleView.leadingAnchor, constant: 30),
             toLabel.heightAnchor.constraint(equalToConstant: 40),
             toLabel.widthAnchor.constraint(equalToConstant: 70),
         ])
