@@ -12,7 +12,7 @@ final class LaunchController: UIViewController {
     
     let label = UILabel()
     var pulseLayers = [CAShapeLayer]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
