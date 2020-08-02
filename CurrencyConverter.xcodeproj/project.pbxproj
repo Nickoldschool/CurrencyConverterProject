@@ -33,6 +33,7 @@
 		40982E3124D2199900DB753C /* CourceTablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40982E3024D2199900DB753C /* CourceTablePresenter.swift */; };
 		40982E3424D21AE100DB753C /* CourceTableEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40982E3324D21AE100DB753C /* CourceTableEntity.swift */; };
 		40982E3724D21B0A00DB753C /* CourceTableRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40982E3624D21B0A00DB753C /* CourceTableRouter.swift */; };
+		409B4F6324D5C40D0040E73D /* SumValueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409B4F6224D5C40D0040E73D /* SumValueViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		40982E3024D2199900DB753C /* CourceTablePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceTablePresenter.swift; sourceTree = "<group>"; };
 		40982E3324D21AE100DB753C /* CourceTableEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceTableEntity.swift; sourceTree = "<group>"; };
 		40982E3624D21B0A00DB753C /* CourceTableRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceTableRouter.swift; sourceTree = "<group>"; };
+		409B4F6224D5C40D0040E73D /* SumValueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumValueViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				40413C0F24D574CC002267BC /* ExchangeViewController.swift */,
+				409B4F6224D5C40D0040E73D /* SumValueViewController.swift */,
 			);
 			path = ExchangePage;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				40982E3724D21B0A00DB753C /* CourceTableRouter.swift in Sources */,
 				403D5DD624BF4964002F4B88 /* HomeViewController.swift in Sources */,
 				40347BA424C5200500E3BA84 /* HomeEntity.swift in Sources */,
+				409B4F6324D5C40D0040E73D /* SumValueViewController.swift in Sources */,
 				403D5E0724BF4AA0002F4B88 /* LocationManager.swift in Sources */,
 				4091081F24C1A9F0007F37FF /* NewTabBarController.swift in Sources */,
 				40982E3124D2199900DB753C /* CourceTablePresenter.swift in Sources */,

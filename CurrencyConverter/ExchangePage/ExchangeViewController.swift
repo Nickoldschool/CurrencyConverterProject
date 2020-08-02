@@ -41,6 +41,10 @@ final class ExchangeViewController: UIViewController {
         toLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         enterValueFrom.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         enterValueTo.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        enterValueFrom.textAlignment = .center
+        enterValueTo.textAlignment = .center
+        enterValueFrom.keyboardType = .decimalPad
+        enterValueTo.keyboardType = .decimalPad
         exchangeButton.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         purpleView.layer.cornerRadius = 15
         enterValueFrom.layer.cornerRadius = 15
@@ -48,12 +52,25 @@ final class ExchangeViewController: UIViewController {
         exchangeButton.layer.cornerRadius = 15
         exchangeButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         exchangeButton.setTitle("Exchange", for: .normal)
+        exchangeButton.addTarget(self, action: #selector(moveToExchangePanel), for: .touchUpInside)
         view.addSubview(purpleView)
         purpleView.addSubview(fromLabel)
         purpleView.addSubview(toLabel)
         purpleView.addSubview(enterValueFrom)
         purpleView.addSubview(enterValueTo)
         purpleView.addSubview(exchangeButton)
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    
+    @objc private func moveToExchangePanel() {
+        
+        let SumVC = SumValueViewController()
+        navigationController?.pushViewController(SumVC,animated: true)
     }
 
     private func setupConstraints() {

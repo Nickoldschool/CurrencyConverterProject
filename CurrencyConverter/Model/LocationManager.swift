@@ -45,6 +45,8 @@ extension LocationManager: CLLocationManagerDelegate {
         case .authorizedAlways      : print("authorizedAlways")     // location authorized
         case .restricted            : print("restricted")           // TODO: handle
         case .denied                : print("denied")               // TODO: handle
+        @unknown default:
+            fatalError()
         }
     }
 }
