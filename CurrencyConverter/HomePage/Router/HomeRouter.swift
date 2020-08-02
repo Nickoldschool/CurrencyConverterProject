@@ -13,7 +13,7 @@ protocol HomeRouterInput {
     func closeModule()
 }
 
-class HomeRouter: HomeRouterInput {
+final class HomeRouter: HomeRouterInput {
 
     unowned let view: UIViewController
        

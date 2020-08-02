@@ -8,6 +8,6 @@
 
 import UIKit
 
-class HomeEntity: NSObject {
+final class HomeEntity {
 
 }

@@ -17,11 +17,11 @@ final class HomeAssembly {
         let presenter = HomePresenter()
         
         view.presenter = presenter
-        presenter.view = view as? HomeViewInput
+        presenter.view = view 
         
         let interactor = HomeInteractor()
-        interactor.presenter = presenter as? HomeInteractorOutput
-        presenter.interactor = interactor as? HomeInteractorInput
+        interactor.presenter = presenter
+        presenter.interactor = interactor 
         
         let router = HomeRouter(view: view)
         presenter.router = router

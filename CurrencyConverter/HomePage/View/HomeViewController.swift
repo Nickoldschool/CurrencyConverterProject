@@ -22,7 +22,7 @@ protocol HomeViewOutput {
     func nextPage()
 }
 
-final class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController, HomeViewInput {
     
     // - Outlets
     var presenter: HomeViewOutput?
@@ -214,6 +214,10 @@ extension HomeViewController: CLLocationManagerDelegate  {
         
         checkAuthorization()
     }
+    
+    func updateView() {
+         
+     }
     
 }
 

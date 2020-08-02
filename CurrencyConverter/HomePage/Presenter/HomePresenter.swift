@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomePresenter: HomeViewOutput {
+final class HomePresenter: HomeViewOutput, HomeInteractorOutput {
     
     weak var view: HomeViewInput?
     var interactor: HomeInteractorInput?

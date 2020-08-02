@@ -16,12 +16,13 @@ protocol HomeInteractorOutput: AnyObject {
     func infoLoaded()
 }
 
-class HomeInteractor: NSObject {
+final class HomeInteractor: HomeInteractorInput {
     
     weak var presenter: HomeInteractorOutput?
     
     func loadInfo() {
-           presenter?.infoLoaded()
-       }
-
+        presenter?.infoLoaded()
+    }
+    
+    
 }
