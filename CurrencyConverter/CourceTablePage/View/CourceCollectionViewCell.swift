@@ -53,7 +53,7 @@ class CourceCollectionViewCell: UICollectionViewCell {
     
     fileprivate func style(view: UIView) {
            view.layer.masksToBounds        = false
-           view.backgroundColor            = .orange
+           view.backgroundColor            = #colorLiteral(red: 1, green: 0.9707663655, blue: 0.9514439702, alpha: 1)
            view.layer.cornerRadius         = 5
            view.layer.shadowColor          = UIColor.black.cgColor
            view.layer.shadowOffset         = CGSize(width: 1, height: 5)
@@ -68,7 +68,7 @@ class CourceCollectionViewCell: UICollectionViewCell {
 //           currencyName.text               = rate.currency
 //           currencyRate.text               = "Current rate: \(String(rate.rate))"
 //           flagImage.image                 = UIImage(named: rate.currency)
-//           if entery == 0{
+//           if entery == 0 {
 //               resulLabel.text = ""
 //           }else{
 //               resulLabel.text = String(round((entery * rate.rate)*100)/100)

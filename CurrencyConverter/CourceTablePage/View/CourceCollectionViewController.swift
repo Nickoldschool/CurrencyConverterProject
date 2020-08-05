@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 final class CourceCollectionViewController: UIViewController {
     
 
@@ -21,15 +20,14 @@ final class CourceCollectionViewController: UIViewController {
     let layout = UICollectionViewFlowLayout()
     
     
+    
     //MARK: - Virables
     
     var currenntCurrency: String = "EUR"
-    var rates = [Rate]()
     var ratesKey = [String]()
     var ratesValue = [Double]()
     var myCollectionView: UICollectionView!
     
-    //var rates: [String] = ["USD: 1.1725", "SGD: 1.6142", "PLN: 4.4194", "KRW: 1400.22", "JPY: 123.28", "CHF: 1.0766", "BRL: 6.0149", "SEK: 10.287", "HUF: 347.67", "IDR: 17042.29", "ISK: 159.0", "MYR: 4.9755", "RUB: 84.9125", "ILS: 3.9985", "MXN: 25.631", "CNY: 8.2067", "TRY: 8.1748", "NZD: 1.764", "AUD: 1.6348", "CAD: 1.5665", "CZK: 26.291", "BGN: 1.9558", "GBP: 0.90385", "HRK: 7.494", "ZAR: 19.3269", "HKD: 9.0869", "INR: 87.694", "NOK: 10.6573", "PHP: 57.538", "THB: 36.899", "DKK: 7.4427", "RON: 4.8345"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +35,7 @@ final class CourceCollectionViewController: UIViewController {
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
       
         configureTableView()
-        loadRates(currency: currenntCurrency)
+        
         
     }
     

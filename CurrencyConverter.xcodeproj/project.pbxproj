@@ -21,19 +21,16 @@
 		403D5DF724BF4966002F4B88 /* CurrencyConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D5DF624BF4966002F4B88 /* CurrencyConverterUITests.swift */; };
 		403D5E0524BF49BE002F4B88 /* LaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D5E0424BF49BE002F4B88 /* LaunchController.swift */; };
 		403D5E0724BF4AA0002F4B88 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D5E0624BF4AA0002F4B88 /* LocationManager.swift */; };
-		40413BEA24D2EE9D002267BC /* CourceCollectionExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40413BE924D2EE9D002267BC /* CourceCollectionExtention.swift */; };
 		40413C0E24D44CC1002267BC /* CourceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40413C0D24D44CC1002267BC /* CourceCollectionViewCell.swift */; };
 		40413C1024D574CC002267BC /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40413C0F24D574CC002267BC /* ExchangeViewController.swift */; };
-		405C77DA24CEC31200E2DD01 /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C77D924CEC31200E2DD01 /* CurrencyModel.swift */; };
-		405C77DC24CEC3AA00E2DD01 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C77DB24CEC3AA00E2DD01 /* ApiClient.swift */; };
 		405C77E024D02FD000E2DD01 /* CourceCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C77DF24D02FD000E2DD01 /* CourceCollectionViewController.swift */; };
+		4085616924D8B2FE0006E94F /* DataHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4085616824D8B2FE0006E94F /* DataHandling.swift */; };
 		4091081F24C1A9F0007F37FF /* NewTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4091081E24C1A9F0007F37FF /* NewTabBarController.swift */; };
 		40982E2A24D2185800DB753C /* CourceTableAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40982E2924D2185800DB753C /* CourceTableAssembly.swift */; };
 		40982E2E24D2194B00DB753C /* CourceTableInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40982E2D24D2194B00DB753C /* CourceTableInteractor.swift */; };
 		40982E3124D2199900DB753C /* CourceTablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40982E3024D2199900DB753C /* CourceTablePresenter.swift */; };
 		40982E3424D21AE100DB753C /* CourceTableEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40982E3324D21AE100DB753C /* CourceTableEntity.swift */; };
 		40982E3724D21B0A00DB753C /* CourceTableRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40982E3624D21B0A00DB753C /* CourceTableRouter.swift */; };
-		409B4F6324D5C40D0040E73D /* SumValueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409B4F6224D5C40D0040E73D /* SumValueViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,19 +71,16 @@
 		403D5DF824BF4966002F4B88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		403D5E0424BF49BE002F4B88 /* LaunchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchController.swift; sourceTree = "<group>"; };
 		403D5E0624BF4AA0002F4B88 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		40413BE924D2EE9D002267BC /* CourceCollectionExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceCollectionExtention.swift; sourceTree = "<group>"; };
 		40413C0D24D44CC1002267BC /* CourceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceCollectionViewCell.swift; sourceTree = "<group>"; };
 		40413C0F24D574CC002267BC /* ExchangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
-		405C77D924CEC31200E2DD01 /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
-		405C77DB24CEC3AA00E2DD01 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		405C77DF24D02FD000E2DD01 /* CourceCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceCollectionViewController.swift; sourceTree = "<group>"; };
+		4085616824D8B2FE0006E94F /* DataHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandling.swift; sourceTree = "<group>"; };
 		4091081E24C1A9F0007F37FF /* NewTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTabBarController.swift; sourceTree = "<group>"; };
 		40982E2924D2185800DB753C /* CourceTableAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceTableAssembly.swift; sourceTree = "<group>"; };
 		40982E2D24D2194B00DB753C /* CourceTableInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceTableInteractor.swift; sourceTree = "<group>"; };
 		40982E3024D2199900DB753C /* CourceTablePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceTablePresenter.swift; sourceTree = "<group>"; };
 		40982E3324D21AE100DB753C /* CourceTableEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceTableEntity.swift; sourceTree = "<group>"; };
 		40982E3624D21B0A00DB753C /* CourceTableRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceTableRouter.swift; sourceTree = "<group>"; };
-		409B4F6224D5C40D0040E73D /* SumValueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumValueViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,15 +108,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		40231CD424CE2596000D50CC /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				405C77D924CEC31200E2DD01 /* CurrencyModel.swift */,
-				405C77DB24CEC3AA00E2DD01 /* ApiClient.swift */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
 		40347B9624C51ABF00E3BA84 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,14 +193,13 @@
 			isa = PBXGroup;
 			children = (
 				403D5E0A24BF4CD7002F4B88 /* Application */,
-				40231CD424CE2596000D50CC /* Network */,
+				4085616724D8B2C10006E94F /* CoreData */,
 				403D5E0B24BF4D4C002F4B88 /* Model */,
 				403D5E0C24BF4D6A002F4B88 /* Controllers */,
 				40347B9624C51ABF00E3BA84 /* HomePage */,
 				40982E2724D2173E00DB753C /* CourceTablePage */,
 				40413C1124D574D4002267BC /* ExchangePage */,
 				403D5DDD24BF4966002F4B88 /* Assets.xcassets */,
-				403D5DDA24BF4964002F4B88 /* CurrencyConverter.xcdatamodeld */,
 			);
 			path = CurrencyConverter;
 			sourceTree = "<group>";
@@ -269,9 +253,17 @@
 			isa = PBXGroup;
 			children = (
 				40413C0F24D574CC002267BC /* ExchangeViewController.swift */,
-				409B4F6224D5C40D0040E73D /* SumValueViewController.swift */,
 			);
 			path = ExchangePage;
+			sourceTree = "<group>";
+		};
+		4085616724D8B2C10006E94F /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				4085616824D8B2FE0006E94F /* DataHandling.swift */,
+				403D5DDA24BF4964002F4B88 /* CurrencyConverter.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		40982E2724D2173E00DB753C /* CourceTablePage */ = {
@@ -300,7 +292,6 @@
 			children = (
 				40413C0D24D44CC1002267BC /* CourceCollectionViewCell.swift */,
 				405C77DF24D02FD000E2DD01 /* CourceCollectionViewController.swift */,
-				40413BE924D2EE9D002267BC /* CourceCollectionExtention.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -468,19 +459,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				40347BA024C51FDE00E3BA84 /* HomeInteractor.swift in Sources */,
-				40413BEA24D2EE9D002267BC /* CourceCollectionExtention.swift in Sources */,
 				403D5E0524BF49BE002F4B88 /* LaunchController.swift in Sources */,
 				40982E3724D21B0A00DB753C /* CourceTableRouter.swift in Sources */,
 				403D5DD624BF4964002F4B88 /* HomeViewController.swift in Sources */,
 				40347BA424C5200500E3BA84 /* HomeEntity.swift in Sources */,
-				409B4F6324D5C40D0040E73D /* SumValueViewController.swift in Sources */,
 				403D5E0724BF4AA0002F4B88 /* LocationManager.swift in Sources */,
 				4091081F24C1A9F0007F37FF /* NewTabBarController.swift in Sources */,
 				40982E3124D2199900DB753C /* CourceTablePresenter.swift in Sources */,
-				405C77DC24CEC3AA00E2DD01 /* ApiClient.swift in Sources */,
 				403D5DDC24BF4964002F4B88 /* CurrencyConverter.xcdatamodeld in Sources */,
+				4085616924D8B2FE0006E94F /* DataHandling.swift in Sources */,
 				40982E2E24D2194B00DB753C /* CourceTableInteractor.swift in Sources */,
-				405C77DA24CEC31200E2DD01 /* CurrencyModel.swift in Sources */,
 				40982E2A24D2185800DB753C /* CourceTableAssembly.swift in Sources */,
 				40982E3424D21AE100DB753C /* CourceTableEntity.swift in Sources */,
 				405C77E024D02FD000E2DD01 /* CourceCollectionViewController.swift in Sources */,

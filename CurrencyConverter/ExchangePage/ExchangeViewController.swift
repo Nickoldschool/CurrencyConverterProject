@@ -12,6 +12,7 @@ final class ExchangeViewController: UIViewController {
     
     let exchangeImage = UIImageView(image: UIImage(named: "ExchangeIllustration"))
     let purpleView = UIView()
+    let stackView = UIStackView()
     let enterValueFrom = UITextField()
     let fromLabel = UILabel()
     let toLabel = UILabel()
@@ -21,63 +22,97 @@ final class ExchangeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureImage()
-        addEditField()
+        addElements()
+        addSubviews()
         setupConstraints()
-    }
-    
-    private func configureImage() {
         
-        exchangeImage.contentMode = .scaleToFill
-        view.addSubview(exchangeImage)
-    }
-    
-    private func addEditField() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil);
         
-        purpleView.backgroundColor =  #colorLiteral(red: 0.6621792912, green: 2.986973641e-06, blue: 0.941290319, alpha: 1)
-        fromLabel.text = "From"
-        toLabel.text = "To"
-        fromLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        toLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        enterValueFrom.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        enterValueTo.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        enterValueFrom.textAlignment = .center
-        enterValueTo.textAlignment = .center
-        enterValueFrom.keyboardType = .decimalPad
-        enterValueTo.keyboardType = .decimalPad
-        exchangeButton.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        purpleView.layer.cornerRadius = 15
-        enterValueFrom.layer.cornerRadius = 15
-        enterValueTo.layer.cornerRadius = 15
-        exchangeButton.layer.cornerRadius = 15
-        exchangeButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-        exchangeButton.setTitle("Exchange", for: .normal)
-        exchangeButton.addTarget(self, action: #selector(moveToExchangePanel), for: .touchUpInside)
-        view.addSubview(purpleView)
-        purpleView.addSubview(fromLabel)
-        purpleView.addSubview(toLabel)
-        purpleView.addSubview(enterValueFrom)
-        purpleView.addSubview(enterValueTo)
-        purpleView.addSubview(exchangeButton)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil);
     }
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
     
-    
-    @objc private func moveToExchangePanel() {
+    @objc func keyboardWillShow(sender: Notification) {
         
-        let SumVC = SumValueViewController()
-        navigationController?.pushViewController(SumVC,animated: true)
+        var _kbSize:CGSize!
+        
+        if let info = sender.userInfo {
+            
+            let frameEndUserInfoKey = UIResponder.keyboardFrameEndUserInfoKey
+            
+            //  Getting UIKeyboardSize.
+            if let kbFrame = info[frameEndUserInfoKey] as? CGRect {
+                
+                let screenSize = UIScreen.main.bounds
+                let intersectRect = kbFrame.intersection(screenSize)
+                
+                if intersectRect.isNull {
+                    _kbSize = CGSize(width: screenSize.size.width, height: 0)
+                } else {
+                    _kbSize = intersectRect.size
+                    view.frame.origin.y = view.frame.origin.y  - _kbSize.height + 40    // Move view up to keyboard height
+                }
+            }
+        }
+        
+        
+    }
+    
+    @objc func keyboardWillHide(sender: Notification) {
+        view.frame.origin.y = 0 // Move view to original position
+    }
+    
+    private func addElements() {
+        
+        exchangeImage.contentMode = .scaleToFill
+        purpleView.backgroundColor = #colorLiteral(red: 0.6621792912, green: 2.986973641e-06, blue: 0.941290319, alpha: 1)
+        purpleView.layer.cornerRadius = 15
+        fromLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        toLabel.textColor =  #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        enterValueFrom.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        enterValueTo.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        exchangeButton.backgroundColor =  #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        exchangeButton.setTitleColor( #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+        fromLabel.text = "From"
+        toLabel.text = "To"
+        exchangeButton.setTitle("Exchange", for: .normal)
+        enterValueFrom.textAlignment = .center
+        enterValueTo.textAlignment = .center
+        enterValueFrom.keyboardType = .decimalPad
+        enterValueTo.keyboardType = .decimalPad
+        enterValueFrom.layer.cornerRadius = 15
+        enterValueTo.layer.cornerRadius = 15
+        exchangeButton.layer.cornerRadius = 15
+     
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.spacing = 20
+        
     }
 
+    
+    private func addSubviews() {
+        
+        view.addSubview(exchangeImage)
+        view.addSubview(purpleView)
+        purpleView.addSubview(stackView)
+        stackView.addArrangedSubview(fromLabel)
+        stackView.addArrangedSubview(enterValueFrom)
+        stackView.addArrangedSubview(toLabel)
+        stackView.addArrangedSubview(enterValueTo)
+        stackView.addArrangedSubview(exchangeButton)
+    }
+    
     private func setupConstraints() {
         
         exchangeImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            exchangeImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
+            exchangeImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             exchangeImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             exchangeImage.heightAnchor.constraint(equalToConstant: 240),
             exchangeImage.widthAnchor.constraint(equalToConstant: 350),
@@ -85,53 +120,23 @@ final class ExchangeViewController: UIViewController {
         
         purpleView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
+            purpleView.topAnchor.constraint(equalTo: exchangeImage.bottomAnchor, constant: 15),
             purpleView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
             purpleView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            purpleView.heightAnchor.constraint(equalToConstant: 300),
             purpleView.widthAnchor.constraint(equalToConstant: 350),
         ])
         
-        enterValueFrom.translatesAutoresizingMaskIntoConstraints = false
-               NSLayoutConstraint.activate([
-                   enterValueFrom.topAnchor.constraint(equalTo: purpleView.topAnchor, constant: 50),
-                   enterValueFrom.centerXAnchor.constraint(equalTo: purpleView.centerXAnchor),
-                   enterValueFrom.heightAnchor.constraint(equalToConstant: 40),
-                   enterValueFrom.widthAnchor.constraint(equalToConstant: 300),
-               ])
-        
-        enterValueTo.translatesAutoresizingMaskIntoConstraints = false
-               NSLayoutConstraint.activate([
-                   enterValueTo.topAnchor.constraint(equalTo: purpleView.topAnchor, constant: 140),
-                   enterValueTo.centerXAnchor.constraint(equalTo: purpleView.centerXAnchor),
-                   enterValueTo.heightAnchor.constraint(equalToConstant: 40),
-                   enterValueTo.widthAnchor.constraint(equalToConstant: 300),
-               ])
-        
-        exchangeButton.translatesAutoresizingMaskIntoConstraints = false
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            exchangeButton.bottomAnchor.constraint(equalTo: purpleView.bottomAnchor, constant: -40),
-            exchangeButton.centerXAnchor.constraint(equalTo: purpleView.centerXAnchor),
-            exchangeButton.heightAnchor.constraint(equalToConstant: 40),
-            exchangeButton.widthAnchor.constraint(equalToConstant: 250),
+            stackView.topAnchor.constraint(equalTo: purpleView.topAnchor, constant: 20),
+            stackView.leadingAnchor.constraint(equalTo: purpleView.leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: purpleView.trailingAnchor, constant: -20),
+            stackView.bottomAnchor.constraint(equalTo: purpleView.bottomAnchor, constant: -40),
         ])
         
-        fromLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            fromLabel.topAnchor.constraint(equalTo: purpleView.topAnchor, constant: 10),
-            fromLabel.trailingAnchor.constraint(equalTo: purpleView.leadingAnchor, constant: 100),
-            fromLabel.heightAnchor.constraint(equalToConstant: 40),
-            fromLabel.widthAnchor.constraint(equalToConstant: 70),
-        ])
-        
-        toLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            toLabel.topAnchor.constraint(equalTo: purpleView.topAnchor, constant: 100),
-            toLabel.leadingAnchor.constraint(equalTo: purpleView.leadingAnchor, constant: 30),
-            toLabel.heightAnchor.constraint(equalToConstant: 40),
-            toLabel.widthAnchor.constraint(equalToConstant: 70),
-        ])
     }
     
- 
+    
     
 }
+

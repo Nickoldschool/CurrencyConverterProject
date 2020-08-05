@@ -32,7 +32,6 @@ final class HomeViewController: UIViewController, HomeViewInput {
     let locationManager = LocationManager()
     let locationLabel = UILabel()
     let mapView = MKMapView()
-    //let network = ApiClient()
 
     override func viewDidLoad() {
         super.viewDidLoad()
