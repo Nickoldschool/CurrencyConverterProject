@@ -70,7 +70,7 @@ extension LocationManager {
                 return
             }
             
-            guard let placemark = placemarks?[0] else {
+            guard let placemark = placemarks?.first else {
                 print("*** Error in \(#function): placemark is nil")
                 completion(nil)
                 return
