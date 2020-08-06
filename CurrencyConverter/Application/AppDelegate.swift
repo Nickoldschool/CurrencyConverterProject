@@ -17,11 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        //MARK: - Without Animation
+        
         let tabBarController = NewTabBarController()
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
         
+        //MARK: - With Animation
         
 //        let navController = UINavigationController()
 //        let launchController = LaunchController()

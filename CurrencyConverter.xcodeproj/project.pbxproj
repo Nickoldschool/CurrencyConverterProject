@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		403047BB24DB03460081CAD6 /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403047BA24DB03460081CAD6 /* CurrencyModel.swift */; };
+		403047BE24DB03750081CAD6 /* CurrencyEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403047BD24DB03750081CAD6 /* CurrencyEndPoint.swift */; };
+		403047C124DB03A40081CAD6 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403047C024DB03A40081CAD6 /* ApiClient.swift */; };
+		403047C424DB03CD0081CAD6 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403047C324DB03CD0081CAD6 /* EndPointType.swift */; };
+		403047C624DB03E60081CAD6 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403047C524DB03E60081CAD6 /* HTTPMethod.swift */; };
+		403047C824DB03FE0081CAD6 /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403047C724DB03FE0081CAD6 /* HTTPTask.swift */; };
+		403047CB24DB04250081CAD6 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403047CA24DB04250081CAD6 /* ParameterEncoding.swift */; };
+		403047CD24DB04400081CAD6 /* URLParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403047CC24DB04400081CAD6 /* URLParameterEncoding.swift */; };
+		403047CF24DB04540081CAD6 /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403047CE24DB04540081CAD6 /* JSONParameterEncoder.swift */; };
 		40347B9E24C51D0200E3BA84 /* HomeAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40347B9D24C51D0200E3BA84 /* HomeAssembly.swift */; };
 		40347BA024C51FDE00E3BA84 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40347B9F24C51FDE00E3BA84 /* HomeInteractor.swift */; };
 		40347BA224C51FEE00E3BA84 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40347BA124C51FEE00E3BA84 /* HomePresenter.swift */; };
@@ -51,6 +60,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		403047BA24DB03460081CAD6 /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
+		403047BD24DB03750081CAD6 /* CurrencyEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyEndPoint.swift; sourceTree = "<group>"; };
+		403047C024DB03A40081CAD6 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		403047C324DB03CD0081CAD6 /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
+		403047C524DB03E60081CAD6 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		403047C724DB03FE0081CAD6 /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
+		403047CA24DB04250081CAD6 /* ParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
+		403047CC24DB04400081CAD6 /* URLParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoding.swift; sourceTree = "<group>"; };
+		403047CE24DB04540081CAD6 /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
 		40347B9D24C51D0200E3BA84 /* HomeAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAssembly.swift; sourceTree = "<group>"; };
 		40347B9F24C51FDE00E3BA84 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		40347BA124C51FEE00E3BA84 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
@@ -108,6 +126,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		403047B824DB02650081CAD6 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				403047B924DB02FF0081CAD6 /* Model */,
+				403047BC24DB03590081CAD6 /* EndPoint */,
+				403047BF24DB03920081CAD6 /* Client */,
+				403047C224DB03BA0081CAD6 /* Service */,
+				403047C924DB04120081CAD6 /* Encoding */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		403047B924DB02FF0081CAD6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				403047BA24DB03460081CAD6 /* CurrencyModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		403047BC24DB03590081CAD6 /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+				403047BD24DB03750081CAD6 /* CurrencyEndPoint.swift */,
+			);
+			path = EndPoint;
+			sourceTree = "<group>";
+		};
+		403047BF24DB03920081CAD6 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				403047C024DB03A40081CAD6 /* ApiClient.swift */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
+		403047C224DB03BA0081CAD6 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				403047C324DB03CD0081CAD6 /* EndPointType.swift */,
+				403047C524DB03E60081CAD6 /* HTTPMethod.swift */,
+				403047C724DB03FE0081CAD6 /* HTTPTask.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		403047C924DB04120081CAD6 /* Encoding */ = {
+			isa = PBXGroup;
+			children = (
+				403047CA24DB04250081CAD6 /* ParameterEncoding.swift */,
+				403047CC24DB04400081CAD6 /* URLParameterEncoding.swift */,
+				403047CE24DB04540081CAD6 /* JSONParameterEncoder.swift */,
+			);
+			path = Encoding;
+			sourceTree = "<group>";
+		};
 		40347B9624C51ABF00E3BA84 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,7 +268,8 @@
 			children = (
 				403D5E0A24BF4CD7002F4B88 /* Application */,
 				4085616724D8B2C10006E94F /* CoreData */,
-				403D5E0B24BF4D4C002F4B88 /* Model */,
+				403047B824DB02650081CAD6 /* Network */,
+				403D5E0B24BF4D4C002F4B88 /* Location */,
 				403D5E0C24BF4D6A002F4B88 /* Controllers */,
 				40347B9624C51ABF00E3BA84 /* HomePage */,
 				40982E2724D2173E00DB753C /* CourceTablePage */,
@@ -232,12 +307,12 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
-		403D5E0B24BF4D4C002F4B88 /* Model */ = {
+		403D5E0B24BF4D4C002F4B88 /* Location */ = {
 			isa = PBXGroup;
 			children = (
 				403D5E0624BF4AA0002F4B88 /* LocationManager.swift */,
 			);
-			path = Model;
+			path = Location;
 			sourceTree = "<group>";
 		};
 		403D5E0C24BF4D6A002F4B88 /* Controllers */ = {
@@ -462,16 +537,25 @@
 				403D5E0524BF49BE002F4B88 /* LaunchController.swift in Sources */,
 				40982E3724D21B0A00DB753C /* CourceTableRouter.swift in Sources */,
 				403D5DD624BF4964002F4B88 /* HomeViewController.swift in Sources */,
+				403047C124DB03A40081CAD6 /* ApiClient.swift in Sources */,
 				40347BA424C5200500E3BA84 /* HomeEntity.swift in Sources */,
 				403D5E0724BF4AA0002F4B88 /* LocationManager.swift in Sources */,
 				4091081F24C1A9F0007F37FF /* NewTabBarController.swift in Sources */,
+				403047C624DB03E60081CAD6 /* HTTPMethod.swift in Sources */,
+				403047C424DB03CD0081CAD6 /* EndPointType.swift in Sources */,
 				40982E3124D2199900DB753C /* CourceTablePresenter.swift in Sources */,
 				403D5DDC24BF4964002F4B88 /* CurrencyConverter.xcdatamodeld in Sources */,
+				403047CF24DB04540081CAD6 /* JSONParameterEncoder.swift in Sources */,
+				403047BE24DB03750081CAD6 /* CurrencyEndPoint.swift in Sources */,
 				4085616924D8B2FE0006E94F /* DataHandling.swift in Sources */,
 				40982E2E24D2194B00DB753C /* CourceTableInteractor.swift in Sources */,
 				40982E2A24D2185800DB753C /* CourceTableAssembly.swift in Sources */,
 				40982E3424D21AE100DB753C /* CourceTableEntity.swift in Sources */,
 				405C77E024D02FD000E2DD01 /* CourceCollectionViewController.swift in Sources */,
+				403047CB24DB04250081CAD6 /* ParameterEncoding.swift in Sources */,
+				403047C824DB03FE0081CAD6 /* HTTPTask.swift in Sources */,
+				403047CD24DB04400081CAD6 /* URLParameterEncoding.swift in Sources */,
+				403047BB24DB03460081CAD6 /* CurrencyModel.swift in Sources */,
 				403D5DD224BF4964002F4B88 /* AppDelegate.swift in Sources */,
 				40413C0E24D44CC1002267BC /* CourceCollectionViewCell.swift in Sources */,
 				40347BA224C51FEE00E3BA84 /* HomePresenter.swift in Sources */,
