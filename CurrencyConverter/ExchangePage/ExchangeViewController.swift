@@ -34,10 +34,6 @@ final class ExchangeViewController: UIViewController {
     }
 
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-    
     @objc func keyboardWillShow(sender: Notification) {
         
         var _kbSize:CGSize!
@@ -57,7 +53,7 @@ final class ExchangeViewController: UIViewController {
                     _kbSize = CGSize(width: screenSize.size.width, height: 0)
                 } else {
                     _kbSize = intersectRect.size
-                    view.frame.origin.y = view.frame.origin.y  - _kbSize.height + 40    // Move view up to keyboard height
+                    view.frame.origin.y = view.frame.origin.y  - _kbSize.height     // Move view up to keyboard height
                 }
             }
         }
@@ -73,9 +69,9 @@ final class ExchangeViewController: UIViewController {
         
         exchangeImage.contentMode = .scaleToFill
         scrollView.contentSize = CGSize(width: view.bounds.size.width, height: 950 )
+        scrollView.keyboardDismissMode = .onDrag
         purpleView.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
         purpleView.layer.cornerRadius = 15
-        //scrollView.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
         scrollView.layer.cornerRadius = 15
         fromLabel.layer.cornerRadius = 15
         toLabel.layer.cornerRadius = 15
@@ -100,15 +96,12 @@ final class ExchangeViewController: UIViewController {
 
     @objc private func pushToModelVC() {
         
-//        let modelVC = ModelViewController()
-//        delegate?.showFirstRatelabel.text = fromTextField.text
-//        delegate?.showSecondRatelabel.text = toTextField.text
-//        navigationController?.pushViewController(modelVC, animated: true)
+        let homeVC = HomeViewController()
+        navigationController?.pushViewController(homeVC, animated: true)
     }
     
     private func addSubviews() {
         
-        //view.addSubview(exchangeImage)
         view.addSubview(scrollView)
         scrollView.addSubview(exchangeImage)
         scrollView.addSubview(purpleView)
