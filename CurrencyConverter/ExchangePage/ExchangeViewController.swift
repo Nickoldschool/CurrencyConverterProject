@@ -20,6 +20,8 @@ final class ExchangeViewController: UIViewController {
     let pushButton = UIButton()
     
     var networkManager = NetworkManager()
+    var firstCurrency: String = "EUR"
+    var secondCurrency: String = "RUB"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +30,7 @@ final class ExchangeViewController: UIViewController {
         addSubviews()
         setupConstraints()
         
-        networkManager.getCurrencies(rate: "EUR") { (currencies, error) in
+        networkManager.getTwoRates(firstRate: firstCurrency, secondRate: secondCurrency) { (currencies, error) in
             
         }
         
@@ -108,7 +110,7 @@ final class ExchangeViewController: UIViewController {
         toTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
         pushButton.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        pushButton.setTitle("Done", for: .normal)
+        pushButton.setTitle("Convert", for: .normal)
         pushButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         pushButton.layer.cornerRadius = 15
         pushButton.addTarget(self, action: #selector(pushToModelVC), for: .touchUpInside)

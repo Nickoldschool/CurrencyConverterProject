@@ -21,6 +21,7 @@ final class CourceCollectionViewController: UIViewController {
     
     //MARK: - Virables
     
+    var networkManager = NetworkManager()
     var currenntCurrency: String = "EUR"
     var ratesKey = [String]()
     var ratesValue = [Double]()
@@ -35,6 +36,10 @@ final class CourceCollectionViewController: UIViewController {
         configureTableView()
         addSubViews()
         addConstraints()
+        
+        networkManager.getCurrencies(rate: currenntCurrency) { (currencies, error) in
+        
+        }
     }
     
     //MARK: - CollectionView

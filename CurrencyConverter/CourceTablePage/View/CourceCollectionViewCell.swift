@@ -37,27 +37,36 @@ class CourceCollectionViewCell: UICollectionViewCell {
 
     private func setUpConstraints() {
         
+        flagImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             flagImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             flagImage.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20),
             flagImage.heightAnchor.constraint(equalToConstant: 35),
             flagImage.widthAnchor.constraint(equalToConstant: 35),
-            
+        ])
+        
+        currencyName.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
             currencyName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
             currencyName.bottomAnchor.constraint(equalTo: contentView.centerYAnchor),
             currencyName.leftAnchor.constraint(equalTo: flagImage.rightAnchor, constant: 20),
             currencyName.rightAnchor.constraint(equalTo: contentView.centerXAnchor),
-            
+        ])
+        
+        currencyRate.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
             currencyRate.topAnchor.constraint(equalTo: contentView.centerYAnchor),
             currencyRate.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
             currencyRate.leftAnchor.constraint(equalTo: flagImage.rightAnchor, constant: 20),
             currencyRate.rightAnchor.constraint(equalTo: contentView.centerXAnchor),
-            
+        ])
+        
+        resulLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
             resulLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             resulLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20),
             resulLabel.heightAnchor.constraint(equalToConstant: 20),
             resulLabel.leftAnchor.constraint(equalTo: contentView.centerXAnchor),
-            
         ])
     }
     
@@ -69,7 +78,9 @@ class CourceCollectionViewCell: UICollectionViewCell {
            view.layer.shadowOffset         = CGSize(width: 1, height: 5)
            view.layer.shadowRadius         = 8
            view.layer.shadowOpacity        = 0.2
-           view.layer.shadowPath           = UIBezierPath(roundedRect: view.bounds, byRoundingCorners: .allCorners, cornerRadii: CGSize(width: 14, height: 14)).cgPath
+           view.layer.shadowPath           = UIBezierPath(roundedRect: view.bounds,
+                                                          byRoundingCorners: .allCorners,
+                                                          cornerRadii: CGSize(width: 14, height: 14)).cgPath
            view.layer.shouldRasterize      = true
            view.layer.rasterizationScale   = UIScreen.main.scale
        }
