@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreLocation
-import MapKit
 
 protocol HomeViewInput: AnyObject {
     
@@ -26,12 +25,11 @@ final class HomeViewController: UIViewController, HomeViewInput {
     
     // - Outlets
     var presenter: HomeViewOutput?
-    var locationManagerDelegate = CLLocationManager()
     
     // - Constants
     let locationManager = LocationManager()
     let locationLabel = UILabel()
-    let mapView = MKMapView()
+    let button = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,12 +38,12 @@ final class HomeViewController: UIViewController, HomeViewInput {
         
         createLabel()
         createButton()
-        showUserLocation()
-        presenter?.viewready()
+        addSubViews()
+        addConstraints()
         setCurrentLocation()
-        checkLocationEnabled()
-        //network.loadRates(currency: "EUR")
+        presenter?.viewready()
         
+
     }
 
     
@@ -56,21 +54,13 @@ final class HomeViewController: UIViewController, HomeViewInput {
         locationLabel.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         locationLabel.textAlignment = .center
         locationLabel.numberOfLines = 0
-        view.addSubview(locationLabel)
-        locationLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            locationLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 90),
-            locationLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            locationLabel.heightAnchor.constraint(equalToConstant: 90),
-            locationLabel.widthAnchor.constraint(equalToConstant: 250),
-        ])
+
     }
         
     //MARK: - Create button
     
     private func createButton() {
 
-        let button = UIButton()
         button.layer.borderWidth = 2
         button.layer.cornerRadius = 65
         button.layer.masksToBounds = true
@@ -81,7 +71,25 @@ final class HomeViewController: UIViewController, HomeViewInput {
         button.titleLabel?.textAlignment = .center
         button.backgroundColor =  #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         button.addTarget(self, action: #selector(moveToExchangeController), for: .touchUpInside)
+
+    }
+    
+    private func addSubViews() {
+        
+        view.addSubview(locationLabel)
         view.addSubview(button)
+    }
+    
+    private func addConstraints() {
+        
+        locationLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            locationLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 90),
+            locationLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            locationLabel.heightAnchor.constraint(equalToConstant: 90),
+            locationLabel.widthAnchor.constraint(equalToConstant: 250),
+        ])
+        
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -110),
@@ -89,6 +97,7 @@ final class HomeViewController: UIViewController, HomeViewInput {
             button.heightAnchor.constraint(equalToConstant: 130),
             button.widthAnchor.constraint(equalToConstant: 130),
         ])
+        
     }
     
     //MARK: - Call button for moving to next view
@@ -96,25 +105,9 @@ final class HomeViewController: UIViewController, HomeViewInput {
     @objc private func moveToExchangeController() {
         
         presenter?.nextPage()
-        let ExVc = ExchangeViewController()
-        navigationController?.pushViewController(ExVc,animated: true)
+        let ExVC = ExchangeViewController()
+        navigationController?.pushViewController(ExVC,animated: true)
         
-    }
-    
-    //MARK: - Create MapView
-    
-    private func showUserLocation() {
-    
-        mapView.showsUserLocation = true
-        locationManagerDelegate.startUpdatingLocation()
-        view.addSubview(mapView)
-        mapView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            mapView.topAnchor.constraint(equalTo: view.topAnchor, constant: 210),
-            mapView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            mapView.heightAnchor.constraint(equalToConstant: 350),
-            mapView.widthAnchor.constraint(equalToConstant: 350),
-        ])
     }
     
     //MARK: - Function for showing current location: Country&city
@@ -140,83 +133,8 @@ final class HomeViewController: UIViewController, HomeViewInput {
         }
     }
     
-    //MARK: - Warned ueser to turn on location if it disabled
-        
-    private func checkLocationEnabled() {
-        
-        if CLLocationManager.locationServicesEnabled() {
-            
-            setManager()
-            checkAuthorization()
-            
-        } else {
-            
-            let alert = UIAlertController(title: "Служба геолокации выключена", message: "Хотите включить", preferredStyle: .alert)
-            let settingsAction = UIAlertAction(title: "Настройки", style: .default) { (alert) in
-                if let url = URL(string: "App-Prefs:root=LOCATION_SERVICES") {
-                    
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
-            }
-            
-            let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
-            
-            alert.addAction(settingsAction)
-            alert.addAction(cancelAction)
-            
-            present(alert, animated: true ,completion: nil)
-        }
-        
-    }
-    
-    //MARK: - Delegate and setUp desired accuracy of location
-
-    private func setManager() {
-        
-        locationManagerDelegate.delegate = self
-        locationManagerDelegate.desiredAccuracy = kCLLocationAccuracyBest
-        
-    }
-    
-    //MARK: - Checks if user is authorised, if not, asks permission
-    
-    private func checkAuthorization() {
-        if CLLocationManager.authorizationStatus() == .authorizedAlways {
-            mapView.showsUserLocation = true
-            locationManagerDelegate.startUpdatingLocation()
-            
-        } else {
-            
-            locationManagerDelegate.requestWhenInUseAuthorization()
-            
-        }
-    }
-
-}
-
-extension HomeViewController: CLLocationManagerDelegate  {
-    
-    //MARK: - Function for setUp radius of location
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        if let location = locations.last?.coordinate {
-            
-            let region = MKCoordinateRegion(center: location, latitudinalMeters: 5000, longitudinalMeters: 5000)
-            mapView.setRegion(region, animated: true)
-        }
-    }
-    
-    //MARK: - Tracking authorization status
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        
-        checkAuthorization()
-    }
-    
     func updateView() {
-         
-     }
+        
+    }
     
 }
-

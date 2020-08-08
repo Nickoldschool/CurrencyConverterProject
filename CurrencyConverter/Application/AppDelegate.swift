@@ -24,15 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
         
-        //MARK: - With Animation
-        
-//        let navController = UINavigationController()
-//        let launchController = LaunchController()
-//        navController.viewControllers = [launchController]
-//        window = UIWindow(frame: UIScreen.main.bounds)
-//        window?.rootViewController = navController
-//        window?.makeKeyAndVisible()
-        
         return true
     }
 

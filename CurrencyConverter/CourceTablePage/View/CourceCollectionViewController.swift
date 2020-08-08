@@ -10,13 +10,11 @@ import UIKit
 
 final class CourceCollectionViewController: UIViewController {
     
-
+    
     //MARK: - Constants
     
- 
+    
     let identifier = "MyCell"
-    let lastUpdateLabel = UILabel()
-    let currentCurrencyLabel =  UILabel()
     let layout = UICollectionViewFlowLayout()
     
     
@@ -28,41 +26,15 @@ final class CourceCollectionViewController: UIViewController {
     var ratesValue = [Double]()
     var myCollectionView: UICollectionView!
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-      
+        
         configureTableView()
-        
-        
-    }
-    
-    
-    private func setupLabels() {
-
-        lastUpdateLabel.textAlignment = .center
-        currentCurrencyLabel.textAlignment = .center
-        view.addSubview(lastUpdateLabel)
-        view.addSubview(currentCurrencyLabel)
-        
-        currentCurrencyLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-           currentCurrencyLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 115),
-           currentCurrencyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-           currentCurrencyLabel.heightAnchor.constraint(equalToConstant: 30),
-           currentCurrencyLabel.widthAnchor.constraint(equalToConstant: 200),
-        ])
-        
-        lastUpdateLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-           lastUpdateLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 145),
-           lastUpdateLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-           lastUpdateLabel.heightAnchor.constraint(equalToConstant: 30),
-           lastUpdateLabel.widthAnchor.constraint(equalToConstant: 200),
-        ])
-        
+        addSubViews()
+        addConstraints()
     }
     
     //MARK: - CollectionView
@@ -80,7 +52,15 @@ final class CourceCollectionViewController: UIViewController {
             flowLayout.scrollDirection = .vertical
         }
         
+    }
+    
+    private func addSubViews() {
+        
         view.addSubview(myCollectionView)
+    }
+    
+    private func addConstraints() {
+        
         myCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             myCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 250),
@@ -88,8 +68,8 @@ final class CourceCollectionViewController: UIViewController {
             myCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -20),
             myCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
         ])
+        
     }
-    
     
 }
 

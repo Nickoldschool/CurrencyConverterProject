@@ -24,7 +24,7 @@ final class ExchangeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addElements()
+        createElements()
         addSubviews()
         setupConstraints()
         
@@ -59,6 +59,7 @@ final class ExchangeViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
+     //MARK: - Method for showing Keyboard
     
     @objc func keyboardWillShow(_ notification: Notification) {
         
@@ -68,45 +69,52 @@ final class ExchangeViewController: UIViewController {
         
     }
     
+    //MARK: - Method for hiding Keyboard
+    
     @objc func keyboardWillHide(_ notification: Notification) {
         
         scrollView.contentOffset = CGPoint.zero
     }
     
-    private func addElements() {
+    //MARK: - Creating elements to View
+    
+    private func createElements() {
         
         exchangeImage.contentMode = .scaleToFill
+        
         scrollView.contentSize = CGSize(width: view.bounds.size.width, height: 950 )
         scrollView.keyboardDismissMode = .onDrag
+        scrollView.layer.cornerRadius = 15
+        
         purpleView.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
         purpleView.layer.cornerRadius = 15
-        scrollView.layer.cornerRadius = 15
+        
         fromLabel.layer.cornerRadius = 15
-        toLabel.layer.cornerRadius = 15
-        fromTextField.layer.cornerRadius = 15
-        toTextField.layer.cornerRadius = 15
-        fromTextField.keyboardType = .decimalPad
-        toTextField.keyboardType = .decimalPad
-        fromTextField.textAlignment = . center
-        toTextField.textAlignment = . center
         fromLabel.text = "From"
+        fromLabel.textColor =  #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
+        toLabel.layer.cornerRadius = 15
         toLabel.text = "To"
-        fromLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        toLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        fromTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        toLabel.textColor =  #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+
+        fromTextField.layer.cornerRadius = 15
+        fromTextField.keyboardType = .decimalPad
+        fromTextField.textAlignment = . center
+        fromTextField.backgroundColor =  #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
+        toTextField.layer.cornerRadius = 15
+        toTextField.keyboardType = .decimalPad
+        toTextField.textAlignment = . center
         toTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
         pushButton.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         pushButton.setTitle("Done", for: .normal)
         pushButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         pushButton.layer.cornerRadius = 15
         pushButton.addTarget(self, action: #selector(pushToModelVC), for: .touchUpInside)
     }
-
-    @objc private func pushToModelVC() {
-        
-        let homeVC = HomeViewController()
-        navigationController?.pushViewController(homeVC, animated: true)
-    }
+    
+    //MARK: - Adding elements to View
     
     private func addSubviews() {
         
@@ -119,6 +127,8 @@ final class ExchangeViewController: UIViewController {
         purpleView.addSubview(toTextField)
         purpleView.addSubview(pushButton)
     }
+    
+    //MARK: - setup Constraints of elements
     
     private func setupConstraints() {
                 
@@ -143,8 +153,7 @@ final class ExchangeViewController: UIViewController {
               purpleView.topAnchor.constraint(equalTo: exchangeImage.bottomAnchor, constant: 50),
               purpleView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
               purpleView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-              //purpleView.heightAnchor.constraint(equalToConstant: 240),
-              purpleView.widthAnchor.constraint(equalToConstant: 350),
+              purpleView.widthAnchor.constraint(equalToConstant: view.bounds.width - 50),
           ])
         
         fromLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -190,7 +199,12 @@ final class ExchangeViewController: UIViewController {
         
     }
     
+    //MARK: - Pushing back to Home Controller for showing recent convertations
     
+    @objc private func pushToModelVC() {
+        
+        let homeVC = HomeViewController()
+        navigationController?.pushViewController(homeVC, animated: true)
+    }
     
 }
-
