@@ -83,7 +83,7 @@ final class CourceCollectionViewController: UIViewController {
         view.addSubview(myCollectionView)
         myCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            myCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
+            myCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 250),
             myCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
             myCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -20),
             myCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),

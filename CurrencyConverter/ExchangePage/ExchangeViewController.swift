@@ -19,6 +19,8 @@ final class ExchangeViewController: UIViewController {
     let toTextField = UITextField()
     let pushButton = UIButton()
     
+    var networkManager = NetworkManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,43 +28,49 @@ final class ExchangeViewController: UIViewController {
         addSubviews()
         setupConstraints()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)),
+        networkManager.getCurrencies(rate: "EUR") { (currencies, error) in
+            
+        }
+        
+        registerForKeyboardNotifications()
+    }
+    
+    deinit {
+        
+        removeForKeyboardNotification()
+    }
+    
+    //MARK: - Add Observer for Notification Center
+    
+    private func registerForKeyboardNotifications() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification, object: nil);
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)),
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
                                                name: UIResponder.keyboardWillHideNotification, object: nil);
+    }
+    
+    //MARK: - Remove Observer for Notification Center
+    
+    private func removeForKeyboardNotification() {
+        
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     
-    @objc func keyboardWillShow(sender: Notification) {
+    @objc func keyboardWillShow(_ notification: Notification) {
         
-        var _kbSize:CGSize!
-        
-        if let info = sender.userInfo {
-            
-            let frameEndUserInfoKey = UIResponder.keyboardFrameEndUserInfoKey
-            
-            //  Getting UIKeyboardSize.
-            if let kbFrame = info[frameEndUserInfoKey] as? CGRect {
-                
-                let screenSize = UIScreen.main.bounds
-                let intersectRect = kbFrame.intersection(screenSize)
-                
-                if intersectRect.isNull {
-                    
-                    _kbSize = CGSize(width: screenSize.size.width, height: 0)
-                } else {
-                    _kbSize = intersectRect.size
-                    view.frame.origin.y = view.frame.origin.y  - _kbSize.height     // Move view up to keyboard height
-                }
-            }
-        }
-        
+        let userInfo = notification.userInfo
+        let kbFrameSize = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        scrollView.contentOffset = CGPoint(x: 0, y: kbFrameSize.height)
         
     }
     
-    @objc func keyboardWillHide(sender: Notification) {
-        view.frame.origin.y = 0 // Move view to original position
+    @objc func keyboardWillHide(_ notification: Notification) {
+        
+        scrollView.contentOffset = CGPoint.zero
     }
     
     private func addElements() {
