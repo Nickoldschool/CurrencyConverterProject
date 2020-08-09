@@ -82,7 +82,7 @@ final class ExchangeViewController: UIViewController {
     
     private func createElements() {
         
-        exchangeImage.contentMode = .scaleToFill
+        exchangeImage.contentMode = .scaleToFill // scaleAspectFill
         
         scrollView.contentSize = CGSize(width: view.bounds.size.width, height: 950 )
         scrollView.keyboardDismissMode = .onDrag
@@ -110,7 +110,7 @@ final class ExchangeViewController: UIViewController {
         toTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
         pushButton.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        pushButton.setTitle("Convert", for: .normal)
+        pushButton.setTitle("Save", for: .normal)
         pushButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         pushButton.layer.cornerRadius = 15
         pushButton.addTarget(self, action: #selector(pushToModelVC), for: .touchUpInside)

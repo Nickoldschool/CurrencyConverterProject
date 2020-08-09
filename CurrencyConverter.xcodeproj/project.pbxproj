@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40064A1D24E024210099FE02 /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40064A1C24E024210099FE02 /* ShapeView.swift */; };
 		403047BB24DB03460081CAD6 /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403047BA24DB03460081CAD6 /* CurrencyModel.swift */; };
 		403047BE24DB03750081CAD6 /* CurrencyEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403047BD24DB03750081CAD6 /* CurrencyEndPoint.swift */; };
 		403047C124DB03A40081CAD6 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403047C024DB03A40081CAD6 /* ApiClient.swift */; };
@@ -73,6 +74,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		40064A1C24E024210099FE02 /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
 		403047BA24DB03460081CAD6 /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
 		403047BD24DB03750081CAD6 /* CurrencyEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyEndPoint.swift; sourceTree = "<group>"; };
 		403047C024DB03A40081CAD6 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 			children = (
 				40413C0D24D44CC1002267BC /* CourceCollectionViewCell.swift */,
 				405C77DF24D02FD000E2DD01 /* CourceCollectionViewController.swift */,
+				40064A1C24E024210099FE02 /* ShapeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -547,6 +550,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40064A1D24E024210099FE02 /* ShapeView.swift in Sources */,
 				40347BA024C51FDE00E3BA84 /* HomeInteractor.swift in Sources */,
 				403D5E0524BF49BE002F4B88 /* LaunchController.swift in Sources */,
 				40982E3724D21B0A00DB753C /* CourceTableRouter.swift in Sources */,

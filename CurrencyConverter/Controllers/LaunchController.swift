@@ -19,7 +19,7 @@ final class LaunchController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false )
         
         view.backgroundColor = #colorLiteral(red: 0.9843137255, green: 0.6549019608, blue: 0.4352941176, alpha: 1)
-        //view.backgroundColor = #colorLiteral(red: 0.9892832637, green: 0.6514198184, blue: 0.4338295162, alpha: 1)
+
         createPulse()
         createButton()
 
@@ -55,29 +55,6 @@ final class LaunchController: UIViewController {
         navigationController?.pushViewController(vc,animated: true)
         
     }
-    
-    private func createLabel() {
-        
-        label.backgroundColor = #colorLiteral(red: 0.3421914876, green: 0.02416796796, blue: 0.4802301526, alpha: 1)
-        label.text = "Currency Converter"
-        label.font = .systemFont(ofSize: 27)
-        //label.layer.borderWidth = 1
-        //label.layer.borderColor = #colorLiteral(red: 0.3421914876, green: 0.02416796796, blue: 0.4802301526, alpha: 1)
-        label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.layer.cornerRadius = 90
-        label.layer.masksToBounds = true
-        view.addSubview(label)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            label.heightAnchor.constraint(equalToConstant: 180),
-            label.widthAnchor.constraint(equalToConstant: 180),
-        ])
-    }
-    
 
     private func createPulse() {
         for _ in 0...2 {

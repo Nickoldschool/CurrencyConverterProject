@@ -43,7 +43,6 @@ final class HomeViewController: UIViewController, HomeViewInput {
         setCurrentLocation()
         presenter?.viewready()
         
-
     }
 
     

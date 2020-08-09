@@ -58,7 +58,7 @@ class CourceCollectionViewCell: UICollectionViewCell {
             currencyRate.topAnchor.constraint(equalTo: contentView.centerYAnchor),
             currencyRate.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
             currencyRate.leftAnchor.constraint(equalTo: flagImage.rightAnchor, constant: 20),
-            currencyRate.rightAnchor.constraint(equalTo: contentView.centerXAnchor),
+            currencyRate.rightAnchor.constraint(equalTo: contentView.rightAnchor,constant: 100),
         ])
         
         resulLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -72,7 +72,7 @@ class CourceCollectionViewCell: UICollectionViewCell {
     
     fileprivate func style(view: UIView) {
            view.layer.masksToBounds        = false
-           view.backgroundColor            = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+           view.backgroundColor            = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
            view.layer.cornerRadius         = 5
            view.layer.shadowColor          = UIColor.black.cgColor
            view.layer.shadowOffset         = CGSize(width: 1, height: 5)
@@ -83,6 +83,7 @@ class CourceCollectionViewCell: UICollectionViewCell {
                                                           cornerRadii: CGSize(width: 14, height: 14)).cgPath
            view.layer.shouldRasterize      = true
            view.layer.rasterizationScale   = UIScreen.main.scale
+           flagImage.contentMode           = .scaleAspectFit
        }
        
        public func updateData(rate: Rate, entery: Double){
@@ -91,7 +92,7 @@ class CourceCollectionViewCell: UICollectionViewCell {
            flagImage.image                 = UIImage(named: rate.currency)
            if entery == 0 {
                resulLabel.text = ""
-           }else{
+           } else {
                resulLabel.text = String(round((entery * rate.rate)*100)/100)
            }
            
