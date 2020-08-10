@@ -13,10 +13,10 @@ final class CourceCollectionViewController: UIViewController {
     
     //MARK: - Constants
     
-    
     let identifier = "MyCell"
     let layout = UICollectionViewFlowLayout()
-    let currentCurrencyLabel = UILabel()
+    
+    let currentCurrencyLabel = UIButton()
     let dateLabel = UILabel()
     
     //MARK: - Virables
@@ -27,6 +27,7 @@ final class CourceCollectionViewController: UIViewController {
     
     var myCollectionView: UICollectionView!
     
+    var selectedCurrencyObserver: NSObjectProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,19 +38,9 @@ final class CourceCollectionViewController: UIViewController {
         configureTableView()
         addSubViews()
         addConstraints()
-        
-        networkManager.getCurrencies(rate: currenntCurrency) { (currencies, error) in
-            DispatchQueue.main.async {
-                self.rates.removeAll()
-                for (key, value) in currencies!.rates {
-                    self.rates.append(Rate(currency: key, rate: value))
-                }
-//                self.currentCurrencyLabel.text = "Current currency: \(currencies!.base)"
-                self.currentCurrencyLabel.text = currencies!.base
-                self.dateLabel.text = "Last update: \(currencies!.date)"
-                self.myCollectionView.reloadData()
-            }
-        }
+    
+        callNetwork()
+        callCurrencyObserver()
     }
     
     //MARK: - CollectionView
@@ -69,19 +60,62 @@ final class CourceCollectionViewController: UIViewController {
         
     }
     
+    //MARK: - Configure Labels
+    
     private func configureLabels() {
         
         currentCurrencyLabel.backgroundColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
         currentCurrencyLabel.layer.cornerRadius = 55
-        currentCurrencyLabel.textAlignment = .center
+        currentCurrencyLabel.titleLabel?.textAlignment = .center
         currentCurrencyLabel.layer.masksToBounds = true
+        currentCurrencyLabel.addTarget(self, action: #selector(handleSelect), for: .touchUpInside)
         
         dateLabel.backgroundColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
+        dateLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         dateLabel.layer.cornerRadius = 5
         dateLabel.textAlignment = .center
         dateLabel.layer.masksToBounds = true
         
     }
+    
+    //MARK: - Call PopUpCOntroller with currencies Picker View
+    
+    @objc public func handleSelect(){
+        let selectVC = UINavigationController(rootViewController: PopUpViewController())
+        selectVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        present(selectVC, animated: true, completion: nil)
+    }
+    
+    //MARK: - Get Currencies rates
+    
+    private func callNetwork() {
+        
+        networkManager.getCurrencies(rate: currenntCurrency) { (currencies, error) in
+            DispatchQueue.main.async {
+                self.rates.removeAll()
+                for (key, value) in currencies!.rates {
+                    self.rates.append(Rate(currency: key, rate: value))
+                }
+                self.currentCurrencyLabel.setTitle(currencies!.base, for: .normal)
+                self.dateLabel.text = "Last update: \(currencies!.date)"
+                self.myCollectionView.reloadData()
+            }
+        }
+        
+    }
+    
+    //MARK: - Call Observer for dynamically change current currency
+    
+    private func callCurrencyObserver() {
+        
+        selectedCurrencyObserver    = NotificationCenter.default.addObserver(forName: .selectedCurrency, object: nil, queue: OperationQueue.main, using: { (notification) in
+            let selectVc            = notification.object as! PopUpViewController
+            self.currenntCurrency   = selectVc.selectedCurrency!
+            self.callNetwork()
+        })
+    }
+    
+    //MARK: - Add SubViews
     
     private func addSubViews() {
         
@@ -91,6 +125,8 @@ final class CourceCollectionViewController: UIViewController {
         
     }
     
+    //MARK: - Add Constraints
+    
     private func addConstraints() {
         
         myCollectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -98,6 +134,8 @@ final class CourceCollectionViewController: UIViewController {
             myCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 260),
             myCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
             myCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -20),
+//            myCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            myCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             myCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
         ])
         
@@ -132,7 +170,6 @@ extension CourceCollectionViewController: UICollectionViewDelegate, UICollection
         } else {
             return rates.count
         }
-//        return 32
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -161,4 +198,3 @@ extension CourceCollectionViewController: UICollectionViewDelegateFlowLayout {
         return layout.sectionInset
     }
 }
-

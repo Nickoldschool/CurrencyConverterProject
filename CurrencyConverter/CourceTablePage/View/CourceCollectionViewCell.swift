@@ -83,7 +83,12 @@ class CourceCollectionViewCell: UICollectionViewCell {
                                                           cornerRadii: CGSize(width: 14, height: 14)).cgPath
            view.layer.shouldRasterize      = true
            view.layer.rasterizationScale   = UIScreen.main.scale
+        
+        
            flagImage.contentMode           = .scaleAspectFit
+        
+           currencyName.textColor          = .white
+           currencyRate.textColor          = .white
        }
        
        public func updateData(rate: Rate, entery: Double){

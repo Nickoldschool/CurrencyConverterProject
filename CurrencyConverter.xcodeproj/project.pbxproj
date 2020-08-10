@@ -17,6 +17,7 @@
 		403047CB24DB04250081CAD6 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403047CA24DB04250081CAD6 /* ParameterEncoding.swift */; };
 		403047CD24DB04400081CAD6 /* URLParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403047CC24DB04400081CAD6 /* URLParameterEncoding.swift */; };
 		403047CF24DB04540081CAD6 /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403047CE24DB04540081CAD6 /* JSONParameterEncoder.swift */; };
+		403248D024E17C5700192102 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403248CF24E17C5700192102 /* PopUpViewController.swift */; };
 		40347B9E24C51D0200E3BA84 /* HomeAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40347B9D24C51D0200E3BA84 /* HomeAssembly.swift */; };
 		40347BA024C51FDE00E3BA84 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40347B9F24C51FDE00E3BA84 /* HomeInteractor.swift */; };
 		40347BA224C51FEE00E3BA84 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40347BA124C51FEE00E3BA84 /* HomePresenter.swift */; };
@@ -84,6 +85,7 @@
 		403047CA24DB04250081CAD6 /* ParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
 		403047CC24DB04400081CAD6 /* URLParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoding.swift; sourceTree = "<group>"; };
 		403047CE24DB04540081CAD6 /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
+		403248CF24E17C5700192102 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		40347B9D24C51D0200E3BA84 /* HomeAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAssembly.swift; sourceTree = "<group>"; };
 		40347B9F24C51FDE00E3BA84 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		40347BA124C51FEE00E3BA84 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 			children = (
 				403D5E0424BF49BE002F4B88 /* LaunchController.swift */,
 				4091081E24C1A9F0007F37FF /* NewTabBarController.swift */,
+				403248CF24E17C5700192102 /* PopUpViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 				40982E2E24D2194B00DB753C /* CourceTableInteractor.swift in Sources */,
 				40982E2A24D2185800DB753C /* CourceTableAssembly.swift in Sources */,
 				40982E3424D21AE100DB753C /* CourceTableEntity.swift in Sources */,
+				403248D024E17C5700192102 /* PopUpViewController.swift in Sources */,
 				405C77E024D02FD000E2DD01 /* CourceCollectionViewController.swift in Sources */,
 				403047CB24DB04250081CAD6 /* ParameterEncoding.swift in Sources */,
 				403047C824DB03FE0081CAD6 /* HTTPTask.swift in Sources */,
