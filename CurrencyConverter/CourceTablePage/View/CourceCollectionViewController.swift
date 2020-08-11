@@ -16,7 +16,7 @@ final class CourceCollectionViewController: UIViewController {
     let identifier = "MyCell"
     let layout = UICollectionViewFlowLayout()
     
-    let currentCurrencyLabel = UIButton()
+    let currentCurrencyButton = UIButton()
     let dateLabel = UILabel()
     
     //MARK: - Virables
@@ -64,11 +64,11 @@ final class CourceCollectionViewController: UIViewController {
     
     private func configureLabels() {
         
-        currentCurrencyLabel.backgroundColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
-        currentCurrencyLabel.layer.cornerRadius = 55
-        currentCurrencyLabel.titleLabel?.textAlignment = .center
-        currentCurrencyLabel.layer.masksToBounds = true
-        currentCurrencyLabel.addTarget(self, action: #selector(handleSelect), for: .touchUpInside)
+        currentCurrencyButton.backgroundColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
+        currentCurrencyButton.layer.cornerRadius = 55
+        currentCurrencyButton.titleLabel?.textAlignment = .center
+        currentCurrencyButton.layer.masksToBounds = true
+        currentCurrencyButton.addTarget(self, action: #selector(handleSelect), for: .touchUpInside)
         
         dateLabel.backgroundColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
         dateLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -96,7 +96,7 @@ final class CourceCollectionViewController: UIViewController {
                 for (key, value) in currencies!.rates {
                     self.rates.append(Rate(currency: key, rate: value))
                 }
-                self.currentCurrencyLabel.setTitle(currencies!.base, for: .normal)
+                self.currentCurrencyButton.setTitle(currencies!.base, for: .normal)
                 self.dateLabel.text = "Last update: \(currencies!.date)"
                 self.myCollectionView.reloadData()
             }
@@ -120,7 +120,7 @@ final class CourceCollectionViewController: UIViewController {
     private func addSubViews() {
         
         view.addSubview(myCollectionView)
-        view.addSubview(currentCurrencyLabel)
+        view.addSubview(currentCurrencyButton)
         view.addSubview(dateLabel)
         
     }
@@ -139,17 +139,17 @@ final class CourceCollectionViewController: UIViewController {
             myCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
         ])
         
-        currentCurrencyLabel.translatesAutoresizingMaskIntoConstraints = false
+        currentCurrencyButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            currentCurrencyLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-            currentCurrencyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            currentCurrencyLabel.heightAnchor.constraint(equalToConstant: 110),
-            currentCurrencyLabel.widthAnchor.constraint(equalToConstant: 110),
+            currentCurrencyButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            currentCurrencyButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            currentCurrencyButton.heightAnchor.constraint(equalToConstant: 110),
+            currentCurrencyButton.widthAnchor.constraint(equalToConstant: 110),
         ])
         
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            dateLabel.topAnchor.constraint(equalTo: currentCurrencyLabel.bottomAnchor, constant: 15),
+            dateLabel.topAnchor.constraint(equalTo: currentCurrencyButton.bottomAnchor, constant: 15),
             dateLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             dateLabel.heightAnchor.constraint(equalToConstant: 25),
             dateLabel.widthAnchor.constraint(equalToConstant: 220),
@@ -159,42 +159,3 @@ final class CourceCollectionViewController: UIViewController {
     
 }
 
-// MARK: - UICollectionViewDelegate & UICollectionViewDataSource
-
-extension CourceCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        if rates.isEmpty {
-            return 0
-        } else {
-            return rates.count
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let rate = rates[indexPath.row]
-        let cell = myCollectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! CourceCollectionViewCell
-        cell.updateData(rate: rate, entery: 0)
-        return cell
-    }
-    
-}
-
-// MARK: - UICollectionViewDelegateFlowLayout
-
-extension CourceCollectionViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return layout.itemSize
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return layout.sectionInset
-    }
-}

@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 final class ExchangeViewController: UIViewController {
     
     let exchangeImage = UIImageView(image: UIImage(named: "ExchangeIllustration"))
@@ -15,13 +17,35 @@ final class ExchangeViewController: UIViewController {
     let scrollView = UIScrollView()
     let fromLabel = UILabel()
     let toLabel = UILabel()
-    let fromTextField = UITextField()
-    let toTextField = UITextField()
+    var fromTextField = UITextField()
+    var toTextField = UITextField()
     let pushButton = UIButton()
+    
+    let jumpButton = UIButton()
+    
+    weak var delegate: PassData?
+    
+    var firstRate: Double? {
+        return Double(fromTextField.text!)
+    }
+    
+    var secondRate: Double? {
+        return Double(toTextField.text!)
+    }
+    
+    let firstPickerView = UIPickerView()
+    let secondPickerView = UIPickerView()
+    
+    var firstCurrencyChoose = UITextField()
+    var secondCurrencyChoose = UITextField()
     
     var networkManager = NetworkManager()
     var firstCurrency: String = "EUR"
     var secondCurrency: String = "RUB"
+    
+    var selectedCurrency: String?
+    var currencies = ["PHP","THB","TRY","SEK","CNY","PLN","AUD","RUB","SGD","INR","DKK","CHF","MYR","HKD","EUR","NOK",
+                      "MXN","NZD","ZAR","HUF","HRK","BGN","KRW","CAD","GBP","ILS","RON","BRL","ISK","CZK","JPY","IDR"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +53,10 @@ final class ExchangeViewController: UIViewController {
         createElements()
         addSubviews()
         setupConstraints()
-        
-        networkManager.getTwoRates(firstRate: firstCurrency, secondRate: secondCurrency) { (currencies, error) in
-            
-        }
+        pickerViewConfigure()
         
         registerForKeyboardNotifications()
+    
     }
     
     deinit {
@@ -100,11 +122,13 @@ final class ExchangeViewController: UIViewController {
         toLabel.textColor =  #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 
         fromTextField.layer.cornerRadius = 15
+        fromTextField.placeholder = "Please,enter ammount"
         fromTextField.keyboardType = .decimalPad
         fromTextField.textAlignment = . center
         fromTextField.backgroundColor =  #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
         toTextField.layer.cornerRadius = 15
+        toTextField.placeholder = "Please,enter ammount"
         toTextField.keyboardType = .decimalPad
         toTextField.textAlignment = . center
         toTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -113,8 +137,28 @@ final class ExchangeViewController: UIViewController {
         pushButton.setTitle("Save", for: .normal)
         pushButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         pushButton.layer.cornerRadius = 15
-        pushButton.addTarget(self, action: #selector(pushToModelVC), for: .touchUpInside)
+        pushButton.addTarget(self, action: #selector(saveRate), for: .touchUpInside)
+        
+        firstCurrencyChoose.backgroundColor = .gray
+        secondCurrencyChoose.backgroundColor = .gray
+        
+        jumpButton.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        jumpButton.addTarget(self, action: #selector(pushToModelVC), for: .touchUpInside)
+
     }
+    
+    private func callNetwork() {
+        
+        networkManager.getTwoRates(firstRate: firstCurrency, secondRate: secondCurrency) { (currencies, error) in
+            DispatchQueue.main.async {
+                for (_, value) in currencies!.rates {
+                    self.toTextField.text = String(round((value * self.firstRate!)*100)/100)
+                }
+                
+            }
+        }
+    }
+    
     
     //MARK: - Adding elements to View
     
@@ -128,6 +172,10 @@ final class ExchangeViewController: UIViewController {
         purpleView.addSubview(fromTextField)
         purpleView.addSubview(toTextField)
         purpleView.addSubview(pushButton)
+        purpleView.addSubview(firstCurrencyChoose)
+        purpleView.addSubview(secondCurrencyChoose)
+        
+        purpleView.addSubview(jumpButton)
     }
     
     //MARK: - setup Constraints of elements
@@ -166,12 +214,28 @@ final class ExchangeViewController: UIViewController {
             fromLabel.widthAnchor.constraint(equalToConstant: 200),
         ])
         
+        jumpButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            jumpButton.topAnchor.constraint(equalTo: purpleView.topAnchor, constant: 30),
+            jumpButton.centerXAnchor.constraint(equalTo: purpleView.centerXAnchor),
+            jumpButton.heightAnchor.constraint(equalToConstant: 50),
+            jumpButton.widthAnchor.constraint(equalToConstant: 50),
+        ])
+        
         fromTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             fromTextField.topAnchor.constraint(equalTo: fromLabel.bottomAnchor, constant: 30),
             fromTextField.centerXAnchor.constraint(equalTo: purpleView.centerXAnchor),
             fromTextField.heightAnchor.constraint(equalToConstant: 40),
             fromTextField.widthAnchor.constraint(equalToConstant: 200),
+        ])
+        
+        firstCurrencyChoose.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            firstCurrencyChoose.topAnchor.constraint(equalTo: fromLabel.bottomAnchor, constant: 30),
+            firstCurrencyChoose.trailingAnchor.constraint(equalTo: purpleView.trailingAnchor, constant: -22),
+            firstCurrencyChoose.heightAnchor.constraint(equalToConstant: 40),
+            firstCurrencyChoose.widthAnchor.constraint(equalToConstant: 50),
         ])
         
         toLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -190,6 +254,14 @@ final class ExchangeViewController: UIViewController {
             toTextField.widthAnchor.constraint(equalToConstant: 200),
         ])
         
+        secondCurrencyChoose.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            secondCurrencyChoose.topAnchor.constraint(equalTo: toLabel.bottomAnchor, constant: 30),
+            secondCurrencyChoose.trailingAnchor.constraint(equalTo: purpleView.trailingAnchor, constant: -22),
+            secondCurrencyChoose.heightAnchor.constraint(equalToConstant: 40),
+            secondCurrencyChoose.widthAnchor.constraint(equalToConstant: 50),
+        ])
+        
         pushButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             pushButton.topAnchor.constraint(equalTo: toTextField.bottomAnchor, constant: 35),
@@ -205,8 +277,60 @@ final class ExchangeViewController: UIViewController {
     
     @objc private func pushToModelVC() {
         
-        let homeVC = HomeViewController()
-        navigationController?.pushViewController(homeVC, animated: true)
+        let exVC = HomeViewController()
+        delegate = exVC
+        delegate?.firstLabel.text = firstCurrencyChoose.text
+        delegate?.secondLabel.text = secondCurrencyChoose.text
+        delegate?.thirdabel.text = fromTextField.text
+        delegate?.fourthLabel.text = toTextField.text
+        navigationController?.pushViewController(exVC, animated: true)
+    }
+    
+    @objc private func saveRate() {
+        
+        callNetwork()
+    }
+    
+}
+
+extension ExchangeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    private func pickerViewConfigure() {
+        
+        firstPickerView.delegate = self
+        firstPickerView.dataSource = self
+        firstCurrencyChoose.inputView = firstPickerView
+        firstCurrencyChoose.textAlignment = .center
+        
+        secondPickerView.delegate = self
+        secondPickerView.dataSource = self
+        secondCurrencyChoose.inputView = secondPickerView
+        secondCurrencyChoose.textAlignment = .center
+        
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return currencies.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return currencies[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedCurrency = currencies[row]
+        if pickerView == firstPickerView {
+            firstCurrencyChoose.text = selectedCurrency
+            firstCurrency = firstCurrencyChoose.text!
+        } else {
+            secondCurrencyChoose.text = selectedCurrency
+            secondCurrency = secondCurrencyChoose.text!
+        }
+       
     }
     
 }

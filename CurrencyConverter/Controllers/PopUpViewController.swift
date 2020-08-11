@@ -78,7 +78,7 @@ final class PopUpViewController: UIViewController {
         pickerView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         doneButton.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         doneButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-        doneButton.setTitle("Choose", for: .normal)
+        doneButton.setTitle("Close", for: .normal)
     }
     
     @objc fileprivate func handleDismiss(){
