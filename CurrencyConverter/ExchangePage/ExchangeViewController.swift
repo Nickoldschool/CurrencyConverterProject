@@ -9,7 +9,6 @@
 import UIKit
 
 
-
 final class ExchangeViewController: UIViewController {
     
     let exchangeImage = UIImageView(image: UIImage(named: "ExchangeIllustration"))
@@ -23,7 +22,11 @@ final class ExchangeViewController: UIViewController {
     
     let jumpButton = UIButton()
     
+    //MARK: - Delegate
+    
     weak var delegate: PassData?
+   
+    //MARK: - Stored properties
     
     var firstRate: Double? {
         return Double(fromTextField.text!)
@@ -43,9 +46,11 @@ final class ExchangeViewController: UIViewController {
     var firstCurrency: String = "EUR"
     var secondCurrency: String = "RUB"
     
+    //var currencyConvertation = [CurrencyConvertation]()
+    
     var selectedCurrency: String?
-    var currencies = ["PHP","THB","TRY","SEK","CNY","PLN","AUD","RUB","SGD","INR","DKK","CHF","MYR","HKD","EUR","NOK",
-                      "MXN","NZD","ZAR","HUF","HRK","BGN","KRW","CAD","GBP","ILS","RON","BRL","ISK","CZK","JPY","IDR"]
+    var currencies = ["RUB","EUR","USD","TRY","GBP","CZK","BGN","CNY","JPY","CAD","PHP","THB","SEK","PLN","AUD","SGD","INR",
+                      "DKK","CHF","MYR","HKD","NOK","MXN","NZD","ZAR","HUF","HRK","KRW","ILS","RON","BRL","ISK","IDR"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +58,6 @@ final class ExchangeViewController: UIViewController {
         createElements()
         addSubviews()
         setupConstraints()
-        pickerViewConfigure()
         
         registerForKeyboardNotifications()
     
@@ -63,42 +67,7 @@ final class ExchangeViewController: UIViewController {
         
         removeForKeyboardNotification()
     }
-    
-    //MARK: - Add Observer for Notification Center
-    
-    private func registerForKeyboardNotifications() {
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
-                                               name: UIResponder.keyboardWillShowNotification, object: nil);
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
-                                               name: UIResponder.keyboardWillHideNotification, object: nil);
-    }
-    
-    //MARK: - Remove Observer for Notification Center
-    
-    private func removeForKeyboardNotification() {
-        
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
 
-     //MARK: - Method for showing Keyboard
-    
-    @objc func keyboardWillShow(_ notification: Notification) {
-        
-        let userInfo = notification.userInfo
-        let kbFrameSize = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        scrollView.contentOffset = CGPoint(x: 0, y: kbFrameSize.height)
-        
-    }
-    
-    //MARK: - Method for hiding Keyboard
-    
-    @objc func keyboardWillHide(_ notification: Notification) {
-        
-        scrollView.contentOffset = CGPoint.zero
-    }
     
     //MARK: - Creating elements to View
     
@@ -133,6 +102,16 @@ final class ExchangeViewController: UIViewController {
         toTextField.textAlignment = . center
         toTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
+        firstPickerView.delegate = self
+        firstPickerView.dataSource = self
+        firstCurrencyChoose.inputView = firstPickerView
+        firstCurrencyChoose.textAlignment = .center
+        
+        secondPickerView.delegate = self
+        secondPickerView.dataSource = self
+        secondCurrencyChoose.inputView = secondPickerView
+        secondCurrencyChoose.textAlignment = .center
+        
         pushButton.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         pushButton.setTitle("Save", for: .normal)
         pushButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
@@ -147,18 +126,6 @@ final class ExchangeViewController: UIViewController {
 
     }
     
-    private func callNetwork() {
-        
-        networkManager.getTwoRates(firstRate: firstCurrency, secondRate: secondCurrency) { (currencies, error) in
-            DispatchQueue.main.async {
-                for (_, value) in currencies!.rates {
-                    self.toTextField.text = String(round((value * self.firstRate!)*100)/100)
-                }
-                
-            }
-        }
-    }
-    
     
     //MARK: - Adding elements to View
     
@@ -171,9 +138,9 @@ final class ExchangeViewController: UIViewController {
         purpleView.addSubview(toLabel)
         purpleView.addSubview(fromTextField)
         purpleView.addSubview(toTextField)
-        purpleView.addSubview(pushButton)
         purpleView.addSubview(firstCurrencyChoose)
         purpleView.addSubview(secondCurrencyChoose)
+        purpleView.addSubview(pushButton)
         
         purpleView.addSubview(jumpButton)
     }
@@ -279,12 +246,20 @@ final class ExchangeViewController: UIViewController {
         
         let exVC = HomeViewController()
         delegate = exVC
+        delegate?.currencyConvertation.append(CurrencyConvertation(fromCurrency: firstCurrencyChoose.text!,
+                                                                   toCurrency: secondCurrencyChoose.text!,
+                                                                   enteredAmount: firstRate!,
+                                                                   convertedAmount: secondRate!))
         delegate?.firstLabel.text = firstCurrencyChoose.text
         delegate?.secondLabel.text = secondCurrencyChoose.text
         delegate?.thirdabel.text = fromTextField.text
         delegate?.fourthLabel.text = toTextField.text
         navigationController?.pushViewController(exVC, animated: true)
+        
+        print(delegate?.currencyConvertation as Any)
     }
+    
+    //MARK: - Call network
     
     @objc private func saveRate() {
         
@@ -295,18 +270,52 @@ final class ExchangeViewController: UIViewController {
 
 extension ExchangeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
-    private func pickerViewConfigure() {
+    //MARK: - Add Observer for Notification Center
+    
+    private func registerForKeyboardNotifications() {
         
-        firstPickerView.delegate = self
-        firstPickerView.dataSource = self
-        firstCurrencyChoose.inputView = firstPickerView
-        firstCurrencyChoose.textAlignment = .center
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil);
         
-        secondPickerView.delegate = self
-        secondPickerView.dataSource = self
-        secondCurrencyChoose.inputView = secondPickerView
-        secondCurrencyChoose.textAlignment = .center
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil);
+    }
+    
+    //MARK: - Remove Observer for Notification Center
+    
+    private func removeForKeyboardNotification() {
         
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+     //MARK: - Method for showing Keyboard
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        
+        let userInfo = notification.userInfo
+        let kbFrameSize = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        scrollView.contentOffset = CGPoint(x: 0, y: kbFrameSize.height)
+        
+    }
+    
+    //MARK: - Method for hiding Keyboard
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        
+        scrollView.contentOffset = CGPoint.zero
+    }
+    
+    private func callNetwork() {
+        
+        networkManager.getTwoRates(firstRate: firstCurrency, secondRate: secondCurrency) { (currencies, error) in
+            DispatchQueue.main.async {
+                for (_, value) in currencies!.rates {
+                    self.toTextField.text = String(round((value * self.firstRate!)*100)/100)
+                }
+                
+            }
+        }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

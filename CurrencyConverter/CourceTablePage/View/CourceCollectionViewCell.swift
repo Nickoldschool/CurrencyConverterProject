@@ -84,7 +84,6 @@ class CourceCollectionViewCell: UICollectionViewCell {
            view.layer.shouldRasterize      = true
            view.layer.rasterizationScale   = UIScreen.main.scale
         
-        
            flagImage.contentMode           = .scaleAspectFit
         
            currencyName.textColor          = .white

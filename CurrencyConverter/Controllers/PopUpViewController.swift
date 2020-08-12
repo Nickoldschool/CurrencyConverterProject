@@ -11,8 +11,8 @@ import UIKit
 final class PopUpViewController: UIViewController {
     
     var selectedCurrency: String?
-    var currencies = ["PHP","THB","TRY","SEK","CNY","PLN","AUD","RUB","SGD","INR","DKK","CHF","MYR","HKD","EUR","NOK",
-                      "MXN","NZD","ZAR","HUF","HRK","BGN","KRW","CAD","GBP","ILS","RON","BRL","ISK","CZK","JPY","IDR"]
+    var currencies = ["RUB","EUR","USD","TRY","GBP","CZK","BGN","CNY","JPY","CAD","PHP","THB","SEK","PLN","AUD","SGD","INR",
+                      "DKK","CHF","MYR","HKD","NOK","MXN","NZD","ZAR","HUF","HRK","KRW","ILS","RON","BRL","ISK","IDR"]
     
     let containerView = UIView()
     let pickerView    = UIPickerView()

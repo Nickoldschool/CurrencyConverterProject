@@ -22,10 +22,13 @@ protocol HomeViewOutput {
 }
 
 protocol PassData: AnyObject {
+
+    // Try to convert it into function with these parametres for futher comfortable delegation
     var firstLabel:  UILabel { get }
     var secondLabel: UILabel { get }
     var thirdabel:   UILabel { get }
     var fourthLabel: UILabel { get }
+    var currencyConvertation: [CurrencyConvertation] {get set}
 }
 
 final class HomeViewController: UIViewController, HomeViewInput, PassData {
@@ -42,35 +45,52 @@ final class HomeViewController: UIViewController, HomeViewInput, PassData {
     let secondLabel = UILabel()
     let thirdabel   = UILabel()
     let fourthLabel = UILabel()
+    
+    //MARK: - Collection elements
+    
+    let myidentifier = "MyCell"
+    let layout = UICollectionViewFlowLayout()
+    var homeCollectionView: UICollectionView!
+    
+    var currencyConvertation = [CurrencyConvertation]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
         
-        createLabel()
-        createButton()
+        configureTableView()
+        configureElements()
         addSubViews()
         addConstraints()
         setCurrentLocation()
         presenter?.viewready()
-        
     }
+    
+    //MARK: - CollectionView
+    
+    private func configureTableView() {
 
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+        layout.itemSize = CGSize(width: view.frame.width - 40, height: 45)
+        homeCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        homeCollectionView.delegate   = self
+        homeCollectionView.dataSource = self
+        homeCollectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: myidentifier)
+        homeCollectionView.backgroundColor = .white
+        if let flowLayout = homeCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.scrollDirection = .vertical
+        }
+
+    }
+        
+    //MARK: - Configure Elements
     
-    //MARK: - Create label for location detection
-    
-    private func createLabel() {
+    private func configureElements() {
         
         locationLabel.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         locationLabel.textAlignment = .center
         locationLabel.numberOfLines = 0
-
-    }
-        
-    //MARK: - Create button
-    
-    private func createButton() {
 
         button.layer.borderWidth = 2
         button.layer.cornerRadius = 65
@@ -87,7 +107,6 @@ final class HomeViewController: UIViewController, HomeViewInput, PassData {
         secondLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         thirdabel.textColor   = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         fourthLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-
         
         firstLabel.backgroundColor  = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
         secondLabel.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
@@ -104,6 +123,7 @@ final class HomeViewController: UIViewController, HomeViewInput, PassData {
         view.addSubview(secondLabel)
         view.addSubview(thirdabel)
         view.addSubview(fourthLabel)
+        view.addSubview(homeCollectionView)
     }
     
     private func addConstraints() {
@@ -154,8 +174,17 @@ final class HomeViewController: UIViewController, HomeViewInput, PassData {
             fourthLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             fourthLabel.heightAnchor.constraint(equalToConstant: 40),
             fourthLabel.widthAnchor.constraint(equalToConstant: 130),
+            
         ])
-        
+                
+        homeCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            homeCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 400),
+            homeCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
+            homeCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -20),
+            homeCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+        ])
+    
     }
     
     @objc private func pushToModelVC() {
@@ -202,3 +231,4 @@ final class HomeViewController: UIViewController, HomeViewInput, PassData {
     }
     
 }
+
