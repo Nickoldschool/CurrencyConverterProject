@@ -22,6 +22,9 @@ final class ExchangeViewController: UIViewController {
     
     let jumpButton = UIButton()
     
+    let exVC = HomeViewController()
+    let countButton = UIButton()
+    
     //MARK: - Delegate
     
     weak var delegate: PassData?
@@ -46,8 +49,6 @@ final class ExchangeViewController: UIViewController {
     var firstCurrency: String = "EUR"
     var secondCurrency: String = "RUB"
     
-    //var currencyConvertation = [CurrencyConvertation]()
-    
     var selectedCurrency: String?
     var currencies = ["RUB","EUR","USD","TRY","GBP","CZK","BGN","CNY","JPY","CAD","PHP","THB","SEK","PLN","AUD","SGD","INR",
                       "DKK","CHF","MYR","HKD","NOK","MXN","NZD","ZAR","HUF","HRK","KRW","ILS","RON","BRL","ISK","IDR"]
@@ -60,7 +61,7 @@ final class ExchangeViewController: UIViewController {
         setupConstraints()
         
         registerForKeyboardNotifications()
-    
+
     }
     
     deinit {
@@ -113,7 +114,7 @@ final class ExchangeViewController: UIViewController {
         secondCurrencyChoose.textAlignment = .center
         
         pushButton.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        pushButton.setTitle("Save", for: .normal)
+        pushButton.setTitle("Count", for: .normal)
         pushButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         pushButton.layer.cornerRadius = 15
         pushButton.addTarget(self, action: #selector(saveRate), for: .touchUpInside)
@@ -122,7 +123,16 @@ final class ExchangeViewController: UIViewController {
         secondCurrencyChoose.backgroundColor = .gray
         
         jumpButton.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        jumpButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+        jumpButton.layer.cornerRadius = 5
+        jumpButton.setTitle("Push", for: .normal)
         jumpButton.addTarget(self, action: #selector(pushToModelVC), for: .touchUpInside)
+        
+        countButton.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        countButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+        countButton.layer.cornerRadius = 5
+        countButton.setTitle("Save", for: .normal)
+        countButton.addTarget(self, action: #selector(countValues), for: .touchUpInside)
 
     }
     
@@ -143,6 +153,7 @@ final class ExchangeViewController: UIViewController {
         purpleView.addSubview(pushButton)
         
         purpleView.addSubview(jumpButton)
+        purpleView.addSubview(countButton)
     }
     
     //MARK: - setup Constraints of elements
@@ -186,7 +197,7 @@ final class ExchangeViewController: UIViewController {
             jumpButton.topAnchor.constraint(equalTo: purpleView.topAnchor, constant: 30),
             jumpButton.centerXAnchor.constraint(equalTo: purpleView.centerXAnchor),
             jumpButton.heightAnchor.constraint(equalToConstant: 50),
-            jumpButton.widthAnchor.constraint(equalToConstant: 50),
+            jumpButton.widthAnchor.constraint(equalToConstant: 80),
         ])
         
         fromTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -211,6 +222,14 @@ final class ExchangeViewController: UIViewController {
             toLabel.centerXAnchor.constraint(equalTo: purpleView.centerXAnchor),
             toLabel.heightAnchor.constraint(equalToConstant: 40),
             toLabel.widthAnchor.constraint(equalToConstant: 200),
+        ])
+        
+        countButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            countButton.topAnchor.constraint(equalTo: fromTextField.bottomAnchor, constant: 30),
+            countButton.centerXAnchor.constraint(equalTo: purpleView.centerXAnchor),
+            countButton.heightAnchor.constraint(equalToConstant: 50),
+            countButton.widthAnchor.constraint(equalToConstant: 80),
         ])
         
         toTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -240,23 +259,18 @@ final class ExchangeViewController: UIViewController {
         
     }
     
-    //MARK: - Pushing back to Home Controller for showing recent convertations
+    //MARK: - Function for getting Data from Api
     
-    @objc private func pushToModelVC() {
+    private func callNetwork() {
         
-        let exVC = HomeViewController()
-        delegate = exVC
-        delegate?.currencyConvertation.append(CurrencyConvertation(fromCurrency: firstCurrencyChoose.text!,
-                                                                   toCurrency: secondCurrencyChoose.text!,
-                                                                   enteredAmount: firstRate!,
-                                                                   convertedAmount: secondRate!))
-        delegate?.firstLabel.text = firstCurrencyChoose.text
-        delegate?.secondLabel.text = secondCurrencyChoose.text
-        delegate?.thirdabel.text = fromTextField.text
-        delegate?.fourthLabel.text = toTextField.text
-        navigationController?.pushViewController(exVC, animated: true)
-        
-        print(delegate?.currencyConvertation as Any)
+        networkManager.getTwoRates(firstRate: firstCurrency, secondRate: secondCurrency) { (currencies, error) in
+            DispatchQueue.main.async {
+                for (_, value) in currencies!.rates {
+                    self.toTextField.text = String(round((value * self.firstRate!)*100)/100)
+                }
+                
+            }
+        }
     }
     
     //MARK: - Call network
@@ -266,11 +280,30 @@ final class ExchangeViewController: UIViewController {
         callNetwork()
     }
     
+    //MARK: - Save values for delegating to HomePage
+    
+    @objc private func countValues() {
+        delegate = exVC
+        delegate?.currencyConvertation.append(CurrencyConvertation(fromCurrency: firstCurrencyChoose.text!,
+                                                                   toCurrency: secondCurrencyChoose.text!,
+                                                                   enteredAmount: firstRate!,
+                                                                   convertedAmount: secondRate!))
+        print(delegate?.currencyConvertation as Any)
+    }
+    
+    //MARK: - Pushing back to Home Controller for showing recent convertations
+    
+    @objc private func pushToModelVC() {
+        
+        navigationController?.pushViewController(exVC, animated: true)
+    }
+    
+    
 }
 
 extension ExchangeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
-    //MARK: - Add Observer for Notification Center
+    //MARK: - Add Keyboard Observer for Notification Center
     
     private func registerForKeyboardNotifications() {
         
@@ -281,7 +314,7 @@ extension ExchangeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
                                                name: UIResponder.keyboardWillHideNotification, object: nil);
     }
     
-    //MARK: - Remove Observer for Notification Center
+    //MARK: - Remove Keyboard Observer for Notification Center
     
     private func removeForKeyboardNotification() {
         
@@ -306,17 +339,7 @@ extension ExchangeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         scrollView.contentOffset = CGPoint.zero
     }
     
-    private func callNetwork() {
-        
-        networkManager.getTwoRates(firstRate: firstCurrency, secondRate: secondCurrency) { (currencies, error) in
-            DispatchQueue.main.async {
-                for (_, value) in currencies!.rates {
-                    self.toTextField.text = String(round((value * self.firstRate!)*100)/100)
-                }
-                
-            }
-        }
-    }
+    //MARK: - Picker View Configurations
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

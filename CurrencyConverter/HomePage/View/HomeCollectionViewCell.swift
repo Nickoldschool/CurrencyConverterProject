@@ -8,16 +8,6 @@
 
 import UIKit
 
-//protocol PassData: AnyObject {
-//
-//    // Try to convert it into function with these parametres for futher comfortable delegation
-//    var firstLabel:  UILabel { get }
-//    var secondLabel: UILabel { get }
-//    var thirdabel:   UILabel { get }
-//    var fourthLabel: UILabel { get }
-//}
-
-
 class HomeCollectionViewCell: UICollectionViewCell  {
     
     var firstLabel = UILabel()

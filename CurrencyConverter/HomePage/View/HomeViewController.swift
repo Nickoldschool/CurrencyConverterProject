@@ -24,10 +24,7 @@ protocol HomeViewOutput {
 protocol PassData: AnyObject {
 
     // Try to convert it into function with these parametres for futher comfortable delegation
-    var firstLabel:  UILabel { get }
-    var secondLabel: UILabel { get }
-    var thirdabel:   UILabel { get }
-    var fourthLabel: UILabel { get }
+
     var currencyConvertation: [CurrencyConvertation] {get set}
 }
 
@@ -40,11 +37,7 @@ final class HomeViewController: UIViewController, HomeViewInput, PassData {
     let locationManager = LocationManager()
     let locationLabel = UILabel()
     let button = UIButton()
-    
-    let firstLabel  = UILabel()
-    let secondLabel = UILabel()
-    let thirdabel   = UILabel()
-    let fourthLabel = UILabel()
+
     
     //MARK: - Collection elements
     
@@ -103,26 +96,12 @@ final class HomeViewController: UIViewController, HomeViewInput, PassData {
         button.backgroundColor =  #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         button.addTarget(self, action: #selector(moveToExchangeController), for: .touchUpInside)
         
-        firstLabel.textColor  = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        secondLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        thirdabel.textColor   = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        fourthLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        
-        firstLabel.backgroundColor  = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
-        secondLabel.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
-        thirdabel.backgroundColor   = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
-        fourthLabel.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
-
     }
     
     private func addSubViews() {
         
         view.addSubview(locationLabel)
         view.addSubview(button)
-        view.addSubview(firstLabel)
-        view.addSubview(secondLabel)
-        view.addSubview(thirdabel)
-        view.addSubview(fourthLabel)
         view.addSubview(homeCollectionView)
     }
     
@@ -138,43 +117,10 @@ final class HomeViewController: UIViewController, HomeViewInput, PassData {
         
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -110),
+            button.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 50),
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             button.heightAnchor.constraint(equalToConstant: 130),
             button.widthAnchor.constraint(equalToConstant: 130),
-        ])
-        
-        firstLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            firstLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 250),
-            firstLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            firstLabel.heightAnchor.constraint(equalToConstant: 40),
-            firstLabel.widthAnchor.constraint(equalToConstant: 130),
-        ])
-        
-        secondLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            secondLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 350),
-            secondLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            secondLabel.heightAnchor.constraint(equalToConstant: 40),
-            secondLabel.widthAnchor.constraint(equalToConstant: 130),
-        ])
-        
-        thirdabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            thirdabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 200),
-            thirdabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            thirdabel.heightAnchor.constraint(equalToConstant: 40),
-            thirdabel.widthAnchor.constraint(equalToConstant: 130),
-        ])
-        
-        fourthLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            fourthLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 300),
-            fourthLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            fourthLabel.heightAnchor.constraint(equalToConstant: 40),
-            fourthLabel.widthAnchor.constraint(equalToConstant: 130),
-            
         ])
                 
         homeCollectionView.translatesAutoresizingMaskIntoConstraints = false

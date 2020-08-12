@@ -92,7 +92,7 @@ class CourceCollectionViewCell: UICollectionViewCell {
        
        public func updateData(rate: Rate, entery: Double){
            currencyName.text               = rate.currency
-           currencyRate.text               = "Current rate: \(String(rate.rate))"
+           currencyRate.text               = "Current rate: \(String(round((rate.rate)*100)/100))"
            flagImage.image                 = UIImage(named: rate.currency)
            if entery == 0 {
                resulLabel.text = ""
