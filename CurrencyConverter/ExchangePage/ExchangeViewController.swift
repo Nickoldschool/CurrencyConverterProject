@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 final class ExchangeViewController: UIViewController {
     
     let exchangeImage = UIImageView(image: UIImage(named: "ExchangeIllustration"))
@@ -20,10 +19,7 @@ final class ExchangeViewController: UIViewController {
     var toTextField = UITextField()
     let pushButton = UIButton()
     
-    let jumpButton = UIButton()
-    
     let exVC = HomeViewController()
-    let countButton = UIButton()
     
     //MARK: - Delegate
     
@@ -61,7 +57,6 @@ final class ExchangeViewController: UIViewController {
         setupConstraints()
         
         registerForKeyboardNotifications()
-
     }
     
     deinit {
@@ -114,25 +109,16 @@ final class ExchangeViewController: UIViewController {
         secondCurrencyChoose.textAlignment = .center
         
         pushButton.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        pushButton.setTitle("Count", for: .normal)
+        pushButton.setTitle("Save", for: .normal)
         pushButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         pushButton.layer.cornerRadius = 15
-        pushButton.addTarget(self, action: #selector(saveRate), for: .touchUpInside)
+        pushButton.addTarget(self, action: #selector(pushToModelVC), for: .touchUpInside)
         
         firstCurrencyChoose.backgroundColor = .gray
         secondCurrencyChoose.backgroundColor = .gray
         
-        jumpButton.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        jumpButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-        jumpButton.layer.cornerRadius = 5
-        jumpButton.setTitle("Push", for: .normal)
-        jumpButton.addTarget(self, action: #selector(pushToModelVC), for: .touchUpInside)
-        
-        countButton.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        countButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-        countButton.layer.cornerRadius = 5
-        countButton.setTitle("Save", for: .normal)
-        countButton.addTarget(self, action: #selector(countValues), for: .touchUpInside)
+        //MARK: - method for dynamically change converted value
+        fromTextField.addTarget(self, action: #selector(callNetwork), for: .editingChanged)
 
     }
     
@@ -152,8 +138,6 @@ final class ExchangeViewController: UIViewController {
         purpleView.addSubview(secondCurrencyChoose)
         purpleView.addSubview(pushButton)
         
-        purpleView.addSubview(jumpButton)
-        purpleView.addSubview(countButton)
     }
     
     //MARK: - setup Constraints of elements
@@ -192,14 +176,6 @@ final class ExchangeViewController: UIViewController {
             fromLabel.widthAnchor.constraint(equalToConstant: 200),
         ])
         
-        jumpButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            jumpButton.topAnchor.constraint(equalTo: purpleView.topAnchor, constant: 30),
-            jumpButton.centerXAnchor.constraint(equalTo: purpleView.centerXAnchor),
-            jumpButton.heightAnchor.constraint(equalToConstant: 50),
-            jumpButton.widthAnchor.constraint(equalToConstant: 80),
-        ])
-        
         fromTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             fromTextField.topAnchor.constraint(equalTo: fromLabel.bottomAnchor, constant: 30),
@@ -223,15 +199,7 @@ final class ExchangeViewController: UIViewController {
             toLabel.heightAnchor.constraint(equalToConstant: 40),
             toLabel.widthAnchor.constraint(equalToConstant: 200),
         ])
-        
-        countButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            countButton.topAnchor.constraint(equalTo: fromTextField.bottomAnchor, constant: 30),
-            countButton.centerXAnchor.constraint(equalTo: purpleView.centerXAnchor),
-            countButton.heightAnchor.constraint(equalToConstant: 50),
-            countButton.widthAnchor.constraint(equalToConstant: 80),
-        ])
-        
+
         toTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             toTextField.topAnchor.constraint(equalTo: toLabel.bottomAnchor, constant: 30),
@@ -261,7 +229,7 @@ final class ExchangeViewController: UIViewController {
     
     //MARK: - Function for getting Data from Api
     
-    private func callNetwork() {
+    @objc private func callNetwork() {
         
         networkManager.getTwoRates(firstRate: firstCurrency, secondRate: secondCurrency) { (currencies, error) in
             DispatchQueue.main.async {
@@ -273,31 +241,17 @@ final class ExchangeViewController: UIViewController {
         }
     }
     
-    //MARK: - Call network
+    //MARK: - Pushing back to Home Controller for showing recent convertations
     
-    @objc private func saveRate() {
-        
-        callNetwork()
-    }
-    
-    //MARK: - Save values for delegating to HomePage
-    
-    @objc private func countValues() {
+    @objc private func pushToModelVC() {
         delegate = exVC
         delegate?.currencyConvertation.append(CurrencyConvertation(fromCurrency: firstCurrencyChoose.text!,
                                                                    toCurrency: secondCurrencyChoose.text!,
                                                                    enteredAmount: firstRate!,
                                                                    convertedAmount: secondRate!))
+        navigationController?.pushViewController(exVC, animated: true)
         print(delegate?.currencyConvertation as Any)
     }
-    
-    //MARK: - Pushing back to Home Controller for showing recent convertations
-    
-    @objc private func pushToModelVC() {
-        
-        navigationController?.pushViewController(exVC, animated: true)
-    }
-    
     
 }
 
