@@ -233,8 +233,9 @@ final class ExchangeViewController: UIViewController {
         
         networkManager.getTwoRates(firstRate: firstCurrency, secondRate: secondCurrency) { (currencies, error) in
             DispatchQueue.main.async {
+                guard let rateValue = self.firstRate else { return self.toTextField.text = "" }
                 for (_, value) in currencies!.rates {
-                    self.toTextField.text = String(round((value * self.firstRate!)*100)/100)
+                    self.toTextField.text = String(round((value * rateValue)*100)/100)
                 }
                 
             }
@@ -283,7 +284,6 @@ extension ExchangeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         let userInfo = notification.userInfo
         let kbFrameSize = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         scrollView.contentOffset = CGPoint(x: 0, y: kbFrameSize.height)
-        
     }
     
     //MARK: - Method for hiding Keyboard
