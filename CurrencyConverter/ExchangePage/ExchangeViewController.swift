@@ -11,6 +11,12 @@ import UIKit
 final class ExchangeViewController: UIViewController {
     
     let exchangeImage = UIImageView(image: UIImage(named: "ExchangeIllustration"))
+    let firstUpArrow = UIImageView(image: UIImage(named: "UpArrow"))
+    let firstDownArrow = UIImageView(image: UIImage(named: "DownArrow"))
+    let secondUpArrow = UIImageView(image: UIImage(named: "UpArrow"))
+    let secondDownArrow = UIImageView(image: UIImage(named: "DownArrow"))
+//    let firstWhiteView = UIView()
+//    let secondWhiteView = UIView()
     let purpleView = UIView()
     let scrollView = UIScrollView()
     let fromLabel = UILabel()
@@ -86,13 +92,13 @@ final class ExchangeViewController: UIViewController {
         toLabel.text = "To"
         toLabel.textColor =  #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 
-        fromTextField.layer.cornerRadius = 15
+        //fromTextField.layer.cornerRadius = 15
         fromTextField.placeholder = "Please,enter ammount"
         fromTextField.keyboardType = .decimalPad
         fromTextField.textAlignment = . center
         fromTextField.backgroundColor =  #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
-        toTextField.layer.cornerRadius = 15
+        //toTextField.layer.cornerRadius = 15
         toTextField.placeholder = "Please,enter ammount"
         toTextField.keyboardType = .decimalPad
         toTextField.textAlignment = . center
@@ -102,11 +108,13 @@ final class ExchangeViewController: UIViewController {
         firstPickerView.dataSource = self
         firstCurrencyChoose.inputView = firstPickerView
         firstCurrencyChoose.textAlignment = .center
+        firstCurrencyChoose.text = firstCurrency
         
         secondPickerView.delegate = self
         secondPickerView.dataSource = self
         secondCurrencyChoose.inputView = secondPickerView
         secondCurrencyChoose.textAlignment = .center
+        secondCurrencyChoose.text = secondCurrency
         
         pushButton.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         pushButton.setTitle("Save", for: .normal)
@@ -114,8 +122,13 @@ final class ExchangeViewController: UIViewController {
         pushButton.layer.cornerRadius = 15
         pushButton.addTarget(self, action: #selector(pushToModelVC), for: .touchUpInside)
         
-        firstCurrencyChoose.backgroundColor = .gray
-        secondCurrencyChoose.backgroundColor = .gray
+        firstCurrencyChoose.backgroundColor = .white
+        secondCurrencyChoose.backgroundColor = .white
+        
+        firstUpArrow.backgroundColor = .white
+        firstDownArrow.backgroundColor = .white
+        secondUpArrow.backgroundColor = .white
+        secondDownArrow.backgroundColor = .white
         
         //MARK: - method for dynamically change converted value
         fromTextField.addTarget(self, action: #selector(callNetwork), for: .editingChanged)
@@ -137,6 +150,10 @@ final class ExchangeViewController: UIViewController {
         purpleView.addSubview(firstCurrencyChoose)
         purpleView.addSubview(secondCurrencyChoose)
         purpleView.addSubview(pushButton)
+        purpleView.addSubview(firstUpArrow)
+        purpleView.addSubview(firstDownArrow)
+        purpleView.addSubview(secondUpArrow)
+        purpleView.addSubview(secondDownArrow)
         
     }
     
@@ -171,7 +188,7 @@ final class ExchangeViewController: UIViewController {
         fromLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             fromLabel.topAnchor.constraint(equalTo: purpleView.topAnchor, constant: 30),
-            fromLabel.centerXAnchor.constraint(equalTo: purpleView.centerXAnchor),
+            fromLabel.leadingAnchor.constraint(equalTo: purpleView.leadingAnchor, constant: 20),
             fromLabel.heightAnchor.constraint(equalToConstant: 40),
             fromLabel.widthAnchor.constraint(equalToConstant: 200),
         ])
@@ -179,7 +196,7 @@ final class ExchangeViewController: UIViewController {
         fromTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             fromTextField.topAnchor.constraint(equalTo: fromLabel.bottomAnchor, constant: 30),
-            fromTextField.centerXAnchor.constraint(equalTo: purpleView.centerXAnchor),
+            fromTextField.leadingAnchor.constraint(equalTo: purpleView.leadingAnchor, constant: 20),
             fromTextField.heightAnchor.constraint(equalToConstant: 40),
             fromTextField.widthAnchor.constraint(equalToConstant: 200),
         ])
@@ -187,15 +204,31 @@ final class ExchangeViewController: UIViewController {
         firstCurrencyChoose.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             firstCurrencyChoose.topAnchor.constraint(equalTo: fromLabel.bottomAnchor, constant: 30),
-            firstCurrencyChoose.trailingAnchor.constraint(equalTo: purpleView.trailingAnchor, constant: -22),
+            firstCurrencyChoose.trailingAnchor.constraint(equalTo: purpleView.trailingAnchor, constant: -51),
             firstCurrencyChoose.heightAnchor.constraint(equalToConstant: 40),
             firstCurrencyChoose.widthAnchor.constraint(equalToConstant: 50),
+        ])
+        
+        firstUpArrow.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            firstUpArrow.topAnchor.constraint(equalTo: fromLabel.bottomAnchor, constant: 30),
+            firstUpArrow.trailingAnchor.constraint(equalTo: purpleView.trailingAnchor, constant: -16),
+            firstUpArrow.heightAnchor.constraint(equalToConstant: 20),
+            firstUpArrow.widthAnchor.constraint(equalToConstant: 35),
+        ])
+        
+        firstDownArrow.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            firstDownArrow.topAnchor.constraint(equalTo: fromLabel.bottomAnchor, constant: 50),
+            firstDownArrow.trailingAnchor.constraint(equalTo: purpleView.trailingAnchor, constant: -16),
+            firstDownArrow.heightAnchor.constraint(equalToConstant: 20),
+            firstDownArrow.widthAnchor.constraint(equalToConstant: 35),
         ])
         
         toLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             toLabel.topAnchor.constraint(equalTo: fromTextField.bottomAnchor, constant: 30),
-            toLabel.centerXAnchor.constraint(equalTo: purpleView.centerXAnchor),
+            toLabel.leadingAnchor.constraint(equalTo: purpleView.leadingAnchor, constant: 20),
             toLabel.heightAnchor.constraint(equalToConstant: 40),
             toLabel.widthAnchor.constraint(equalToConstant: 200),
         ])
@@ -203,7 +236,7 @@ final class ExchangeViewController: UIViewController {
         toTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             toTextField.topAnchor.constraint(equalTo: toLabel.bottomAnchor, constant: 30),
-            toTextField.centerXAnchor.constraint(equalTo: purpleView.centerXAnchor),
+            toTextField.leadingAnchor.constraint(equalTo: purpleView.leadingAnchor, constant: 20),
             toTextField.heightAnchor.constraint(equalToConstant: 40),
             toTextField.widthAnchor.constraint(equalToConstant: 200),
         ])
@@ -211,9 +244,25 @@ final class ExchangeViewController: UIViewController {
         secondCurrencyChoose.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             secondCurrencyChoose.topAnchor.constraint(equalTo: toLabel.bottomAnchor, constant: 30),
-            secondCurrencyChoose.trailingAnchor.constraint(equalTo: purpleView.trailingAnchor, constant: -22),
+            secondCurrencyChoose.trailingAnchor.constraint(equalTo: purpleView.trailingAnchor, constant: -51),
             secondCurrencyChoose.heightAnchor.constraint(equalToConstant: 40),
             secondCurrencyChoose.widthAnchor.constraint(equalToConstant: 50),
+        ])
+        
+        secondUpArrow.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            secondUpArrow.topAnchor.constraint(equalTo: toLabel.bottomAnchor, constant: 30),
+            secondUpArrow.trailingAnchor.constraint(equalTo: purpleView.trailingAnchor, constant: -16),
+            secondUpArrow.heightAnchor.constraint(equalToConstant: 20),
+            secondUpArrow.widthAnchor.constraint(equalToConstant: 35),
+        ])
+        
+        secondDownArrow.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            secondDownArrow.topAnchor.constraint(equalTo: toLabel.bottomAnchor, constant: 50),
+            secondDownArrow.trailingAnchor.constraint(equalTo: purpleView.trailingAnchor, constant: -16),
+            secondDownArrow.heightAnchor.constraint(equalToConstant: 20),
+            secondDownArrow.widthAnchor.constraint(equalToConstant: 35),
         ])
         
         pushButton.translatesAutoresizingMaskIntoConstraints = false
@@ -234,10 +283,10 @@ final class ExchangeViewController: UIViewController {
         networkManager.getTwoRates(firstRate: firstCurrency, secondRate: secondCurrency) { (currencies, error) in
             DispatchQueue.main.async {
                 guard let rateValue = self.firstRate else { return self.toTextField.text = "" }
-                for (_, value) in currencies!.rates {
+                guard let rateCurrencies = currencies else { return self.toTextField.text = self.fromTextField.text }
+                for (_, value) in rateCurrencies.rates  {
                     self.toTextField.text = String(round((value * rateValue)*100)/100)
                 }
-                
             }
         }
     }
