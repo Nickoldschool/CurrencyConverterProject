@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		40064A1D24E024210099FE02 /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40064A1C24E024210099FE02 /* ShapeView.swift */; };
+		400B977B24E9A9DB0078642D /* CurrencyModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400B977924E9A9DB0078642D /* CurrencyModel+CoreDataClass.swift */; };
+		400B977C24E9A9DB0078642D /* CurrencyModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400B977A24E9A9DB0078642D /* CurrencyModel+CoreDataProperties.swift */; };
+		400B977E24E9C2F60078642D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400B977D24E9C2F60078642D /* DataManager.swift */; };
+		40280C2524E8410500CD5CF2 /* GraphicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40280C2424E8410500CD5CF2 /* GraphicsViewController.swift */; };
 		402C08CC24E3DFF5001F8AFE /* CurrencyConvertationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C08CB24E3DFF5001F8AFE /* CurrencyConvertationModel.swift */; };
 		403047BB24DB03460081CAD6 /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403047BA24DB03460081CAD6 /* CurrencyModel.swift */; };
 		403047BE24DB03750081CAD6 /* CurrencyEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403047BD24DB03750081CAD6 /* CurrencyEndPoint.swift */; };
@@ -80,6 +84,10 @@
 
 /* Begin PBXFileReference section */
 		40064A1C24E024210099FE02 /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
+		400B977924E9A9DB0078642D /* CurrencyModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyModel+CoreDataClass.swift"; sourceTree = "<group>"; };
+		400B977A24E9A9DB0078642D /* CurrencyModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		400B977D24E9C2F60078642D /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		40280C2424E8410500CD5CF2 /* GraphicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicsViewController.swift; sourceTree = "<group>"; };
 		402C08CB24E3DFF5001F8AFE /* CurrencyConvertationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConvertationModel.swift; sourceTree = "<group>"; };
 		403047BA24DB03460081CAD6 /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
 		403047BD24DB03750081CAD6 /* CurrencyEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyEndPoint.swift; sourceTree = "<group>"; };
@@ -151,6 +159,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		40280C2324E840D300CD5CF2 /* GraphicsPage */ = {
+			isa = PBXGroup;
+			children = (
+				40280C2424E8410500CD5CF2 /* GraphicsViewController.swift */,
+			);
+			path = GraphicsPage;
+			sourceTree = "<group>";
+		};
 		403047B824DB02650081CAD6 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,6 +317,7 @@
 				40347B9624C51ABF00E3BA84 /* HomePage */,
 				40982E2724D2173E00DB753C /* CourceTablePage */,
 				40413C1124D574D4002267BC /* ExchangePage */,
+				40280C2324E840D300CD5CF2 /* GraphicsPage */,
 				403D5DDD24BF4966002F4B88 /* Assets.xcassets */,
 			);
 			path = CurrencyConverter;
@@ -364,6 +381,9 @@
 		4085616724D8B2C10006E94F /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				400B977924E9A9DB0078642D /* CurrencyModel+CoreDataClass.swift */,
+				400B977A24E9A9DB0078642D /* CurrencyModel+CoreDataProperties.swift */,
+				400B977D24E9C2F60078642D /* DataManager.swift */,
 				4085616824D8B2FE0006E94F /* DataHandling.swift */,
 				403D5DDA24BF4964002F4B88 /* CurrencyConverter.xcdatamodeld */,
 			);
@@ -585,9 +605,11 @@
 				4082F26B24E2E8D000E6068F /* HomeCollectionViewCell.swift in Sources */,
 				40982E2E24D2194B00DB753C /* CourceTableInteractor.swift in Sources */,
 				40982E2A24D2185800DB753C /* CourceTableAssembly.swift in Sources */,
+				400B977C24E9A9DB0078642D /* CurrencyModel+CoreDataProperties.swift in Sources */,
 				40982E3424D21AE100DB753C /* CourceTableEntity.swift in Sources */,
 				403248D024E17C5700192102 /* PopUpViewController.swift in Sources */,
 				405C77E024D02FD000E2DD01 /* CourceCollectionViewController.swift in Sources */,
+				40280C2524E8410500CD5CF2 /* GraphicsViewController.swift in Sources */,
 				403047CB24DB04250081CAD6 /* ParameterEncoding.swift in Sources */,
 				403047C824DB03FE0081CAD6 /* HTTPTask.swift in Sources */,
 				403047CD24DB04400081CAD6 /* URLParameterEncoding.swift in Sources */,
@@ -600,6 +622,8 @@
 				40347BA624C5201E00E3BA84 /* HomeRouter.swift in Sources */,
 				40347B9E24C51D0200E3BA84 /* HomeAssembly.swift in Sources */,
 				40413C1024D574CC002267BC /* ExchangeViewController.swift in Sources */,
+				400B977E24E9C2F60078642D /* DataManager.swift in Sources */,
+				400B977B24E9A9DB0078642D /* CurrencyModel+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

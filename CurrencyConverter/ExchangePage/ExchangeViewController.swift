@@ -26,6 +26,7 @@ final class ExchangeViewController: UIViewController {
     let pushButton = UIButton()
     
     let exVC = HomeViewController()
+//    let dataHandling = DataHandling()
     
     //MARK: - Delegate
     
@@ -294,9 +295,13 @@ final class ExchangeViewController: UIViewController {
     //MARK: - Pushing back to Home Controller for showing recent convertations
     
     @objc private func pushToModelVC() {
+//        dataHandling.addCurrencyRecord(fromCurrency: firstCurrencyChoose.text!,
+//                                       toCurrency: secondCurrencyChoose.text!,
+//                                       enteredAmount: firstRate!,
+//                                       convertedAmount: secondRate!)
         delegate = exVC
-        delegate?.currencyConvertation.append(CurrencyConvertation(fromCurrency: firstCurrencyChoose.text!,
-                                                                   toCurrency: secondCurrencyChoose.text!,
+        delegate?.currencyConvertation.append(CurrencyConvertation(fromCurrency: firstCurrency,
+                                                                   toCurrency: secondCurrency,
                                                                    enteredAmount: firstRate!,
                                                                    convertedAmount: secondRate!))
         navigationController?.pushViewController(exVC, animated: true)

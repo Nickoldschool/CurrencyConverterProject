@@ -12,7 +12,7 @@ class HomeCollectionViewCell: UICollectionViewCell  {
     
     var firstLabel = UILabel()
     var secondLabel = UILabel()
-    var thirdabel = UILabel()
+    var thirdlabel = UILabel()
     var fourthLabel = UILabel()
     let equalLabel = UILabel()
     
@@ -32,7 +32,7 @@ class HomeCollectionViewCell: UICollectionViewCell  {
         style(view: contentView)
         contentView.addSubview(firstLabel)
         contentView.addSubview(secondLabel)
-        contentView.addSubview(thirdabel)
+        contentView.addSubview(thirdlabel)
         contentView.addSubview(fourthLabel)
         contentView.addSubview(equalLabel)
     }
@@ -63,12 +63,12 @@ class HomeCollectionViewCell: UICollectionViewCell  {
             equalLabel.widthAnchor.constraint(equalToConstant: 50),
         ])
         
-        thirdabel.translatesAutoresizingMaskIntoConstraints = false
+        thirdlabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            thirdabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            thirdabel.trailingAnchor.constraint(equalTo: fourthLabel.leadingAnchor, constant: -10),
-            thirdabel.heightAnchor.constraint(equalToConstant: 35),
-            thirdabel.widthAnchor.constraint(equalToConstant: 80),
+            thirdlabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            thirdlabel.trailingAnchor.constraint(equalTo: fourthLabel.leadingAnchor, constant: -10),
+            thirdlabel.heightAnchor.constraint(equalToConstant: 35),
+            thirdlabel.widthAnchor.constraint(equalToConstant: 80),
         ])
         
         fourthLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -96,11 +96,11 @@ class HomeCollectionViewCell: UICollectionViewCell  {
         
         firstLabel.textColor            = .white
         secondLabel.textColor           = .white
-        thirdabel.textColor             = .white
+        thirdlabel.textColor             = .white
         fourthLabel.textColor           = .white
         
         firstLabel.textAlignment = .right
-        thirdabel.textAlignment = .right
+        thirdlabel.textAlignment = .right
         
         equalLabel.text = " = "
         equalLabel.textAlignment = .center
@@ -111,7 +111,8 @@ class HomeCollectionViewCell: UICollectionViewCell  {
     public func updateData(currencyConvertation: CurrencyConvertation){
         firstLabel.text = String(currencyConvertation.enteredAmount)
         secondLabel.text = currencyConvertation.fromCurrency
-        thirdabel.text = String(currencyConvertation.convertedAmount)
+        thirdlabel.text = String(currencyConvertation.convertedAmount)
         fourthLabel.text = currencyConvertation.toCurrency
     }
+    
 }

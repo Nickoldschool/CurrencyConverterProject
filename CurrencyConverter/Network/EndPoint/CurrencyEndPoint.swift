@@ -19,7 +19,7 @@ public enum CurrencyApi {
 extension CurrencyApi: EndPointType {
     
     var baseURL: URL {
-        
+
         var components = URLComponents()
         components.scheme = "https"
         components.host = "api.exchangeratesapi.io"
