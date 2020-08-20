@@ -8,6 +8,6 @@
 
 import UIKit
 
-class CourceTableRouter {
+final class CourceTableRouter {
 
 }

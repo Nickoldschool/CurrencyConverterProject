@@ -8,6 +8,6 @@
 
 import UIKit
 
-class CourceTablePageAssembly {
+final class CourceTablePageAssembly {
 
 }

@@ -8,6 +8,6 @@
 
 import UIKit
 
-class CourceTabPageInteractor {
+final class CourceTabPageInteractor {
 
 }

@@ -10,19 +10,35 @@ import UIKit
 import CoreData
 
 class DataHandling {
+    
+    // MARK: - Core Data stack
+    
+    private enum Keys {
+        static let currencyConvertation = "CurrencyConvertationStorage"
+    }
+    
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: Keys.currencyConvertation)
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+    
+    
+    lazy var managedObjectContext: NSManagedObjectContext = {
+        let context = persistentContainer.viewContext
+        return context
+    }()
 
     func addCurrencyRecord(fromCurrency: String, toCurrency: String, enteredAmount: Double, convertedAmount: Double){
-        //1 create appdelegate Singleton object
-        guard  let appdelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-
-        //2.Access persistentContainer from appdelegate Singleton object and Access the singleton managed object context
-        let viewContext = appdelegate.persistentContainer.viewContext
 
         //3. Create an entity
-
-        if let currenciesEntity = NSEntityDescription.entity(forEntityName: "Currencies", in: viewContext){
+        if let currenciesEntity = NSEntityDescription.entity(forEntityName: "CurrencyConvertationEntity", in: managedObjectContext){
             //4. Create managed object
-            let currency = NSManagedObject(entity: currenciesEntity, insertInto: viewContext)
+            let currency = NSManagedObject(entity: currenciesEntity, insertInto: managedObjectContext)
             currency.setValue(fromCurrency, forKey: "fromCurrency")
             currency.setValue(toCurrency, forKey: "toCurrency")
             currency.setValue(enteredAmount, forKey: "enteredAmount")
@@ -31,14 +47,14 @@ class DataHandling {
         }
 
        //5. Save to persistent store
-        if viewContext.hasChanges{
-            do{
-                try viewContext.save()
+        if managedObjectContext.hasChanges{
+            do {
+                try managedObjectContext.save()
                 print("Save \(fromCurrency)")
                 print("Save \(toCurrency)")
                 print("Save \(enteredAmount)")
                 print("Save \(convertedAmount)")
-            }catch let error as NSError{
+            } catch let error as NSError{
                 print("not Save==\(error),\(error.userInfo)")
             }
         }
@@ -46,18 +62,13 @@ class DataHandling {
     }
 
     func fetchAllRecords(){
-        //1 create appdelegate Singleton object
-        guard  let appdelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-
-        //2.Access persistentContainer from appdelegate Singleton object and Access the singleton managed object context
-        let viewContext = appdelegate.persistentContainer.viewContext
-
+        
         //3. Creating fetch request using this we can only filter NSManagedObject having entity name Currency.
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Currencies")
+        let fetchRequest = NSFetchRequest<CurrencyConvertationEntity>(entityName: "CurrencyConvertationEntity")
 
         do{
             //4. Execute request
-            let currencies = try viewContext.fetch(fetchRequest)
+            let currencies = try managedObjectContext.fetch(fetchRequest)
             for (index,currency) in currencies.enumerated(){
             //5. Access Data
                 print("\(index). \(currency.value(forKey: "fromCurrency") ?? "No Name Available")")
@@ -71,22 +82,17 @@ class DataHandling {
     }
 
     func deleteRecord(){
-        //1 create appdelegate Singleton object
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return}
-
-        //2.Access persistentContainer from appdelegate Singleton object and Access the singleton managed object context
-        let viewContext = appDelegate.persistentContainer.viewContext
 
         //3. Creating fetch request using this we can only filter NSManagedObject having entity name Currency.
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Currencies")
+        let fetchRequest = NSFetchRequest<CurrencyConvertationEntity>(entityName: "CurrencyConvertationEntity")
 
         do{
             //4. Access Revords
-            let currencies = try viewContext.fetch(fetchRequest)
+            let currencies = try managedObjectContext.fetch(fetchRequest)
 
             for currency in currencies{
             //5. Delete Record
-                viewContext.delete(currency)
+                managedObjectContext.delete(currency)
                 print("Deleted \(currency.value(forKey: "fromCurrency") ?? "No Name Available")")
                 print("Deleted \(currency.value(forKey: "toCurrency") ?? "No Name Available")")
                 print("Deleted \(currency.value(forKey: "enteredAmount") ?? "No Name Available")")
@@ -96,10 +102,10 @@ class DataHandling {
             print("not deleted==\(error),\(error.userInfo)")
         }
 
-        if viewContext.hasChanges{
+        if managedObjectContext.hasChanges{
             do{
                 //6. Commit changes
-                try viewContext.save()
+                try managedObjectContext.save()
             }catch let error as NSError{
                 print("not save==\(error),\(error.userInfo)")
             }

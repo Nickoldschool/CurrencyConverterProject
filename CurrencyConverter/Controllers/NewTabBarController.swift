@@ -24,10 +24,10 @@ final class NewTabBarController: UITabBarController {
         let thirdController = UINavigationController(rootViewController: ExchangeViewController())
         thirdController.tabBarItem = UITabBarItem(title: "Exchange", image: UIImage(named: "suitcase"), tag: 2)
         
-        let fourthController = UINavigationController(rootViewController: GraphicsViewController())
-        fourthController.tabBarItem = UITabBarItem(title: "Statistics", image: UIImage(named: "grow"), tag: 3)
+//        let fourthController = UINavigationController()
+//        fourthController.tabBarItem = UITabBarItem(title: "Statistics", image: UIImage(named: "grow"), tag: 3)
  
-        let tabBarList = [firstController, secondController, thirdController, fourthController]
+        let tabBarList = [firstController, secondController, thirdController]
         viewControllers = tabBarList
         
     }

@@ -8,7 +8,11 @@
 
 import UIKit
 
-class HomeCollectionViewCell: UICollectionViewCell  {
+class HomeCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate  {
+    
+    var pan: UIPanGestureRecognizer!
+    var deleteLabel1: UILabel!
+    var deleteLabel2: UILabel!
     
     var firstLabel = UILabel()
     var secondLabel = UILabel()
@@ -105,7 +109,62 @@ class HomeCollectionViewCell: UICollectionViewCell  {
         equalLabel.text = " = "
         equalLabel.textAlignment = .center
         equalLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        
+        deleteLabel1 = UILabel()
+        deleteLabel1.text = " Delete "
+        deleteLabel1.textAlignment = .right
+        deleteLabel1.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        deleteLabel1.backgroundColor = #colorLiteral(red: 1, green: 0, blue: 0.1665322185, alpha: 1)
+        self.insertSubview(deleteLabel1, belowSubview: self.contentView)
 
+        deleteLabel2 = UILabel()
+        deleteLabel2.text = " Delete "
+        deleteLabel2.textAlignment = .left
+        deleteLabel2.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        deleteLabel2.backgroundColor = #colorLiteral(red: 1, green: 0, blue: 0.1665322185, alpha: 1)
+        self.insertSubview(deleteLabel2, belowSubview: self.contentView)
+        
+        pan = UIPanGestureRecognizer(target: self, action: #selector(onPan(_:)))
+        pan.delegate = self
+        self.addGestureRecognizer(pan)
+
+    }
+    
+    override func layoutSubviews() {
+      super.layoutSubviews()
+
+        if (pan.state == UIGestureRecognizer.State.changed) {
+        let p: CGPoint = pan.translation(in: self)
+        let width = self.contentView.frame.width
+        let height = self.contentView.frame.height
+        self.contentView.frame = CGRect(x: p.x,y: 0, width: width, height: height);
+        self.deleteLabel1.frame = CGRect(x: p.x - deleteLabel1.frame.size.width, y: 0,
+                                         width: width, height: height)
+        self.deleteLabel2.frame = CGRect(x: p.x + width + deleteLabel2.frame.size.width, y: 0,
+                                         width: -width, height: height)
+            
+      }
+
+    }
+
+    @objc func onPan(_ pan: UIPanGestureRecognizer) {
+        if pan.state == UIGestureRecognizer.State.began {
+
+        } else if pan.state == UIGestureRecognizer.State.changed {
+        self.setNeedsLayout()
+      } else {
+        if abs(pan.velocity(in: self).x) > 500 {
+          let collectionView: UICollectionView = self.superview as! UICollectionView
+          let indexPath: IndexPath = collectionView.indexPathForItem(at: self.center)!
+          collectionView.delegate?.collectionView!(collectionView, performAction: #selector(onPan(_:)),
+                                                   forItemAt: indexPath, withSender: nil)
+        } else {
+          UIView.animate(withDuration: 0.2, animations: {
+            self.setNeedsLayout()
+            self.layoutIfNeeded()
+          })
+        }
+      }
     }
     
     public func updateData(currencyConvertation: CurrencyConvertation){

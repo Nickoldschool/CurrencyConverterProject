@@ -295,8 +295,8 @@ final class ExchangeViewController: UIViewController {
     //MARK: - Pushing back to Home Controller for showing recent convertations
     
     @objc private func pushToModelVC() {
-//        dataHandling.addCurrencyRecord(fromCurrency: firstCurrencyChoose.text!,
-//                                       toCurrency: secondCurrencyChoose.text!,
+//        dataHandling.addCurrencyRecord(fromCurrency: firstCurrency,
+//                                       toCurrency: secondCurrency,
 //                                       enteredAmount: firstRate!,
 //                                       convertedAmount: secondRate!)
         delegate = exVC

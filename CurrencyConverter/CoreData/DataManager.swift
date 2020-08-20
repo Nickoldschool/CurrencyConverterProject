@@ -14,11 +14,11 @@ class DataManager {
     // MARK: - Core Data stack
     
     private enum Keys {
-        static let currencyConvertation = "CurrencyConverter"
+        static let currencyConvertation = "CurrencyConvertationEntity"
     }
     
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: Keys.currencyConvertation)
+        let container = NSPersistentContainer(name: "CurrencyConvertationStorage")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -26,7 +26,6 @@ class DataManager {
         })
         return container
     }()
-    
     
     lazy var managedObjectContext: NSManagedObjectContext = {
         let context = persistentContainer.viewContext
@@ -52,13 +51,12 @@ class DataManager {
         return NSEntityDescription.entity(forEntityName: name, in: self.managedObjectContext)!
     }
     
-    
     // MARK: - CurrencyConvertation CRUD
     
     private func createCurrencyConvertation(_ currencyConvertation: CurrencyConvertation) {
         
         let newCurrencyConvertation = NSEntityDescription.insertNewObject(forEntityName: Keys.currencyConvertation,
-                                                                          into: managedObjectContext) as! CurrencyModel
+                                                                          into: managedObjectContext) as! CurrencyConvertationEntity
         
         newCurrencyConvertation.fromCurrency = currencyConvertation.fromCurrency
         newCurrencyConvertation.toCurrency = currencyConvertation.toCurrency
@@ -74,7 +72,7 @@ class DataManager {
     
     private func retrieveCurrencyConvertation() -> [CurrencyConvertation]? {
         
-        let fetchRequest = NSFetchRequest<CurrencyModel>(entityName: Keys.currencyConvertation)
+        let fetchRequest = NSFetchRequest<CurrencyConvertationEntity>(entityName: Keys.currencyConvertation)
         do {
             let currencies = try managedObjectContext.fetch(fetchRequest)
             
@@ -100,8 +98,8 @@ class DataManager {
                                             _ enteredAmount: String,
                                             _ convertedAmount: String) {
         
-        let fetchRequest = NSFetchRequest<CurrencyModel>(entityName: Keys.currencyConvertation)
-        fetchRequest.predicate = NSPredicate(format: "fromCurrency == %@ && toCurrency == %@ && enteredAmount == %@ && convertedAmount == %@", fromCurrency, toCurrency, enteredAmount, convertedAmount)
+        let fetchRequest = NSFetchRequest<CurrencyConvertationEntity>(entityName: Keys.currencyConvertation)
+        fetchRequest.predicate = NSPredicate(format: "fromCurrency == %@ && toCurrency == %@ && enteredAmount == %@ && convertedAmount == %@",                                  fromCurrency, toCurrency, enteredAmount, convertedAmount)
         do {
             if let card = try managedObjectContext.fetch(fetchRequest).first {
                 managedObjectContext.delete(card)

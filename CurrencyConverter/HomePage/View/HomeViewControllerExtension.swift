@@ -16,7 +16,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if currencyConvertation.isEmpty {
             return 0
         } else {
-            print(currencyConvertation.count)
            return currencyConvertation.count
         }
     }
@@ -45,5 +44,10 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return layout.sectionInset
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
+      currencyConvertation.remove(at: indexPath.row)
+      collectionView.deleteItems(at: [indexPath])
     }
 }

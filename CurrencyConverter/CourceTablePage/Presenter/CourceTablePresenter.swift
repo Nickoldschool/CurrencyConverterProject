@@ -8,6 +8,6 @@
 
 import UIKit
 
-class CourceTabPagePresenter {
+final class CourceTabPagePresenter {
 
 }
