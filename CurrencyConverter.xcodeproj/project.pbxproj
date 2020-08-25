@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		40064A1D24E024210099FE02 /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40064A1C24E024210099FE02 /* ShapeView.swift */; };
 		400B977E24E9C2F60078642D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400B977D24E9C2F60078642D /* DataManager.swift */; };
-		40243CC924EED4B2003FC7C5 /* ExchangeAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40243CC824EED4B2003FC7C5 /* ExchangeAssembly.swift */; };
-		40243CCB24EED4CF003FC7C5 /* ExchangePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40243CCA24EED4CF003FC7C5 /* ExchangePresenter.swift */; };
-		40243CCD24EED4E0003FC7C5 /* ExchangeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40243CCC24EED4E0003FC7C5 /* ExchangeEntity.swift */; };
-		40243CCF24EED4F0003FC7C5 /* ExchangeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40243CCE24EED4F0003FC7C5 /* ExchangeRouter.swift */; };
+		40243CC924EED4B2003FC7C5 /* ExchangePageAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40243CC824EED4B2003FC7C5 /* ExchangePageAssembly.swift */; };
+		40243CCB24EED4CF003FC7C5 /* ExchangePagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40243CCA24EED4CF003FC7C5 /* ExchangePagePresenter.swift */; };
+		40243CCD24EED4E0003FC7C5 /* ExchangePageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40243CCC24EED4E0003FC7C5 /* ExchangePageEntity.swift */; };
+		40243CCF24EED4F0003FC7C5 /* ExchangePageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40243CCE24EED4F0003FC7C5 /* ExchangePageRouter.swift */; };
 		402C08CC24E3DFF5001F8AFE /* CurrencyConvertationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C08CB24E3DFF5001F8AFE /* CurrencyConvertationModel.swift */; };
 		403047BB24DB03460081CAD6 /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403047BA24DB03460081CAD6 /* CurrencyModel.swift */; };
 		403047BE24DB03750081CAD6 /* CurrencyEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403047BD24DB03750081CAD6 /* CurrencyEndPoint.swift */; };
@@ -24,11 +24,11 @@
 		403047CD24DB04400081CAD6 /* URLParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403047CC24DB04400081CAD6 /* URLParameterEncoding.swift */; };
 		403047CF24DB04540081CAD6 /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403047CE24DB04540081CAD6 /* JSONParameterEncoder.swift */; };
 		403248D024E17C5700192102 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403248CF24E17C5700192102 /* PopUpViewController.swift */; };
-		40347B9E24C51D0200E3BA84 /* HomeAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40347B9D24C51D0200E3BA84 /* HomeAssembly.swift */; };
-		40347BA024C51FDE00E3BA84 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40347B9F24C51FDE00E3BA84 /* HomeInteractor.swift */; };
-		40347BA224C51FEE00E3BA84 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40347BA124C51FEE00E3BA84 /* HomePresenter.swift */; };
-		40347BA424C5200500E3BA84 /* HomeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40347BA324C5200500E3BA84 /* HomeEntity.swift */; };
-		40347BA624C5201E00E3BA84 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40347BA524C5201E00E3BA84 /* HomeRouter.swift */; };
+		40347B9E24C51D0200E3BA84 /* HomePageAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40347B9D24C51D0200E3BA84 /* HomePageAssembly.swift */; };
+		40347BA024C51FDE00E3BA84 /* HomePageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40347B9F24C51FDE00E3BA84 /* HomePageInteractor.swift */; };
+		40347BA224C51FEE00E3BA84 /* HomePagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40347BA124C51FEE00E3BA84 /* HomePagePresenter.swift */; };
+		40347BA424C5200500E3BA84 /* HomePageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40347BA324C5200500E3BA84 /* HomePageEntity.swift */; };
+		40347BA624C5201E00E3BA84 /* HomePageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40347BA524C5201E00E3BA84 /* HomePageRouter.swift */; };
 		403D5DD224BF4964002F4B88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D5DD124BF4964002F4B88 /* AppDelegate.swift */; };
 		403D5DD624BF4964002F4B88 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D5DD524BF4964002F4B88 /* HomeViewController.swift */; };
 		403D5DDC24BF4964002F4B88 /* CurrencyConvertationStorage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 403D5DDA24BF4964002F4B88 /* CurrencyConvertationStorage.xcdatamodeld */; };
@@ -38,21 +38,21 @@
 		403D5DF724BF4966002F4B88 /* CurrencyConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D5DF624BF4966002F4B88 /* CurrencyConverterUITests.swift */; };
 		403D5E0524BF49BE002F4B88 /* LaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D5E0424BF49BE002F4B88 /* LaunchController.swift */; };
 		403D5E0724BF4AA0002F4B88 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D5E0624BF4AA0002F4B88 /* LocationManager.swift */; };
-		40413C0E24D44CC1002267BC /* CourceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40413C0D24D44CC1002267BC /* CourceCollectionViewCell.swift */; };
-		40413C1024D574CC002267BC /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40413C0F24D574CC002267BC /* ExchangeViewController.swift */; };
-		405C77E024D02FD000E2DD01 /* CourceCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C77DF24D02FD000E2DD01 /* CourceCollectionViewController.swift */; };
+		40413C0E24D44CC1002267BC /* CourceCollectionPageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40413C0D24D44CC1002267BC /* CourceCollectionPageViewCell.swift */; };
+		40413C1024D574CC002267BC /* ExchangePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40413C0F24D574CC002267BC /* ExchangePageViewController.swift */; };
+		405C77E024D02FD000E2DD01 /* CourceCollectionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C77DF24D02FD000E2DD01 /* CourceCollectionPageViewController.swift */; };
 		4082F26B24E2E8D000E6068F /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082F26A24E2E8D000E6068F /* HomeCollectionViewCell.swift */; };
 		4082F26D24E2F19700E6068F /* HomeViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082F26C24E2F19700E6068F /* HomeViewControllerExtension.swift */; };
-		4085616924D8B2FE0006E94F /* DataHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4085616824D8B2FE0006E94F /* DataHandling.swift */; };
 		4091081F24C1A9F0007F37FF /* NewTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4091081E24C1A9F0007F37FF /* NewTabBarController.swift */; };
-		40982E2A24D2185800DB753C /* CourceTableAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40982E2924D2185800DB753C /* CourceTableAssembly.swift */; };
-		40982E2E24D2194B00DB753C /* CourceTableInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40982E2D24D2194B00DB753C /* CourceTableInteractor.swift */; };
-		40982E3124D2199900DB753C /* CourceTablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40982E3024D2199900DB753C /* CourceTablePresenter.swift */; };
-		40982E3424D21AE100DB753C /* CourceTableEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40982E3324D21AE100DB753C /* CourceTableEntity.swift */; };
-		40982E3724D21B0A00DB753C /* CourceTableRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40982E3624D21B0A00DB753C /* CourceTableRouter.swift */; };
+		40982E2A24D2185800DB753C /* CourceCollectionPageAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40982E2924D2185800DB753C /* CourceCollectionPageAssembly.swift */; };
+		40982E2E24D2194B00DB753C /* CourceCollectionPageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40982E2D24D2194B00DB753C /* CourceCollectionPageInteractor.swift */; };
+		40982E3124D2199900DB753C /* CourceCollectionPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40982E3024D2199900DB753C /* CourceCollectionPagePresenter.swift */; };
+		40982E3424D21AE100DB753C /* CourceCollectionPageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40982E3324D21AE100DB753C /* CourceCollectionPageEntity.swift */; };
+		40982E3724D21B0A00DB753C /* CourceCollectionPageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40982E3624D21B0A00DB753C /* CourceCollectionPageRouter.swift */; };
+		40BB7A2924F2AD3500AF598F /* ExchangePageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BB7A2824F2AD3500AF598F /* ExchangePageInteractor.swift */; };
 		40E8C99724EEFC84007493B7 /* CurrencyConvertationEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E8C99524EEFC84007493B7 /* CurrencyConvertationEntity+CoreDataClass.swift */; };
 		40E8C99824EEFC84007493B7 /* CurrencyConvertationEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E8C99624EEFC84007493B7 /* CurrencyConvertationEntity+CoreDataProperties.swift */; };
-		40FC4BE124E2A6F900257D02 /* CourceCollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FC4BE024E2A6F900257D02 /* CourceCollectionExtension.swift */; };
+		40FC4BE124E2A6F900257D02 /* CourceCollectionPageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FC4BE024E2A6F900257D02 /* CourceCollectionPageExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,10 +88,10 @@
 /* Begin PBXFileReference section */
 		40064A1C24E024210099FE02 /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
 		400B977D24E9C2F60078642D /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		40243CC824EED4B2003FC7C5 /* ExchangeAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeAssembly.swift; sourceTree = "<group>"; };
-		40243CCA24EED4CF003FC7C5 /* ExchangePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangePresenter.swift; sourceTree = "<group>"; };
-		40243CCC24EED4E0003FC7C5 /* ExchangeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeEntity.swift; sourceTree = "<group>"; };
-		40243CCE24EED4F0003FC7C5 /* ExchangeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRouter.swift; sourceTree = "<group>"; };
+		40243CC824EED4B2003FC7C5 /* ExchangePageAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangePageAssembly.swift; sourceTree = "<group>"; };
+		40243CCA24EED4CF003FC7C5 /* ExchangePagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangePagePresenter.swift; sourceTree = "<group>"; };
+		40243CCC24EED4E0003FC7C5 /* ExchangePageEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangePageEntity.swift; sourceTree = "<group>"; };
+		40243CCE24EED4F0003FC7C5 /* ExchangePageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangePageRouter.swift; sourceTree = "<group>"; };
 		402C08CB24E3DFF5001F8AFE /* CurrencyConvertationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConvertationModel.swift; sourceTree = "<group>"; };
 		403047BA24DB03460081CAD6 /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
 		403047BD24DB03750081CAD6 /* CurrencyEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyEndPoint.swift; sourceTree = "<group>"; };
@@ -103,11 +103,11 @@
 		403047CC24DB04400081CAD6 /* URLParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoding.swift; sourceTree = "<group>"; };
 		403047CE24DB04540081CAD6 /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
 		403248CF24E17C5700192102 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
-		40347B9D24C51D0200E3BA84 /* HomeAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAssembly.swift; sourceTree = "<group>"; };
-		40347B9F24C51FDE00E3BA84 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
-		40347BA124C51FEE00E3BA84 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
-		40347BA324C5200500E3BA84 /* HomeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEntity.swift; sourceTree = "<group>"; };
-		40347BA524C5201E00E3BA84 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		40347B9D24C51D0200E3BA84 /* HomePageAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageAssembly.swift; sourceTree = "<group>"; };
+		40347B9F24C51FDE00E3BA84 /* HomePageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageInteractor.swift; sourceTree = "<group>"; };
+		40347BA124C51FEE00E3BA84 /* HomePagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePagePresenter.swift; sourceTree = "<group>"; };
+		40347BA324C5200500E3BA84 /* HomePageEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageEntity.swift; sourceTree = "<group>"; };
+		40347BA524C5201E00E3BA84 /* HomePageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageRouter.swift; sourceTree = "<group>"; };
 		403D5DCE24BF4964002F4B88 /* CurrencyConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		403D5DD124BF4964002F4B88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		403D5DD524BF4964002F4B88 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -123,21 +123,21 @@
 		403D5DF824BF4966002F4B88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		403D5E0424BF49BE002F4B88 /* LaunchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchController.swift; sourceTree = "<group>"; };
 		403D5E0624BF4AA0002F4B88 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		40413C0D24D44CC1002267BC /* CourceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceCollectionViewCell.swift; sourceTree = "<group>"; };
-		40413C0F24D574CC002267BC /* ExchangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
-		405C77DF24D02FD000E2DD01 /* CourceCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceCollectionViewController.swift; sourceTree = "<group>"; };
+		40413C0D24D44CC1002267BC /* CourceCollectionPageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceCollectionPageViewCell.swift; sourceTree = "<group>"; };
+		40413C0F24D574CC002267BC /* ExchangePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangePageViewController.swift; sourceTree = "<group>"; };
+		405C77DF24D02FD000E2DD01 /* CourceCollectionPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceCollectionPageViewController.swift; sourceTree = "<group>"; };
 		4082F26A24E2E8D000E6068F /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		4082F26C24E2F19700E6068F /* HomeViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerExtension.swift; sourceTree = "<group>"; };
-		4085616824D8B2FE0006E94F /* DataHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandling.swift; sourceTree = "<group>"; };
 		4091081E24C1A9F0007F37FF /* NewTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTabBarController.swift; sourceTree = "<group>"; };
-		40982E2924D2185800DB753C /* CourceTableAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceTableAssembly.swift; sourceTree = "<group>"; };
-		40982E2D24D2194B00DB753C /* CourceTableInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceTableInteractor.swift; sourceTree = "<group>"; };
-		40982E3024D2199900DB753C /* CourceTablePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceTablePresenter.swift; sourceTree = "<group>"; };
-		40982E3324D21AE100DB753C /* CourceTableEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceTableEntity.swift; sourceTree = "<group>"; };
-		40982E3624D21B0A00DB753C /* CourceTableRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceTableRouter.swift; sourceTree = "<group>"; };
+		40982E2924D2185800DB753C /* CourceCollectionPageAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceCollectionPageAssembly.swift; sourceTree = "<group>"; };
+		40982E2D24D2194B00DB753C /* CourceCollectionPageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceCollectionPageInteractor.swift; sourceTree = "<group>"; };
+		40982E3024D2199900DB753C /* CourceCollectionPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceCollectionPagePresenter.swift; sourceTree = "<group>"; };
+		40982E3324D21AE100DB753C /* CourceCollectionPageEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceCollectionPageEntity.swift; sourceTree = "<group>"; };
+		40982E3624D21B0A00DB753C /* CourceCollectionPageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceCollectionPageRouter.swift; sourceTree = "<group>"; };
+		40BB7A2824F2AD3500AF598F /* ExchangePageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangePageInteractor.swift; sourceTree = "<group>"; };
 		40E8C99524EEFC84007493B7 /* CurrencyConvertationEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyConvertationEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		40E8C99624EEFC84007493B7 /* CurrencyConvertationEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyConvertationEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		40FC4BE024E2A6F900257D02 /* CourceCollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceCollectionExtension.swift; sourceTree = "<group>"; };
+		40FC4BE024E2A6F900257D02 /* CourceCollectionPageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceCollectionPageExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,52 +165,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		40243CC224EEC279003FC7C5 /* Router */ = {
+		40243CC224EEC279003FC7C5 /* ExchangePageRouter */ = {
 			isa = PBXGroup;
 			children = (
-				40243CCE24EED4F0003FC7C5 /* ExchangeRouter.swift */,
+				40243CCE24EED4F0003FC7C5 /* ExchangePageRouter.swift */,
 			);
-			path = Router;
+			path = ExchangePageRouter;
 			sourceTree = "<group>";
 		};
-		40243CC324EEC289003FC7C5 /* Entity */ = {
+		40243CC324EEC289003FC7C5 /* ExchangePageEntity */ = {
 			isa = PBXGroup;
 			children = (
-				40243CCC24EED4E0003FC7C5 /* ExchangeEntity.swift */,
+				40243CCC24EED4E0003FC7C5 /* ExchangePageEntity.swift */,
 			);
-			path = Entity;
+			path = ExchangePageEntity;
 			sourceTree = "<group>";
 		};
-		40243CC424EEC295003FC7C5 /* Presenter */ = {
+		40243CC424EEC295003FC7C5 /* ExchangePagePresenter */ = {
 			isa = PBXGroup;
 			children = (
-				40243CCA24EED4CF003FC7C5 /* ExchangePresenter.swift */,
+				40243CCA24EED4CF003FC7C5 /* ExchangePagePresenter.swift */,
 			);
-			path = Presenter;
+			path = ExchangePagePresenter;
 			sourceTree = "<group>";
 		};
-		40243CC524EEC29F003FC7C5 /* Interactor */ = {
+		40243CC524EEC29F003FC7C5 /* ExchangePageInteractor */ = {
 			isa = PBXGroup;
 			children = (
+				40BB7A2824F2AD3500AF598F /* ExchangePageInteractor.swift */,
 				402C08CB24E3DFF5001F8AFE /* CurrencyConvertationModel.swift */,
 			);
-			path = Interactor;
+			path = ExchangePageInteractor;
 			sourceTree = "<group>";
 		};
-		40243CC624EEC2A9003FC7C5 /* View */ = {
+		40243CC624EEC2A9003FC7C5 /* ExchangePageView */ = {
 			isa = PBXGroup;
 			children = (
-				40413C0F24D574CC002267BC /* ExchangeViewController.swift */,
+				40413C0F24D574CC002267BC /* ExchangePageViewController.swift */,
 			);
-			path = View;
+			path = ExchangePageView;
 			sourceTree = "<group>";
 		};
-		40243CC724EEC2B2003FC7C5 /* Assembly */ = {
+		40243CC724EEC2B2003FC7C5 /* ExchangePageAssembly */ = {
 			isa = PBXGroup;
 			children = (
-				40243CC824EED4B2003FC7C5 /* ExchangeAssembly.swift */,
+				40243CC824EED4B2003FC7C5 /* ExchangePageAssembly.swift */,
 			);
-			path = Assembly;
+			path = ExchangePageAssembly;
+			sourceTree = "<group>";
+		};
+		4025937924F13C57003F7538 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4082F26A24E2E8D000E6068F /* HomeCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		4025937A24F13C83003F7538 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				40413C0D24D44CC1002267BC /* CourceCollectionPageViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		403047B824DB02650081CAD6 /* Network */ = {
@@ -272,64 +289,64 @@
 		40347B9624C51ABF00E3BA84 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
-				40347B9724C51B6500E3BA84 /* Assembly */,
-				40347B9824C51B7500E3BA84 /* View */,
-				40347B9A24C51B9100E3BA84 /* Interactor */,
-				40347B9924C51B8300E3BA84 /* Presenter */,
-				40347B9B24C51BA200E3BA84 /* Entity */,
-				40347B9C24C51BA800E3BA84 /* Router */,
+				40347B9724C51B6500E3BA84 /* HomePageAssembly */,
+				40347B9824C51B7500E3BA84 /* HomePageView */,
+				40347B9A24C51B9100E3BA84 /* HomePageInteractor */,
+				40347B9924C51B8300E3BA84 /* HomePagePresenter */,
+				40347B9B24C51BA200E3BA84 /* HomePageEntity */,
+				40347B9C24C51BA800E3BA84 /* HomePageRouter */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
 		};
-		40347B9724C51B6500E3BA84 /* Assembly */ = {
+		40347B9724C51B6500E3BA84 /* HomePageAssembly */ = {
 			isa = PBXGroup;
 			children = (
-				40347B9D24C51D0200E3BA84 /* HomeAssembly.swift */,
+				40347B9D24C51D0200E3BA84 /* HomePageAssembly.swift */,
 			);
-			path = Assembly;
+			path = HomePageAssembly;
 			sourceTree = "<group>";
 		};
-		40347B9824C51B7500E3BA84 /* View */ = {
+		40347B9824C51B7500E3BA84 /* HomePageView */ = {
 			isa = PBXGroup;
 			children = (
-				4082F26A24E2E8D000E6068F /* HomeCollectionViewCell.swift */,
+				4025937924F13C57003F7538 /* Cell */,
 				403D5DD524BF4964002F4B88 /* HomeViewController.swift */,
 				4082F26C24E2F19700E6068F /* HomeViewControllerExtension.swift */,
 			);
-			path = View;
+			path = HomePageView;
 			sourceTree = "<group>";
 		};
-		40347B9924C51B8300E3BA84 /* Presenter */ = {
+		40347B9924C51B8300E3BA84 /* HomePagePresenter */ = {
 			isa = PBXGroup;
 			children = (
-				40347BA124C51FEE00E3BA84 /* HomePresenter.swift */,
+				40347BA124C51FEE00E3BA84 /* HomePagePresenter.swift */,
 			);
-			path = Presenter;
+			path = HomePagePresenter;
 			sourceTree = "<group>";
 		};
-		40347B9A24C51B9100E3BA84 /* Interactor */ = {
+		40347B9A24C51B9100E3BA84 /* HomePageInteractor */ = {
 			isa = PBXGroup;
 			children = (
-				40347B9F24C51FDE00E3BA84 /* HomeInteractor.swift */,
+				40347B9F24C51FDE00E3BA84 /* HomePageInteractor.swift */,
 			);
-			path = Interactor;
+			path = HomePageInteractor;
 			sourceTree = "<group>";
 		};
-		40347B9B24C51BA200E3BA84 /* Entity */ = {
+		40347B9B24C51BA200E3BA84 /* HomePageEntity */ = {
 			isa = PBXGroup;
 			children = (
-				40347BA324C5200500E3BA84 /* HomeEntity.swift */,
+				40347BA324C5200500E3BA84 /* HomePageEntity.swift */,
 			);
-			path = Entity;
+			path = HomePageEntity;
 			sourceTree = "<group>";
 		};
-		40347B9C24C51BA800E3BA84 /* Router */ = {
+		40347B9C24C51BA800E3BA84 /* HomePageRouter */ = {
 			isa = PBXGroup;
 			children = (
-				40347BA524C5201E00E3BA84 /* HomeRouter.swift */,
+				40347BA524C5201E00E3BA84 /* HomePageRouter.swift */,
 			);
-			path = Router;
+			path = HomePageRouter;
 			sourceTree = "<group>";
 		};
 		403D5DC524BF4964002F4B88 = {
@@ -361,7 +378,7 @@
 				403D5E0B24BF4D4C002F4B88 /* Location */,
 				403D5E0C24BF4D6A002F4B88 /* Controllers */,
 				40347B9624C51ABF00E3BA84 /* HomePage */,
-				40982E2724D2173E00DB753C /* CourceTablePage */,
+				40982E2724D2173E00DB753C /* CourceCollectionPage */,
 				40413C1124D574D4002267BC /* ExchangePage */,
 				403D5DDD24BF4966002F4B88 /* Assets.xcassets */,
 			);
@@ -417,12 +434,12 @@
 		40413C1124D574D4002267BC /* ExchangePage */ = {
 			isa = PBXGroup;
 			children = (
-				40243CC724EEC2B2003FC7C5 /* Assembly */,
-				40243CC624EEC2A9003FC7C5 /* View */,
-				40243CC524EEC29F003FC7C5 /* Interactor */,
-				40243CC424EEC295003FC7C5 /* Presenter */,
-				40243CC324EEC289003FC7C5 /* Entity */,
-				40243CC224EEC279003FC7C5 /* Router */,
+				40243CC724EEC2B2003FC7C5 /* ExchangePageAssembly */,
+				40243CC624EEC2A9003FC7C5 /* ExchangePageView */,
+				40243CC524EEC29F003FC7C5 /* ExchangePageInteractor */,
+				40243CC424EEC295003FC7C5 /* ExchangePagePresenter */,
+				40243CC324EEC289003FC7C5 /* ExchangePageEntity */,
+				40243CC224EEC279003FC7C5 /* ExchangePageRouter */,
 			);
 			path = ExchangePage;
 			sourceTree = "<group>";
@@ -433,74 +450,73 @@
 				40E8C99524EEFC84007493B7 /* CurrencyConvertationEntity+CoreDataClass.swift */,
 				40E8C99624EEFC84007493B7 /* CurrencyConvertationEntity+CoreDataProperties.swift */,
 				400B977D24E9C2F60078642D /* DataManager.swift */,
-				4085616824D8B2FE0006E94F /* DataHandling.swift */,
 				403D5DDA24BF4964002F4B88 /* CurrencyConvertationStorage.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		40982E2724D2173E00DB753C /* CourceTablePage */ = {
+		40982E2724D2173E00DB753C /* CourceCollectionPage */ = {
 			isa = PBXGroup;
 			children = (
-				40982E2824D217AC00DB753C /* Assembly */,
-				40982E2B24D2186200DB753C /* View */,
-				40982E2C24D2192900DB753C /* Interactor */,
-				40982E2F24D2197A00DB753C /* Presenter */,
-				40982E3224D21ACC00DB753C /* Entity */,
-				40982E3524D21AF800DB753C /* Router */,
+				40982E2824D217AC00DB753C /* CourceCollectionPageAssembly */,
+				40982E2B24D2186200DB753C /* CourceCollectionPageView */,
+				40982E2C24D2192900DB753C /* CourceCollectionPageInteractor */,
+				40982E2F24D2197A00DB753C /* CourceCollectionPagePresenter */,
+				40982E3224D21ACC00DB753C /* CourceCollectionPageEntity */,
+				40982E3524D21AF800DB753C /* CourceCollectionPageRouter */,
 			);
-			path = CourceTablePage;
+			path = CourceCollectionPage;
 			sourceTree = "<group>";
 		};
-		40982E2824D217AC00DB753C /* Assembly */ = {
+		40982E2824D217AC00DB753C /* CourceCollectionPageAssembly */ = {
 			isa = PBXGroup;
 			children = (
-				40982E2924D2185800DB753C /* CourceTableAssembly.swift */,
+				40982E2924D2185800DB753C /* CourceCollectionPageAssembly.swift */,
 			);
-			path = Assembly;
+			path = CourceCollectionPageAssembly;
 			sourceTree = "<group>";
 		};
-		40982E2B24D2186200DB753C /* View */ = {
+		40982E2B24D2186200DB753C /* CourceCollectionPageView */ = {
 			isa = PBXGroup;
 			children = (
-				40413C0D24D44CC1002267BC /* CourceCollectionViewCell.swift */,
-				405C77DF24D02FD000E2DD01 /* CourceCollectionViewController.swift */,
-				40FC4BE024E2A6F900257D02 /* CourceCollectionExtension.swift */,
+				4025937A24F13C83003F7538 /* Cell */,
+				405C77DF24D02FD000E2DD01 /* CourceCollectionPageViewController.swift */,
+				40FC4BE024E2A6F900257D02 /* CourceCollectionPageExtension.swift */,
 				40064A1C24E024210099FE02 /* ShapeView.swift */,
 			);
-			path = View;
+			path = CourceCollectionPageView;
 			sourceTree = "<group>";
 		};
-		40982E2C24D2192900DB753C /* Interactor */ = {
+		40982E2C24D2192900DB753C /* CourceCollectionPageInteractor */ = {
 			isa = PBXGroup;
 			children = (
-				40982E2D24D2194B00DB753C /* CourceTableInteractor.swift */,
+				40982E2D24D2194B00DB753C /* CourceCollectionPageInteractor.swift */,
 			);
-			path = Interactor;
+			path = CourceCollectionPageInteractor;
 			sourceTree = "<group>";
 		};
-		40982E2F24D2197A00DB753C /* Presenter */ = {
+		40982E2F24D2197A00DB753C /* CourceCollectionPagePresenter */ = {
 			isa = PBXGroup;
 			children = (
-				40982E3024D2199900DB753C /* CourceTablePresenter.swift */,
+				40982E3024D2199900DB753C /* CourceCollectionPagePresenter.swift */,
 			);
-			path = Presenter;
+			path = CourceCollectionPagePresenter;
 			sourceTree = "<group>";
 		};
-		40982E3224D21ACC00DB753C /* Entity */ = {
+		40982E3224D21ACC00DB753C /* CourceCollectionPageEntity */ = {
 			isa = PBXGroup;
 			children = (
-				40982E3324D21AE100DB753C /* CourceTableEntity.swift */,
+				40982E3324D21AE100DB753C /* CourceCollectionPageEntity.swift */,
 			);
-			path = Entity;
+			path = CourceCollectionPageEntity;
 			sourceTree = "<group>";
 		};
-		40982E3524D21AF800DB753C /* Router */ = {
+		40982E3524D21AF800DB753C /* CourceCollectionPageRouter */ = {
 			isa = PBXGroup;
 			children = (
-				40982E3624D21B0A00DB753C /* CourceTableRouter.swift */,
+				40982E3624D21B0A00DB753C /* CourceCollectionPageRouter.swift */,
 			);
-			path = Router;
+			path = CourceCollectionPageRouter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -635,46 +651,46 @@
 			buildActionMask = 2147483647;
 			files = (
 				40064A1D24E024210099FE02 /* ShapeView.swift in Sources */,
-				40243CCF24EED4F0003FC7C5 /* ExchangeRouter.swift in Sources */,
-				40347BA024C51FDE00E3BA84 /* HomeInteractor.swift in Sources */,
+				40243CCF24EED4F0003FC7C5 /* ExchangePageRouter.swift in Sources */,
+				40347BA024C51FDE00E3BA84 /* HomePageInteractor.swift in Sources */,
 				403D5E0524BF49BE002F4B88 /* LaunchController.swift in Sources */,
-				40982E3724D21B0A00DB753C /* CourceTableRouter.swift in Sources */,
+				40982E3724D21B0A00DB753C /* CourceCollectionPageRouter.swift in Sources */,
 				403D5DD624BF4964002F4B88 /* HomeViewController.swift in Sources */,
-				40FC4BE124E2A6F900257D02 /* CourceCollectionExtension.swift in Sources */,
+				40FC4BE124E2A6F900257D02 /* CourceCollectionPageExtension.swift in Sources */,
 				403047C124DB03A40081CAD6 /* ApiClient.swift in Sources */,
-				40347BA424C5200500E3BA84 /* HomeEntity.swift in Sources */,
+				40347BA424C5200500E3BA84 /* HomePageEntity.swift in Sources */,
 				403D5E0724BF4AA0002F4B88 /* LocationManager.swift in Sources */,
 				4091081F24C1A9F0007F37FF /* NewTabBarController.swift in Sources */,
 				403047C624DB03E60081CAD6 /* HTTPMethod.swift in Sources */,
+				40BB7A2924F2AD3500AF598F /* ExchangePageInteractor.swift in Sources */,
 				403047C424DB03CD0081CAD6 /* EndPointType.swift in Sources */,
-				40982E3124D2199900DB753C /* CourceTablePresenter.swift in Sources */,
-				40243CCD24EED4E0003FC7C5 /* ExchangeEntity.swift in Sources */,
+				40982E3124D2199900DB753C /* CourceCollectionPagePresenter.swift in Sources */,
+				40243CCD24EED4E0003FC7C5 /* ExchangePageEntity.swift in Sources */,
 				40E8C99824EEFC84007493B7 /* CurrencyConvertationEntity+CoreDataProperties.swift in Sources */,
 				403D5DDC24BF4964002F4B88 /* CurrencyConvertationStorage.xcdatamodeld in Sources */,
 				403047CF24DB04540081CAD6 /* JSONParameterEncoder.swift in Sources */,
 				403047BE24DB03750081CAD6 /* CurrencyEndPoint.swift in Sources */,
-				4085616924D8B2FE0006E94F /* DataHandling.swift in Sources */,
 				4082F26B24E2E8D000E6068F /* HomeCollectionViewCell.swift in Sources */,
-				40982E2E24D2194B00DB753C /* CourceTableInteractor.swift in Sources */,
-				40982E2A24D2185800DB753C /* CourceTableAssembly.swift in Sources */,
-				40982E3424D21AE100DB753C /* CourceTableEntity.swift in Sources */,
+				40982E2E24D2194B00DB753C /* CourceCollectionPageInteractor.swift in Sources */,
+				40982E2A24D2185800DB753C /* CourceCollectionPageAssembly.swift in Sources */,
+				40982E3424D21AE100DB753C /* CourceCollectionPageEntity.swift in Sources */,
 				403248D024E17C5700192102 /* PopUpViewController.swift in Sources */,
-				405C77E024D02FD000E2DD01 /* CourceCollectionViewController.swift in Sources */,
+				405C77E024D02FD000E2DD01 /* CourceCollectionPageViewController.swift in Sources */,
 				403047CB24DB04250081CAD6 /* ParameterEncoding.swift in Sources */,
 				403047C824DB03FE0081CAD6 /* HTTPTask.swift in Sources */,
-				40243CC924EED4B2003FC7C5 /* ExchangeAssembly.swift in Sources */,
+				40243CC924EED4B2003FC7C5 /* ExchangePageAssembly.swift in Sources */,
 				403047CD24DB04400081CAD6 /* URLParameterEncoding.swift in Sources */,
 				403047BB24DB03460081CAD6 /* CurrencyModel.swift in Sources */,
 				40E8C99724EEFC84007493B7 /* CurrencyConvertationEntity+CoreDataClass.swift in Sources */,
 				403D5DD224BF4964002F4B88 /* AppDelegate.swift in Sources */,
-				40413C0E24D44CC1002267BC /* CourceCollectionViewCell.swift in Sources */,
+				40413C0E24D44CC1002267BC /* CourceCollectionPageViewCell.swift in Sources */,
 				4082F26D24E2F19700E6068F /* HomeViewControllerExtension.swift in Sources */,
 				402C08CC24E3DFF5001F8AFE /* CurrencyConvertationModel.swift in Sources */,
-				40347BA224C51FEE00E3BA84 /* HomePresenter.swift in Sources */,
-				40347BA624C5201E00E3BA84 /* HomeRouter.swift in Sources */,
-				40347B9E24C51D0200E3BA84 /* HomeAssembly.swift in Sources */,
-				40413C1024D574CC002267BC /* ExchangeViewController.swift in Sources */,
-				40243CCB24EED4CF003FC7C5 /* ExchangePresenter.swift in Sources */,
+				40347BA224C51FEE00E3BA84 /* HomePagePresenter.swift in Sources */,
+				40347BA624C5201E00E3BA84 /* HomePageRouter.swift in Sources */,
+				40347B9E24C51D0200E3BA84 /* HomePageAssembly.swift in Sources */,
+				40413C1024D574CC002267BC /* ExchangePageViewController.swift in Sources */,
+				40243CCB24EED4CF003FC7C5 /* ExchangePagePresenter.swift in Sources */,
 				400B977E24E9C2F60078642D /* DataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

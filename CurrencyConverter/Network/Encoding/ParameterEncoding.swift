@@ -40,7 +40,7 @@ public enum ParameterEncoding {
                 try JSONParameterEncoder().encode(urlRequest: &urlRequest, with: bodyParameters)
                 
             }
-        }catch {
+        } catch {
             throw error
         }
     }

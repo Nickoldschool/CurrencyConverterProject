@@ -9,7 +9,11 @@
 import Foundation
 import CoreData
 
-class DataManager {
+final class DataManager {
+    
+    //MARK: - Shared Instance
+    
+    static let shared = DataManager()
     
     // MARK: - Core Data stack
     
@@ -53,7 +57,7 @@ class DataManager {
     
     // MARK: - CurrencyConvertation CRUD
     
-    private func createCurrencyConvertation(_ currencyConvertation: CurrencyConvertation) {
+    func createCurrencyConvertation(model currencyConvertation: CurrencyConvertation) {
         
         let newCurrencyConvertation = NSEntityDescription.insertNewObject(forEntityName: Keys.currencyConvertation,
                                                                           into: managedObjectContext) as! CurrencyConvertationEntity
@@ -66,11 +70,11 @@ class DataManager {
         do {
             try managedObjectContext.save()
         } catch {
-            print("Failed to create credit card: \(error)")
+            print("Failed to create currency: \(error)")
         }
     }
     
-    private func retrieveCurrencyConvertation() -> [CurrencyConvertation]? {
+    func retrieveCurrencyConvertation() -> [CurrencyConvertation]? {
         
         let fetchRequest = NSFetchRequest<CurrencyConvertationEntity>(entityName: Keys.currencyConvertation)
         do {
@@ -88,25 +92,25 @@ class DataManager {
             }
             return result
         } catch {
-            print("Failed to get credit card: \(error)")
+            print("Failed to get currency: \(error)")
         }
         return nil
     }
     
-    private func deleteCurrencyConvertation(_ fromCurrency: String,
-                                            _ toCurrency: String,
-                                            _ enteredAmount: String,
-                                            _ convertedAmount: String) {
+    func deleteCurrencyConvertation(_ fromCurrency: String,
+                                    _ toCurrency: String,
+                                    _ enteredAmount: String,
+                                    _ convertedAmount: String) {
         
         let fetchRequest = NSFetchRequest<CurrencyConvertationEntity>(entityName: Keys.currencyConvertation)
         fetchRequest.predicate = NSPredicate(format: "fromCurrency == %@ && toCurrency == %@ && enteredAmount == %@ && convertedAmount == %@",                                  fromCurrency, toCurrency, enteredAmount, convertedAmount)
         do {
-            if let card = try managedObjectContext.fetch(fetchRequest).first {
-                managedObjectContext.delete(card)
+            if let currency = try managedObjectContext.fetch(fetchRequest).first {
+                managedObjectContext.delete(currency)
                 try managedObjectContext.save()
             }
         } catch {
-            print("Failed to delete credit card: \(error)")
+            print("Failed to delete currency: \(error)")
         }
     }
     

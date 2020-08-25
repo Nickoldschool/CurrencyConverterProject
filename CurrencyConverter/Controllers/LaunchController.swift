@@ -11,6 +11,7 @@ import UIKit
 final class LaunchController: UIViewController {
     
     let label = UILabel()
+    let button = UIButton()
     var pulseLayers = [CAShapeLayer]()
     
     override func viewDidLoad() {
@@ -27,7 +28,6 @@ final class LaunchController: UIViewController {
     
     private func createButton() {
         
-        let button = UIButton()
         button.backgroundColor = #colorLiteral(red: 0.3421914876, green: 0.02416796796, blue: 0.4802301526, alpha: 1)
         button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
         button.setTitle("Currency Converter", for: .normal)

@@ -15,13 +15,13 @@ final class NewTabBarController: UITabBarController {
         
         view.backgroundColor = .white
         
-        let firstController = UINavigationController(rootViewController: HomeViewController())
+        let firstController = UINavigationController(rootViewController: HomePageViewController())
         firstController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "time"), tag: 0)
       
-        let secondController = UINavigationController(rootViewController: CourceCollectionViewController())
+        let secondController = UINavigationController(rootViewController: CourceCollectionPageViewController())
         secondController.tabBarItem = UITabBarItem(title: "Cource board", image: UIImage(named: "grow portfolio"), tag: 1)
         
-        let thirdController = UINavigationController(rootViewController: ExchangeViewController())
+        let thirdController = UINavigationController(rootViewController: ExchangePageViewController())
         thirdController.tabBarItem = UITabBarItem(title: "Exchange", image: UIImage(named: "suitcase"), tag: 2)
         
 //        let fourthController = UINavigationController()

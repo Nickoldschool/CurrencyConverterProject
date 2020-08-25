@@ -106,6 +106,13 @@ extension PopUpViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         NotificationCenter.default.post(name: .selectedCurrency, object: self)
     }
     
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let titleData = currencies[row]
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+
+        return myTitle
+    }
+    
 }
 
 extension Notification.Name {
