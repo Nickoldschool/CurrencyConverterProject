@@ -88,7 +88,8 @@ class HomeCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate 
     
     fileprivate func style(view: UIView) {
         view.layer.masksToBounds        = false
-        view.backgroundColor            = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+        //view.backgroundColor            = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+        view.backgroundColor            = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
         view.layer.cornerRadius         = 5
         view.layer.shadowColor          = UIColor.black.cgColor
         view.layer.shadowOffset         = CGSize(width: 1, height: 5)

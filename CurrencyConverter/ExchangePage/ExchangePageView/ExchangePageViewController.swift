@@ -71,12 +71,10 @@ final class ExchangePageViewController: UIViewController, ExchangePageViewContro
         createElements()
         addSubviews()
         setupConstraints()
-        
         registerForKeyboardNotifications()
     }
     
     deinit {
-        
         removeForKeyboardNotification()
     }
     
@@ -102,14 +100,12 @@ final class ExchangePageViewController: UIViewController, ExchangePageViewContro
         toLabel.textColor =  #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
         fromTextField.textColor = .black
-        //fromTextField.placeholder = "Please,enter ammount"
         fromTextField.attributedPlaceholder = NSAttributedString(string: "Please,enter ammount", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray ])
         fromTextField.keyboardType = .decimalPad
         fromTextField.textAlignment = . center
         fromTextField.backgroundColor =  #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
         toTextField.textColor = .black
-        //toTextField.placeholder = "Please,enter ammount"
         toTextField.attributedPlaceholder = NSAttributedString(string: "Please,enter ammount", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray ])
         toTextField.keyboardType = .decimalPad
         toTextField.textAlignment = . center
@@ -305,17 +301,12 @@ final class ExchangePageViewController: UIViewController, ExchangePageViewContro
     //MARK: - Pushing back to Home Controller for showing recent convertations
     
     @objc private func pushToModelVC() {
-        
-        //        let currencyConvertation = CurrencyConvertation(fromCurrency: firstCurrency,
-        //                                                        toCurrency: secondCurrency,
-        //                                                        enteredAmount: firstRate,
-        //                                                        convertedAmount: secondRate)
-        //        DataManager.shared.createCurrencyConvertation(model: currencyConvertation)
-        delegate = exVC
-        delegate?.currencyConvertation.append(CurrencyConvertation(fromCurrency: firstCurrency,
-                                                                   toCurrency: secondCurrency,
-                                                                   enteredAmount: firstRate,
-                                                                   convertedAmount: secondRate))
+
+//        delegate = exVC
+//        delegate?.currencyConvertation.append(CurrencyConvertation(fromCurrency: firstCurrency,
+//                                                                   toCurrency: secondCurrency,
+//                                                                   enteredAmount: firstRate,
+//                                                                   convertedAmount: secondRate))
         let currencyConvertation = CurrencyConvertation(fromCurrency: firstCurrency,
                                                         toCurrency: secondCurrency,
                                                         enteredAmount: firstRate,

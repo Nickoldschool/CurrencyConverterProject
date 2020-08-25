@@ -50,4 +50,5 @@ extension HomePageViewController: UICollectionViewDelegateFlowLayout {
       currencies!.remove(at: indexPath.row)
       collectionView.deleteItems(at: [indexPath])
     }
+    
 }

@@ -24,7 +24,7 @@ extension CourceCollectionPageViewController: UICollectionViewDelegate, UICollec
         
         let rate = rates[indexPath.row]
         guard let cell = myCollectionView.dequeueReusableCell(withReuseIdentifier: CourceCollectionPageViewCell.identifier, for: indexPath) as? CourceCollectionPageViewCell else { return UICollectionViewCell() }
-        cell.updateData(rate: rate, entery: 0)
+        cell.updateData(rate: rate, entery: self.firstRate)
         return cell
     }
     

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		40064A1D24E024210099FE02 /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40064A1C24E024210099FE02 /* ShapeView.swift */; };
 		400B977E24E9C2F60078642D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400B977D24E9C2F60078642D /* DataManager.swift */; };
 		40243CC924EED4B2003FC7C5 /* ExchangePageAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40243CC824EED4B2003FC7C5 /* ExchangePageAssembly.swift */; };
 		40243CCB24EED4CF003FC7C5 /* ExchangePagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40243CCA24EED4CF003FC7C5 /* ExchangePagePresenter.swift */; };
@@ -36,7 +35,6 @@
 		403D5DE124BF4966002F4B88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 403D5DDF24BF4966002F4B88 /* LaunchScreen.storyboard */; };
 		403D5DEC24BF4966002F4B88 /* CurrencyConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D5DEB24BF4966002F4B88 /* CurrencyConverterTests.swift */; };
 		403D5DF724BF4966002F4B88 /* CurrencyConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D5DF624BF4966002F4B88 /* CurrencyConverterUITests.swift */; };
-		403D5E0524BF49BE002F4B88 /* LaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D5E0424BF49BE002F4B88 /* LaunchController.swift */; };
 		403D5E0724BF4AA0002F4B88 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D5E0624BF4AA0002F4B88 /* LocationManager.swift */; };
 		40413C0E24D44CC1002267BC /* CourceCollectionPageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40413C0D24D44CC1002267BC /* CourceCollectionPageViewCell.swift */; };
 		40413C1024D574CC002267BC /* ExchangePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40413C0F24D574CC002267BC /* ExchangePageViewController.swift */; };
@@ -86,7 +84,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		40064A1C24E024210099FE02 /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
 		400B977D24E9C2F60078642D /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		40243CC824EED4B2003FC7C5 /* ExchangePageAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangePageAssembly.swift; sourceTree = "<group>"; };
 		40243CCA24EED4CF003FC7C5 /* ExchangePagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangePagePresenter.swift; sourceTree = "<group>"; };
@@ -121,7 +118,6 @@
 		403D5DF224BF4966002F4B88 /* CurrencyConverterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyConverterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		403D5DF624BF4966002F4B88 /* CurrencyConverterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterUITests.swift; sourceTree = "<group>"; };
 		403D5DF824BF4966002F4B88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		403D5E0424BF49BE002F4B88 /* LaunchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchController.swift; sourceTree = "<group>"; };
 		403D5E0624BF4AA0002F4B88 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		40413C0D24D44CC1002267BC /* CourceCollectionPageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceCollectionPageViewCell.swift; sourceTree = "<group>"; };
 		40413C0F24D574CC002267BC /* ExchangePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangePageViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +161,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		400E9BFE24F5633500812A2D /* CoreDataEntity */ = {
+			isa = PBXGroup;
+			children = (
+				40E8C99524EEFC84007493B7 /* CurrencyConvertationEntity+CoreDataClass.swift */,
+				40E8C99624EEFC84007493B7 /* CurrencyConvertationEntity+CoreDataProperties.swift */,
+				403D5DDA24BF4964002F4B88 /* CurrencyConvertationStorage.xcdatamodeld */,
+			);
+			path = CoreDataEntity;
+			sourceTree = "<group>";
+		};
 		40243CC224EEC279003FC7C5 /* ExchangePageRouter */ = {
 			isa = PBXGroup;
 			children = (
@@ -424,7 +430,6 @@
 		403D5E0C24BF4D6A002F4B88 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				403D5E0424BF49BE002F4B88 /* LaunchController.swift */,
 				4091081E24C1A9F0007F37FF /* NewTabBarController.swift */,
 				403248CF24E17C5700192102 /* PopUpViewController.swift */,
 			);
@@ -447,10 +452,8 @@
 		4085616724D8B2C10006E94F /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				40E8C99524EEFC84007493B7 /* CurrencyConvertationEntity+CoreDataClass.swift */,
-				40E8C99624EEFC84007493B7 /* CurrencyConvertationEntity+CoreDataProperties.swift */,
+				400E9BFE24F5633500812A2D /* CoreDataEntity */,
 				400B977D24E9C2F60078642D /* DataManager.swift */,
-				403D5DDA24BF4964002F4B88 /* CurrencyConvertationStorage.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -482,7 +485,6 @@
 				4025937A24F13C83003F7538 /* Cell */,
 				405C77DF24D02FD000E2DD01 /* CourceCollectionPageViewController.swift */,
 				40FC4BE024E2A6F900257D02 /* CourceCollectionPageExtension.swift */,
-				40064A1C24E024210099FE02 /* ShapeView.swift */,
 			);
 			path = CourceCollectionPageView;
 			sourceTree = "<group>";
@@ -650,10 +652,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40064A1D24E024210099FE02 /* ShapeView.swift in Sources */,
 				40243CCF24EED4F0003FC7C5 /* ExchangePageRouter.swift in Sources */,
 				40347BA024C51FDE00E3BA84 /* HomePageInteractor.swift in Sources */,
-				403D5E0524BF49BE002F4B88 /* LaunchController.swift in Sources */,
 				40982E3724D21B0A00DB753C /* CourceCollectionPageRouter.swift in Sources */,
 				403D5DD624BF4964002F4B88 /* HomeViewController.swift in Sources */,
 				40FC4BE124E2A6F900257D02 /* CourceCollectionPageExtension.swift in Sources */,
