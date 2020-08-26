@@ -203,9 +203,9 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
         
         recentConvertationsLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            recentConvertationsLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 30),
+            recentConvertationsLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 10),
             recentConvertationsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            recentConvertationsLabel.heightAnchor.constraint(equalToConstant: 90),
+            recentConvertationsLabel.heightAnchor.constraint(equalToConstant: 35),
             recentConvertationsLabel.widthAnchor.constraint(equalToConstant: 250),
         ])
         
@@ -233,12 +233,6 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
             homeCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
         ])
         
-    }
-    
-    @objc private func pushToModelVC() {
-        
-        let exVC = ExchangePageViewController()
-        navigationController?.pushViewController(exVC, animated: true)
     }
     
     //MARK: - Call button for moving to next view

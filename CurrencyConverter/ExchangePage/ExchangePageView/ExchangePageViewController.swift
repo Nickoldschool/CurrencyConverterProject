@@ -301,12 +301,12 @@ final class ExchangePageViewController: UIViewController, ExchangePageViewContro
     //MARK: - Pushing back to Home Controller for showing recent convertations
     
     @objc private func pushToModelVC() {
-
-//        delegate = exVC
-//        delegate?.currencyConvertation.append(CurrencyConvertation(fromCurrency: firstCurrency,
-//                                                                   toCurrency: secondCurrency,
-//                                                                   enteredAmount: firstRate,
-//                                                                   convertedAmount: secondRate))
+        
+        //        delegate = exVC
+        //        delegate?.currencyConvertation.append(CurrencyConvertation(fromCurrency: firstCurrency,
+        //                                                                   toCurrency: secondCurrency,
+        //                                                                   enteredAmount: firstRate,
+        //                                                                   convertedAmount: secondRate))
         let currencyConvertation = CurrencyConvertation(fromCurrency: firstCurrency,
                                                         toCurrency: secondCurrency,
                                                         enteredAmount: firstRate,

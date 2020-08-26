@@ -101,7 +101,7 @@ final class DataManager {
                                     _ toCurrency: String,
                                     _ enteredAmount: String,
                                     _ convertedAmount: String) {
-        
+
         let fetchRequest = NSFetchRequest<CurrencyConvertationEntity>(entityName: Keys.currencyConvertation)
         fetchRequest.predicate = NSPredicate(format: "fromCurrency == %@ && toCurrency == %@ && enteredAmount == %@ && convertedAmount == %@",                                  fromCurrency, toCurrency, enteredAmount, convertedAmount)
         do {
@@ -113,6 +113,20 @@ final class DataManager {
             print("Failed to delete currency: \(error)")
         }
     }
+    
+//    func deleteCurrencyConvertation(model currencyConvertation: CurrencyConvertation) {
+//        
+//        let fetchRequest = NSFetchRequest<CurrencyConvertationEntity>(entityName: Keys.currencyConvertation)
+//        fetchRequest.predicate = NSPredicate(format: "currencyConvertation == %@", currencyConvertation as! CVarArg)
+//        do {
+//            if let currency = try managedObjectContext.fetch(fetchRequest).first {
+//                managedObjectContext.delete(currency)
+//                try managedObjectContext.save()
+//            }
+//        } catch {
+//            print("Failed to delete currency: \(error)")
+//        }
+//    }
     
     
     func deleteAllInstancesOf(entity: String) {

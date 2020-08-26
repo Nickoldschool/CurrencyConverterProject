@@ -101,6 +101,9 @@ final class CourceCollectionPageViewCell: UICollectionViewCell {
             flagImage.image                 = UIImage(named: rate.currency)
             resulLabel.text = ""
         } else {
+            currencyName.text               = rate.currency
+            currencyRate.text               = "Current rate: \(String(round((rate.rate)*100)/100))"
+            flagImage.image                 = UIImage(named: rate.currency)
             resulLabel.text = String(round((entery * rate.rate)*100)/100)
         }
         
