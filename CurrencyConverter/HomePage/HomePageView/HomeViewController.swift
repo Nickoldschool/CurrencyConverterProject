@@ -52,10 +52,12 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        navigationController?.setNavigationBarHidden(true, animated: false)
         
         configureLabel()
         configureTableView()
+        
         
         addSubViews()
         addConstraints()
@@ -63,7 +65,6 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
         
         if currencies!.isEmpty {
             
-            navigationController?.setNavigationBarHidden(true, animated: false )
             animatePulsatingLayer()
             configureButton()
             recentConvertationsLabel.isHidden = true
@@ -74,6 +75,35 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
             infoLabel.isHidden = true
         }
 
+    }
+
+    deinit {
+        removePulsation()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+//        currencies = DataManager.shared.retrieveCurrencyConvertation()
+//        homeCollectionView.reloadData()
+        
+        if currencies!.isEmpty {
+            animatePulsatingLayer()
+        }
+    }
+    
+    private func registerPulsation() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(animatePulsatingLayer),
+                                               name: Notification.Name(rawValue: "PulseAnimation"), object: nil);
+        
+    }
+    
+    //MARK: - Remove Keyboard Observer for Notification Center
+    
+    private func removePulsation() {
+        
+        NotificationCenter.default.removeObserver(self, name: Notification.Name(rawValue: "PulseAnimation"), object: nil)
     }
     
     //MARK: - CollectionView
@@ -162,7 +192,7 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
         button.addTarget(self, action: #selector(moveToExchangeController), for: .touchUpInside)
     }
     
-    private func animatePulsatingLayer() {
+    @objc private func animatePulsatingLayer() {
         
         view.layer.addSublayer(puslsatingLayer)
         puslsatingLayer.position    = view.center
@@ -242,7 +272,7 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
         presenter?.nextPage()
         let ExVC = ExchangePageViewController()
         navigationController?.pushViewController(ExVC,animated: true)
-        
+       
     }
 
     func updateView() {

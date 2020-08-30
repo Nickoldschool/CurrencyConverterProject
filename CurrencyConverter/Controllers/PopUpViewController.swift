@@ -81,7 +81,7 @@ final class PopUpViewController: UIViewController {
         doneButton.setTitle("Close", for: .normal)
     }
     
-    @objc fileprivate func handleDismiss(){
+    @objc fileprivate func handleDismiss() {
         dismiss(animated: true, completion: nil)
     }
     

@@ -36,19 +36,6 @@ final class DataManager {
         return context
     }()
     
-    // MARK: - Core Data Saving 
-    
-    func saveContext() {
-        if managedObjectContext.hasChanges {
-            do {
-                try managedObjectContext.save()
-            } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
-    }
-    
     //MARK: - Methods
     
     func entityForName(_ name: String) -> NSEntityDescription {
@@ -114,23 +101,8 @@ final class DataManager {
         }
     }
     
-//    func deleteCurrencyConvertation(model currencyConvertation: CurrencyConvertation) {
-//        
-//        let fetchRequest = NSFetchRequest<CurrencyConvertationEntity>(entityName: Keys.currencyConvertation)
-//        fetchRequest.predicate = NSPredicate(format: "currencyConvertation == %@", currencyConvertation as! CVarArg)
-//        do {
-//            if let currency = try managedObjectContext.fetch(fetchRequest).first {
-//                managedObjectContext.delete(currency)
-//                try managedObjectContext.save()
-//            }
-//        } catch {
-//            print("Failed to delete currency: \(error)")
-//        }
-//    }
-    
-    
-    func deleteAllInstancesOf(entity: String) {
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: entity)
+    func deleteAllInstancesOf() {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: Keys.currencyConvertation)
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         do {
             try managedObjectContext.execute(deleteRequest)

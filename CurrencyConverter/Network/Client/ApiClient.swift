@@ -116,7 +116,7 @@ struct NetworkManager {
     static let CurrencyAPIKey = ""
     let router = Router<CurrencyApi>()
     
-    func getCurrencies(rate: String, completion: @escaping (_ currency: CurrencyData?,_ error: String?)->()){
+    func getCurrencies(rate: String, completion: @escaping (_ currency: CurrencyData?,_ error: String?)->()) {
         router.request(.base(rate: rate)) { data, response, error in
             
             if error != nil {
@@ -147,7 +147,7 @@ struct NetworkManager {
         }
     }
     
-    func getTwoRates(firstRate: String , secondRate: String, completion: @escaping (_ currency: CurrencyData?,_ error: String?)->()){
+    func getTwoRates(firstRate: String , secondRate: String, completion: @escaping (_ currency: CurrencyData?,_ error: String?)->()) {
         router.request(.fromBaseToCurrent(firstRate: firstRate, secondRate: secondRate)) { data, response, error in
             
             if error != nil {
@@ -178,7 +178,7 @@ struct NetworkManager {
         }
     }
     
-    func getRateHostory(firstRate: String , secondRate: String, startDate: String , endDate: String, completion: @escaping (_ currency: TwoCurrencies?,_ error: String?)->()){
+    func getRateHostory(firstRate: String , secondRate: String, startDate: String , endDate: String, completion: @escaping (_ currency: TwoCurrencies?,_ error: String?)->()) {
         router.request(.timePeriodRate(firstRate: firstRate, secondRate: secondRate, startDate: startDate, endDate: endDate)) { data, response, error in
                
                if error != nil {

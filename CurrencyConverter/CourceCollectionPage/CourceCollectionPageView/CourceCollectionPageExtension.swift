@@ -46,4 +46,3 @@ extension CourceCollectionPageViewController: UICollectionViewDelegateFlowLayout
         return layout.sectionInset
     }
 }
-

@@ -59,7 +59,7 @@ final class CourceCollectionPageViewCell: UICollectionViewCell {
             currencyRate.topAnchor.constraint(equalTo: contentView.centerYAnchor),
             currencyRate.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
             currencyRate.leftAnchor.constraint(equalTo: flagImage.rightAnchor, constant: 15),
-            currencyRate.rightAnchor.constraint(equalTo: contentView.rightAnchor,constant: -80),
+            currencyRate.rightAnchor.constraint(equalTo: contentView.rightAnchor,constant: -100),
         ])
         
         resulLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -78,7 +78,7 @@ final class CourceCollectionPageViewCell: UICollectionViewCell {
         view.layer.shadowColor          = UIColor.black.cgColor
         view.layer.shadowOffset         = CGSize(width: 1, height: 5)
         view.layer.shadowRadius         = 8
-        view.layer.shadowOpacity        = 0.2
+        view.layer.shadowOpacity        = 0.3
         view.layer.shadowPath           = UIBezierPath(roundedRect: view.bounds,
                                                        byRoundingCorners: .allCorners,
                                                        cornerRadii: CGSize(width: 14, height: 14)).cgPath

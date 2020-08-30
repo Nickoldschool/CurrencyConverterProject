@@ -68,6 +68,7 @@ final class ExchangePageViewController: UIViewController, ExchangePageViewContro
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.setNavigationBarHidden(true, animated: false )
         createElements()
         addSubviews()
         setupConstraints()
@@ -83,7 +84,7 @@ final class ExchangePageViewController: UIViewController, ExchangePageViewContro
     
     private func createElements() {
         
-        exchangeImage.contentMode = .scaleToFill // scaleAspectFill
+        exchangeImage.contentMode = .scaleAspectFill
         
         scrollView.keyboardDismissMode = .onDrag
         scrollView.layer.cornerRadius = 15
@@ -99,17 +100,32 @@ final class ExchangePageViewController: UIViewController, ExchangePageViewContro
         toLabel.text = "To"
         toLabel.textColor =  #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
+        // ToolBar
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor(red: 92/255, green: 216/255, blue: 255/255, alpha: 1)
+        toolBar.sizeToFit()
+        
+        // Adding Button ToolBar
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(handleClick))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolBar.setItems([spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
         fromTextField.textColor = .black
         fromTextField.attributedPlaceholder = NSAttributedString(string: "Please,enter ammount", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray ])
-        fromTextField.keyboardType = .decimalPad
+        fromTextField.keyboardType = .numberPad
         fromTextField.textAlignment = . center
         fromTextField.backgroundColor =  #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        fromTextField.inputAccessoryView = toolBar
         
         toTextField.textColor = .black
         toTextField.attributedPlaceholder = NSAttributedString(string: "Please,enter ammount", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray ])
-        toTextField.keyboardType = .decimalPad
+        toTextField.keyboardType = .numberPad
         toTextField.textAlignment = . center
         toTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        toTextField.inputAccessoryView = toolBar
         
         firstPickerView.delegate = self
         firstPickerView.dataSource = self
@@ -117,6 +133,7 @@ final class ExchangePageViewController: UIViewController, ExchangePageViewContro
         firstCurrencyChoose.textAlignment = .center
         firstCurrencyChoose.text = firstCurrency
         firstCurrencyChoose.textColor = .black
+        firstCurrencyChoose.inputAccessoryView = toolBar
         
         secondPickerView.delegate = self
         secondPickerView.dataSource = self
@@ -124,6 +141,7 @@ final class ExchangePageViewController: UIViewController, ExchangePageViewContro
         secondCurrencyChoose.textAlignment = .center
         secondCurrencyChoose.text = secondCurrency
         secondCurrencyChoose.textColor = .black
+        secondCurrencyChoose.inputAccessoryView = toolBar
         
         pushButton.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         pushButton.setTitle("Save", for: .normal)
@@ -142,6 +160,14 @@ final class ExchangePageViewController: UIViewController, ExchangePageViewContro
         //MARK: - method for dynamically change converted value
         fromTextField.addTarget(self, action: #selector(callNetwork), for: .editingChanged)
         
+    }
+    
+    //MARK:- Picker View Button
+    @objc func handleClick() {
+        fromTextField.resignFirstResponder()
+        toTextField.resignFirstResponder()
+        firstCurrencyChoose.resignFirstResponder()
+        secondCurrencyChoose.resignFirstResponder()
     }
     
     //MARK: - Adding elements to View
@@ -179,7 +205,7 @@ final class ExchangePageViewController: UIViewController, ExchangePageViewContro
         
         exchangeImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            exchangeImage.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 50),
+            exchangeImage.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 15),
             exchangeImage.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             exchangeImage.heightAnchor.constraint(equalToConstant: 240),
             exchangeImage.widthAnchor.constraint(equalToConstant: 350),
@@ -301,12 +327,7 @@ final class ExchangePageViewController: UIViewController, ExchangePageViewContro
     //MARK: - Pushing back to Home Controller for showing recent convertations
     
     @objc private func pushToModelVC() {
-        
-        //        delegate = exVC
-        //        delegate?.currencyConvertation.append(CurrencyConvertation(fromCurrency: firstCurrency,
-        //                                                                   toCurrency: secondCurrency,
-        //                                                                   enteredAmount: firstRate,
-        //                                                                   convertedAmount: secondRate))
+    
         let currencyConvertation = CurrencyConvertation(fromCurrency: firstCurrency,
                                                         toCurrency: secondCurrency,
                                                         enteredAmount: firstRate,

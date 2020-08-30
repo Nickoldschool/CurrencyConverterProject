@@ -11,16 +11,15 @@ import UIKit
 class HomeCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate  {
     
     var pan: UIPanGestureRecognizer!
-    var deleteLabel1: UILabel!
-    var deleteLabel2: UILabel!
+    var deleteLabel: UILabel!
     
     static let identifier = "HomeCollectionViewCell"  
     
-    var firstLabel = UILabel()
+    var firstLabel  = UILabel()
     var secondLabel = UILabel()
-    var thirdlabel = UILabel()
+    var thirdlabel  = UILabel()
     var fourthLabel = UILabel()
-    let equalLabel = UILabel()
+    let equalLabel  = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -88,13 +87,12 @@ class HomeCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate 
     
     fileprivate func style(view: UIView) {
         view.layer.masksToBounds        = false
-        //view.backgroundColor            = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
         view.backgroundColor            = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
         view.layer.cornerRadius         = 5
         view.layer.shadowColor          = UIColor.black.cgColor
         view.layer.shadowOffset         = CGSize(width: 1, height: 5)
         view.layer.shadowRadius         = 8
-        view.layer.shadowOpacity        = 0.2
+        view.layer.shadowOpacity        = 0.3
         view.layer.shadowPath           = UIBezierPath(roundedRect: view.bounds,
                                                        byRoundingCorners: .allCorners,
                                                        cornerRadii: CGSize(width: 14, height: 14)).cgPath
@@ -103,29 +101,22 @@ class HomeCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate 
         
         firstLabel.textColor            = .white
         secondLabel.textColor           = .white
-        thirdlabel.textColor             = .white
+        thirdlabel.textColor            = .white
         fourthLabel.textColor           = .white
         
-        firstLabel.textAlignment = .right
-        thirdlabel.textAlignment = .right
+        firstLabel.textAlignment        = .right
+        thirdlabel.textAlignment        = .right
         
-        equalLabel.text = " = "
-        equalLabel.textAlignment = .center
-        equalLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        
-        deleteLabel1 = UILabel()
-        deleteLabel1.text = " Delete "
-        deleteLabel1.textAlignment = .right
-        deleteLabel1.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        deleteLabel1.backgroundColor = #colorLiteral(red: 1, green: 0, blue: 0.1665322185, alpha: 1)
-        self.insertSubview(deleteLabel1, belowSubview: self.contentView)
+        equalLabel.text                 = " = "
+        equalLabel.textAlignment        = .center
+        equalLabel.textColor            = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
 
-        deleteLabel2 = UILabel()
-        deleteLabel2.text = " Delete "
-        deleteLabel2.textAlignment = .left
-        deleteLabel2.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        deleteLabel2.backgroundColor = #colorLiteral(red: 1, green: 0, blue: 0.1665322185, alpha: 1)
-        self.insertSubview(deleteLabel2, belowSubview: self.contentView)
+        deleteLabel                     = UILabel()
+        deleteLabel.text                = " Delete "
+        deleteLabel.textAlignment       = .left
+        deleteLabel.textColor           = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        deleteLabel.backgroundColor     = #colorLiteral(red: 1, green: 0, blue: 0.1665322185, alpha: 1)
+        self.insertSubview(deleteLabel, belowSubview: self.contentView)
         
         pan = UIPanGestureRecognizer(target: self, action: #selector(onPan(_:)))
         pan.delegate = self
@@ -141,11 +132,8 @@ class HomeCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate 
         let width = self.contentView.frame.width
         let height = self.contentView.frame.height
         self.contentView.frame = CGRect(x: p.x,y: 0, width: width, height: height);
-        self.deleteLabel1.frame = CGRect(x: p.x - deleteLabel1.frame.size.width, y: 0,
-                                         width: width, height: height)
-        self.deleteLabel2.frame = CGRect(x: p.x + width + deleteLabel2.frame.size.width, y: 0,
+        self.deleteLabel.frame = CGRect(x: p.x + width + deleteLabel.frame.size.width, y: 0,
                                          width: -width, height: height)
-            
       }
 
     }

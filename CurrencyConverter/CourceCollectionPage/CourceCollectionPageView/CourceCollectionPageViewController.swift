@@ -47,6 +47,7 @@ final class CourceCollectionPageViewController: UIViewController, CourceCollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.setNavigationBarHidden(true, animated: false )
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
         configureLabels()
@@ -101,14 +102,34 @@ final class CourceCollectionPageViewController: UIViewController, CourceCollecti
         selectCurrencyButton.layer.masksToBounds = true
         
         enterTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        enterTextField.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         enterTextField.textAlignment = .center
-        enterTextField.keyboardType = .decimalPad
+        enterTextField.keyboardType = .numberPad
         enterTextField.layer.cornerRadius = 5
         enterTextField.attributedPlaceholder = NSAttributedString(string: "Please,enter ammount", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray ])
         
+        // ToolBar
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor(red: 92/255, green: 216/255, blue: 255/255, alpha: 1)
+        toolBar.sizeToFit()
+        
+        // Adding Button ToolBar
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(handleClick))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolBar.setItems([spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        enterTextField.inputAccessoryView = toolBar
+        
         //MARK: - method for dynamically change converted value
         enterTextField.addTarget(self, action: #selector(callNetwork), for: .editingChanged)
-        
+    }
+    
+    
+    //MARK:- Picker View Button
+    @objc func handleClick() {
+        enterTextField.resignFirstResponder()
     }
     
     //MARK: - Call PopUpCOntroller with currencies Picker View
@@ -135,11 +156,6 @@ final class CourceCollectionPageViewController: UIViewController, CourceCollecti
             }
         }
         
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        enterTextField.endEditing(true)
     }
     
     //MARK: - Call Observer for dynamically change current currency
@@ -172,7 +188,7 @@ final class CourceCollectionPageViewController: UIViewController, CourceCollecti
         
         purpleView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            purpleView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            purpleView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
             purpleView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             purpleView.heightAnchor.constraint(equalToConstant: 140),
             purpleView.widthAnchor.constraint(equalToConstant: view.bounds.width - 40),
@@ -212,7 +228,7 @@ final class CourceCollectionPageViewController: UIViewController, CourceCollecti
         
         myCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            myCollectionView.topAnchor.constraint(equalTo: purpleView.bottomAnchor, constant: 10),
+            myCollectionView.topAnchor.constraint(equalTo: purpleView.bottomAnchor, constant: 5),
             myCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
             myCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -20),
             myCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
