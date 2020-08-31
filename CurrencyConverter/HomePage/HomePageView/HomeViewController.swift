@@ -55,32 +55,22 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         navigationController?.setNavigationBarHidden(true, animated: false)
         
-        configureLabel()
-        //configureTableView()
-        
-        addSubViews()
-        addConstraints()
-        presenter?.viewready()
-
-    }
-
-    deinit {
-        removePulsation()
+        setupCurrentLocation()
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         currencies = DataManager.shared.retrieveCurrencyConvertation()
-        configureTableView()
         
         if currencies!.isEmpty {
             
-            animatePulsatingLayer()
-            configureButton()
-            recentConvertationsLabel.isHidden = true
-            homeCollectionView.isHidden = true
+            configureEmptyScreenMode()
+            button.isHidden = false
+            infoLabel.isHidden = false
         } else {
+            configureFilledScreenMode()
             puslsatingLayer.removeAllAnimations()
             puslsatingLayer.removeFromSuperlayer()
             removePulsation()
@@ -88,28 +78,8 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
             infoLabel.isHidden = true
             homeCollectionView.reloadData()
         }
+        
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//        currencies = DataManager.shared.retrieveCurrencyConvertation()
-//        homeCollectionView.reloadData()
-//
-//        if currencies!.isEmpty {
-//            animatePulsatingLayer()
-//        } else {
-//            removePulsation()
-//            puslsatingLayer.removeAllAnimations()
-//            puslsatingLayer.removeFromSuperlayer()
-//            button.isHidden = true
-//            infoLabel.isHidden = true
-//            configureTableView()
-//            addSubViews()
-//            addConstraints()
-//            homeCollectionView.reloadData()
-//        }
-//    }
     
     private func registerPulsation() {
         
@@ -125,9 +95,68 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
         NotificationCenter.default.removeObserver(self, name: Notification.Name(rawValue: "PulseAnimation"), object: nil)
     }
     
+    //MARK: - Configure Elements
+    
+    private func configureEmptyScreenMode() {
+        
+        infoLabel.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        infoLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        infoLabel.text = "No current convertations,go to Exchange to convert"
+        infoLabel.textAlignment = .center
+        infoLabel.numberOfLines = 0
+        
+        button.layer.cornerRadius = 90
+        button.layer.masksToBounds = true
+        button.setTitleColor( #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal )
+        button.setTitle("Choose currency", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Times New Roman", size:27)
+        button.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping;
+        button.titleLabel?.textAlignment = .center
+        button.backgroundColor = #colorLiteral(red: 0.3949316144, green: 0.02323797345, blue: 0.5600934625, alpha: 1)
+        button.addTarget(self, action: #selector(moveToExchangeController), for: .touchUpInside)
+        
+        animatePulsatingLayer()
+        
+        view.addSubview(button)
+        view.addSubview(infoLabel)
+        
+        infoLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            infoLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150),
+            infoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            infoLabel.heightAnchor.constraint(equalToConstant: 90),
+            infoLabel.widthAnchor.constraint(equalToConstant: 250),
+        ])
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            button.heightAnchor.constraint(equalToConstant: 180),
+            button.widthAnchor.constraint(equalToConstant: 180),
+        ])
+        
+    }
+    
     //MARK: - CollectionView
     
-    private func configureTableView() {
+    private func configureFilledScreenMode() {
+        
+        recentConvertationsLabel.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        recentConvertationsLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        recentConvertationsLabel.text = "Recent convertations:"
+        recentConvertationsLabel.textAlignment = .center
+        recentConvertationsLabel.numberOfLines = 0
+        
+        view.addSubview(recentConvertationsLabel)
+
+        recentConvertationsLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            recentConvertationsLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 10),
+            recentConvertationsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            recentConvertationsLabel.heightAnchor.constraint(equalToConstant: 35),
+            recentConvertationsLabel.widthAnchor.constraint(equalToConstant: 250),
+        ])
         
         layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
         layout.itemSize = CGSize(width: view.frame.width - 40, height: 45)
@@ -152,29 +181,25 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
         
     }
     
-    //MARK: - Configure Elements
-    
-    private func configureLabel() {
+    //MARK: - Setup current Location
+        
+    private func setupCurrentLocation() {
         
         locationLabel.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         locationLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         locationLabel.textAlignment = .center
         locationLabel.numberOfLines = 0
         
-        infoLabel.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        infoLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        infoLabel.text = "No current convertations,go to Exchange to convert"
-        infoLabel.textAlignment = .center
-        infoLabel.numberOfLines = 0
+        view.addSubview(locationLabel)
         
-        recentConvertationsLabel.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        recentConvertationsLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        recentConvertationsLabel.text = "Recent convertations:"
-        recentConvertationsLabel.textAlignment = .center
-        recentConvertationsLabel.numberOfLines = 0
-        
-        //Setup current Location
-        
+        locationLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            locationLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 90),
+            locationLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            locationLabel.heightAnchor.constraint(equalToConstant: 90),
+            locationLabel.widthAnchor.constraint(equalToConstant: 250),
+        ])
+    
         guard let exposedLocation = self.locationManager.exposedLocation else {
             print("*** Error in \(#function): exposedLocation is nil")
             return
@@ -192,7 +217,6 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
             }
             self.locationLabel.text = output
         }
-        
     }
     
     lazy var puslsatingLayer: CAShapeLayer = {
@@ -200,26 +224,10 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
         shape.strokeColor   = #colorLiteral(red: 0.6424693465, green: 0.002870330121, blue: 0.9131718278, alpha: 1)
         shape.lineWidth     = 20
         shape.lineCap       = CAShapeLayerLineCap.round
-        if #available(iOS 11.0, *) {
-            shape.fillColor     = UIColor(named: "system")?.withAlphaComponent(0.3).cgColor
-        } else {
-            // Fallback on earlier versions
-        }
+        shape.fillColor     = #colorLiteral(red: 0.6424693465, green: 0.002870330121, blue: 0.9131718278, alpha: 1)
+        
         return shape
     }()
-    
-    private func configureButton() {
-        
-        button.layer.cornerRadius = 90
-        button.layer.masksToBounds = true
-        button.setTitleColor( #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal )
-        button.setTitle("Choose currency", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Times New Roman", size:27)
-        button.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping;
-        button.titleLabel?.textAlignment = .center
-        button.backgroundColor = #colorLiteral(red: 0.3949316144, green: 0.02323797345, blue: 0.5600934625, alpha: 1)
-        button.addTarget(self, action: #selector(moveToExchangeController), for: .touchUpInside)
-    }
     
     @objc private func animatePulsatingLayer() {
         
@@ -241,58 +249,18 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
         puslsatingLayer.add(animation, forKey: "pulsating")
     }
     
-    private func addSubViews() {
-        
-        view.addSubview(locationLabel)
-        view.addSubview(button)
-        view.addSubview(infoLabel)
-        view.addSubview(recentConvertationsLabel)
-    }
-    
-    private func addConstraints() {
-        
-        locationLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            locationLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 90),
-            locationLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            locationLabel.heightAnchor.constraint(equalToConstant: 90),
-            locationLabel.widthAnchor.constraint(equalToConstant: 250),
-        ])
-        
-        recentConvertationsLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            recentConvertationsLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 10),
-            recentConvertationsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            recentConvertationsLabel.heightAnchor.constraint(equalToConstant: 35),
-            recentConvertationsLabel.widthAnchor.constraint(equalToConstant: 250),
-        ])
-        
-        infoLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            infoLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150),
-            infoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            infoLabel.heightAnchor.constraint(equalToConstant: 90),
-            infoLabel.widthAnchor.constraint(equalToConstant: 250),
-        ])
-        
-        button.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.heightAnchor.constraint(equalToConstant: 180),
-            button.widthAnchor.constraint(equalToConstant: 180),
-        ])
-        
-    }
-    
     //MARK: - Call button for moving to next view
     
     @objc private func moveToExchangeController() {
         
         presenter?.nextPage()
-        let ExVC = ExchangePageViewController()
-        navigationController?.pushViewController(ExVC,animated: true)
-       
+        
+        let blurView = BlurViewController()
+        
+        blurView.textLabel.text = "Please, go to Exchange page for convertation"
+        blurView.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+        present(blurView, animated: true, completion: nil)
+        
     }
 
     func updateView() {

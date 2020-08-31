@@ -38,6 +38,7 @@
 		403D5E0724BF4AA0002F4B88 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D5E0624BF4AA0002F4B88 /* LocationManager.swift */; };
 		40413C0E24D44CC1002267BC /* CourceCollectionPageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40413C0D24D44CC1002267BC /* CourceCollectionPageViewCell.swift */; };
 		40413C1024D574CC002267BC /* ExchangePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40413C0F24D574CC002267BC /* ExchangePageViewController.swift */; };
+		404F40AF24FD91850022050B /* BlurViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404F40AE24FD91850022050B /* BlurViewController.swift */; };
 		405C77E024D02FD000E2DD01 /* CourceCollectionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C77DF24D02FD000E2DD01 /* CourceCollectionPageViewController.swift */; };
 		4082F26B24E2E8D000E6068F /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082F26A24E2E8D000E6068F /* HomeCollectionViewCell.swift */; };
 		4082F26D24E2F19700E6068F /* HomeViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082F26C24E2F19700E6068F /* HomeViewControllerExtension.swift */; };
@@ -121,6 +122,7 @@
 		403D5E0624BF4AA0002F4B88 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		40413C0D24D44CC1002267BC /* CourceCollectionPageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceCollectionPageViewCell.swift; sourceTree = "<group>"; };
 		40413C0F24D574CC002267BC /* ExchangePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangePageViewController.swift; sourceTree = "<group>"; };
+		404F40AE24FD91850022050B /* BlurViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurViewController.swift; sourceTree = "<group>"; };
 		405C77DF24D02FD000E2DD01 /* CourceCollectionPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceCollectionPageViewController.swift; sourceTree = "<group>"; };
 		4082F26A24E2E8D000E6068F /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		4082F26C24E2F19700E6068F /* HomeViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -432,6 +434,7 @@
 			children = (
 				4091081E24C1A9F0007F37FF /* NewTabBarController.swift */,
 				403248CF24E17C5700192102 /* PopUpViewController.swift */,
+				404F40AE24FD91850022050B /* BlurViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -679,6 +682,7 @@
 				403047CB24DB04250081CAD6 /* ParameterEncoding.swift in Sources */,
 				403047C824DB03FE0081CAD6 /* HTTPTask.swift in Sources */,
 				40243CC924EED4B2003FC7C5 /* ExchangePageAssembly.swift in Sources */,
+				404F40AF24FD91850022050B /* BlurViewController.swift in Sources */,
 				403047CD24DB04400081CAD6 /* URLParameterEncoding.swift in Sources */,
 				403047BB24DB03460081CAD6 /* CurrencyModel.swift in Sources */,
 				40E8C99724EEFC84007493B7 /* CurrencyConvertationEntity+CoreDataClass.swift in Sources */,

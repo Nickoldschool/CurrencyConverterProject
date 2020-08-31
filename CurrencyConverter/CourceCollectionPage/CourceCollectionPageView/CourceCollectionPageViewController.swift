@@ -136,7 +136,7 @@ final class CourceCollectionPageViewController: UIViewController, CourceCollecti
     
     @objc public func handleSelect(){
         let selectVC = UINavigationController(rootViewController: PopUpViewController())
-        selectVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        selectVC.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
         present(selectVC, animated: true, completion: nil)
     }
     

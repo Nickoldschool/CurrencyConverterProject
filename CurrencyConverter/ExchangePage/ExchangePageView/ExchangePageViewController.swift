@@ -35,7 +35,7 @@ final class ExchangePageViewController: UIViewController, ExchangePageViewContro
     var toTextField = UITextField()
     let pushButton = UIButton()
     
-    let exVC = HomePageViewController()
+    let blurView = BlurViewController()
     
     //MARK: - Delegate
     
@@ -69,6 +69,7 @@ final class ExchangePageViewController: UIViewController, ExchangePageViewContro
         super.viewDidLoad()
         
         navigationController?.setNavigationBarHidden(true, animated: false )
+        
         createElements()
         addSubviews()
         setupConstraints()
@@ -147,7 +148,7 @@ final class ExchangePageViewController: UIViewController, ExchangePageViewContro
         pushButton.setTitle("Save", for: .normal)
         pushButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         pushButton.layer.cornerRadius = 15
-        pushButton.addTarget(self, action: #selector(pushToModelVC), for: .touchUpInside)
+        pushButton.addTarget(self, action: #selector(saveConvertations), for: .touchUpInside)
         
         firstCurrencyChoose.backgroundColor = .white
         secondCurrencyChoose.backgroundColor = .white
@@ -159,7 +160,6 @@ final class ExchangePageViewController: UIViewController, ExchangePageViewContro
         
         //MARK: - method for dynamically change converted value
         fromTextField.addTarget(self, action: #selector(callNetwork), for: .editingChanged)
-        
     }
     
     //MARK:- Picker View Button
@@ -324,16 +324,27 @@ final class ExchangePageViewController: UIViewController, ExchangePageViewContro
         }
     }
     
+    
     //MARK: - Pushing back to Home Controller for showing recent convertations
     
-    @objc private func pushToModelVC() {
-    
-        let currencyConvertation = CurrencyConvertation(fromCurrency: firstCurrency,
-                                                        toCurrency: secondCurrency,
-                                                        enteredAmount: firstRate,
-                                                        convertedAmount: secondRate)
-        DataManager.shared.createCurrencyConvertation(model: currencyConvertation)
-        navigationController?.pushViewController(exVC, animated: true)
+    @objc private func saveConvertations() {
+        
+        if fromTextField.text!.isEmpty {
+                
+            blurView.textLabel.text = "Please, enter ammount for convertation"
+            blurView.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+            present(blurView, animated: true, completion: nil)
+        } else {
+            
+            blurView.textLabel.text = "Your convertation was saved, please, check Home page"
+            let currencyConvertation = CurrencyConvertation(fromCurrency: firstCurrency,
+                                                                   toCurrency: secondCurrency,
+                                                                   enteredAmount: firstRate,
+                                                                   convertedAmount: secondRate)
+                   DataManager.shared.createCurrencyConvertation(model: currencyConvertation)
+            blurView.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+            present(blurView, animated: true, completion: nil)
+        }
     }
     
 }
@@ -366,7 +377,6 @@ extension ExchangePageViewController: UIPickerViewDelegate, UIPickerViewDataSour
         let userInfo = notification.userInfo
         let kbFrameSize = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         scrollView.contentOffset = CGPoint(x: 0, y: kbFrameSize.height)
-        //purpleView.bounds.origin.y =  kbFrameSize.height
     }
     
     //MARK: - Method for hiding Keyboard
@@ -396,10 +406,12 @@ extension ExchangePageViewController: UIPickerViewDelegate, UIPickerViewDataSour
             firstCurrencyChoose.text = selectedCurrency
             firstCurrency = firstCurrencyChoose.text!
             callNetwork()
+            
         } else {
             secondCurrencyChoose.text = selectedCurrency
             secondCurrency = secondCurrencyChoose.text!
             callNetwork()
+           
         }
         
     }
