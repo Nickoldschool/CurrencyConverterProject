@@ -16,15 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Round" translatesAutoresizingMaskIntoConstraints="NO" id="UDB-AB-bHW">
-                                <rect key="frame" x="117" y="358" width="180" height="180"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Launch" translatesAutoresizingMaskIntoConstraints="NO" id="UDB-AB-bHW">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.98431372549019602" green="0.65490196078431373" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="UDB-AB-bHW" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="0b8-Ji-3h3"/>
-                            <constraint firstItem="UDB-AB-bHW" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-5" id="Ln7-0o-gIh"/>
+                            <constraint firstItem="UDB-AB-bHW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="21Y-Nk-V9I"/>
+                            <constraint firstAttribute="bottom" secondItem="UDB-AB-bHW" secondAttribute="bottom" id="9gz-8V-sN8"/>
+                            <constraint firstItem="UDB-AB-bHW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="K4J-77-A8C"/>
+                            <constraint firstItem="UDB-AB-bHW" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="iDK-x0-XFG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -35,6 +37,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Round" width="180" height="180"/>
+        <image name="Launch" width="414" height="896"/>
     </resources>
 </document>

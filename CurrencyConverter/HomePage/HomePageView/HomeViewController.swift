@@ -58,22 +58,9 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
         configureLabel()
         configureTableView()
         
-        
         addSubViews()
         addConstraints()
         presenter?.viewready()
-        
-        if currencies!.isEmpty {
-            
-            animatePulsatingLayer()
-            configureButton()
-            recentConvertationsLabel.isHidden = true
-            homeCollectionView.isHidden = true
-        } else {
-            
-            button.isHidden = true
-            infoLabel.isHidden = true
-        }
 
     }
 
@@ -84,11 +71,19 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        currencies = DataManager.shared.retrieveCurrencyConvertation()
-//        homeCollectionView.reloadData()
+        currencies = DataManager.shared.retrieveCurrencyConvertation()
+        homeCollectionView.reloadData()
         
         if currencies!.isEmpty {
+            
             animatePulsatingLayer()
+            configureButton()
+            recentConvertationsLabel.isHidden = true
+            homeCollectionView.isHidden = true
+        } else {
+            removePulsation()
+            button.isHidden = true
+            infoLabel.isHidden = true
         }
     }
     
