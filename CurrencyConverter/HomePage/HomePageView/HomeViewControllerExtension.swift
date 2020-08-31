@@ -49,6 +49,7 @@ extension HomePageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
       currencies!.remove(at: indexPath.row)
       collectionView.deleteItems(at: [indexPath])
+      DataManager.shared.deleteCurrencyConvertation()
     }
     
 }

@@ -56,7 +56,7 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         configureLabel()
-        configureTableView()
+        //configureTableView()
         
         addSubViews()
         addConstraints()
@@ -72,7 +72,7 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
         super.viewWillAppear(animated)
         
         currencies = DataManager.shared.retrieveCurrencyConvertation()
-        homeCollectionView.reloadData()
+        configureTableView()
         
         if currencies!.isEmpty {
             
@@ -81,11 +81,35 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
             recentConvertationsLabel.isHidden = true
             homeCollectionView.isHidden = true
         } else {
+            puslsatingLayer.removeAllAnimations()
+            puslsatingLayer.removeFromSuperlayer()
             removePulsation()
             button.isHidden = true
             infoLabel.isHidden = true
+            homeCollectionView.reloadData()
         }
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//        currencies = DataManager.shared.retrieveCurrencyConvertation()
+//        homeCollectionView.reloadData()
+//
+//        if currencies!.isEmpty {
+//            animatePulsatingLayer()
+//        } else {
+//            removePulsation()
+//            puslsatingLayer.removeAllAnimations()
+//            puslsatingLayer.removeFromSuperlayer()
+//            button.isHidden = true
+//            infoLabel.isHidden = true
+//            configureTableView()
+//            addSubViews()
+//            addConstraints()
+//            homeCollectionView.reloadData()
+//        }
+//    }
     
     private func registerPulsation() {
         
@@ -115,6 +139,16 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
         if let flowLayout = homeCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.scrollDirection = .vertical
         }
+        
+        view.addSubview(homeCollectionView)
+        
+        homeCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            homeCollectionView.topAnchor.constraint(equalTo: recentConvertationsLabel.bottomAnchor, constant: 10),
+            homeCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
+            homeCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -20),
+            homeCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+        ])
         
     }
     
@@ -211,7 +245,6 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
         
         view.addSubview(locationLabel)
         view.addSubview(button)
-        view.addSubview(homeCollectionView)
         view.addSubview(infoLabel)
         view.addSubview(recentConvertationsLabel)
     }
@@ -248,14 +281,6 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             button.heightAnchor.constraint(equalToConstant: 180),
             button.widthAnchor.constraint(equalToConstant: 180),
-        ])
-        
-        homeCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            homeCollectionView.topAnchor.constraint(equalTo: recentConvertationsLabel.bottomAnchor, constant: 10),
-            homeCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
-            homeCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -20),
-            homeCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
         ])
         
     }

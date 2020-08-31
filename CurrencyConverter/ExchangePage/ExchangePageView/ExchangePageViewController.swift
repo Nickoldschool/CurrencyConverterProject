@@ -366,7 +366,7 @@ extension ExchangePageViewController: UIPickerViewDelegate, UIPickerViewDataSour
         let userInfo = notification.userInfo
         let kbFrameSize = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         scrollView.contentOffset = CGPoint(x: 0, y: kbFrameSize.height)
-        
+        //purpleView.bounds.origin.y =  kbFrameSize.height
     }
     
     //MARK: - Method for hiding Keyboard

@@ -84,20 +84,21 @@ final class DataManager {
         return nil
     }
     
-    func deleteCurrencyConvertation(_ fromCurrency: String,
-                                    _ toCurrency: String,
-                                    _ enteredAmount: String,
-                                    _ convertedAmount: String) {
-
-        let fetchRequest = NSFetchRequest<CurrencyConvertationEntity>(entityName: Keys.currencyConvertation)
-        fetchRequest.predicate = NSPredicate(format: "fromCurrency == %@ && toCurrency == %@ && enteredAmount == %@ && convertedAmount == %@",                                  fromCurrency, toCurrency, enteredAmount, convertedAmount)
+    func deleteCurrencyConvertation() {
+        let fetchRequest: NSFetchRequest<CurrencyConvertationEntity> = CurrencyConvertationEntity.fetchRequest()
         do {
-            if let currency = try managedObjectContext.fetch(fetchRequest).first {
-                managedObjectContext.delete(currency)
+            let currencies = try managedObjectContext.fetch(fetchRequest)
+            for currency in currencies { managedObjectContext.delete(currency) }
+        } catch let err as NSError {
+            print("Failed to fetch user", err)
+        }
+        
+        if managedObjectContext.hasChanges {
+            do {
                 try managedObjectContext.save()
+            } catch let error as NSError {
+                print("Error in saving core data: ", error)
             }
-        } catch {
-            print("Failed to delete currency: \(error)")
         }
     }
     
