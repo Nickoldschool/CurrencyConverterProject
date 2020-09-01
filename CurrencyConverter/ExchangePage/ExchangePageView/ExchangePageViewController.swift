@@ -307,7 +307,7 @@ final class ExchangePageViewController: UIViewController, ExchangePageViewContro
             pushButton.centerXAnchor.constraint(equalTo: purpleView.centerXAnchor),
             pushButton.heightAnchor.constraint(equalToConstant: 40),
             pushButton.widthAnchor.constraint(equalToConstant: 150),
-            pushButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -50),
+            pushButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -10),
         ])
         
     }
@@ -412,10 +412,24 @@ extension ExchangePageViewController: UIPickerViewDelegate, UIPickerViewDataSour
     //MARK: - Method for showing Keyboard
     
     @objc func keyboardWillShow(_ notification: Notification) {
+       
+        if view.bounds.size.height > 850 {
+            scrollView.contentOffset = CGPoint(x: 0, y: 140)
+            
+            return
+        } else if view.bounds.size.height > 800 {
+            scrollView.contentOffset = CGPoint(x: 0, y: 220)
+            
+            return
+        } else if view.bounds.size.height > 650  {
+            scrollView.contentOffset = CGPoint(x: 0, y: 280)
+            
+        }
+        else {
+            scrollView.contentOffset = CGPoint(x: 0, y: 370)
+            
+        }
         
-        let userInfo = notification.userInfo
-        let kbFrameSize = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        scrollView.contentOffset = CGPoint(x: 0, y: kbFrameSize.height)
     }
     
     //MARK: - Method for hiding Keyboard

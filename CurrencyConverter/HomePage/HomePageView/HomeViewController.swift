@@ -69,6 +69,7 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
             configureEmptyScreenMode()
             button.isHidden = false
             infoLabel.isHidden = false
+            recentConvertationsLabel.isHidden = true
         } else {
             configureFilledScreenMode()
             puslsatingLayer.removeAllAnimations()
@@ -76,6 +77,7 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
             removePulsation()
             button.isHidden = true
             infoLabel.isHidden = true
+            recentConvertationsLabel.isHidden = false
             homeCollectionView.reloadData()
         }
         
@@ -120,20 +122,20 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
         view.addSubview(button)
         view.addSubview(infoLabel)
         
-        infoLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            infoLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150),
-            infoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            infoLabel.heightAnchor.constraint(equalToConstant: 90),
-            infoLabel.widthAnchor.constraint(equalToConstant: 250),
-        ])
-        
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             button.heightAnchor.constraint(equalToConstant: 180),
             button.widthAnchor.constraint(equalToConstant: 180),
+        ])
+        
+        infoLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            infoLabel.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 50),
+            infoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            infoLabel.heightAnchor.constraint(equalToConstant: 90),
+            infoLabel.widthAnchor.constraint(equalToConstant: 250),
         ])
         
     }

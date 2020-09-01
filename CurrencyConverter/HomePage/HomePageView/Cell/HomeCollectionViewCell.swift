@@ -144,7 +144,7 @@ class HomeCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate 
         } else if pan.state == UIGestureRecognizer.State.changed {
         self.setNeedsLayout()
       } else {
-        if abs(pan.velocity(in: self).x) > 500 {
+        if abs(pan.velocity(in: self).x) > 300 {
           let collectionView: UICollectionView = self.superview as! UICollectionView
           let indexPath: IndexPath = collectionView.indexPathForItem(at: self.center)!
           collectionView.delegate?.collectionView!(collectionView, performAction: #selector(onPan(_:)),
