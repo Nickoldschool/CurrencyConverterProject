@@ -121,6 +121,8 @@ final class ExchangePageViewController: UIViewController, ExchangePageViewContro
         fromTextField.backgroundColor =  #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         fromTextField.inputAccessoryView = toolBar
         
+        fromTextField.delegate = self
+        
         toTextField.textColor = .black
         toTextField.attributedPlaceholder = NSAttributedString(string: "Please,enter ammount", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray ])
         toTextField.keyboardType = .numberPad
@@ -347,9 +349,46 @@ final class ExchangePageViewController: UIViewController, ExchangePageViewContro
         }
     }
     
+    //MARK: - Validate textField input
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        //Prevent "0" characters as the first characters. (i.e.: There should not be values like "003" "01" "000012" etc.)
+        if fromTextField.text?.count == 0 && string == "0" {
+            blurView.textLabel.text = "Sorry, incorrect input"
+            blurView.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+            present(blurView, animated: true, completion: nil)
+            return false
+        }
+        
+        //Limit the character count to 15
+        if ((fromTextField.text!) + string).count > 15 {
+            blurView.textLabel.text = "Sorry, maximum amount of numbers in the field is 20"
+            blurView.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+            present(blurView, animated: true, completion: nil)
+            return false
+        }
+        
+        //Have a decimal keypad. Which means user will be able to enter Double values. (Needless to say "." will be limited one)
+        if (fromTextField.text?.contains("."))! && string == "." {
+            blurView.textLabel.text = "Sorry, please check the field"
+            blurView.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+            present(blurView, animated: true, completion: nil)
+            return false
+        }
+        
+        //Only allow numbers. No Copy-Paste text values.
+        let allowedCharacterSet = CharacterSet.init(charactersIn: "0123456789.")
+        let textCharacterSet = CharacterSet.init(charactersIn: fromTextField.text! + string)
+        if !allowedCharacterSet.isSuperset(of: textCharacterSet) {
+            return false
+        }
+        return true
+    }
+    
 }
 
-extension ExchangePageViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+extension ExchangePageViewController: UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     //MARK: - Add Keyboard Observer for Notification Center
     
