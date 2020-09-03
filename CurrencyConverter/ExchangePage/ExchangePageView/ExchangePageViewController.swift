@@ -343,7 +343,7 @@ final class ExchangePageViewController: UIViewController, ExchangePageViewContro
                                                                    toCurrency: secondCurrency,
                                                                    enteredAmount: firstRate,
                                                                    convertedAmount: secondRate)
-                   DataManager.shared.createCurrencyConvertation(model: currencyConvertation)
+            DataManager.shared.createCurrencyConvertation(model: currencyConvertation)
             blurView.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
             present(blurView, animated: true, completion: nil)
         }
@@ -429,7 +429,6 @@ extension ExchangePageViewController: UIPickerViewDelegate, UIPickerViewDataSour
             scrollView.contentOffset = CGPoint(x: 0, y: 370)
             
         }
-        
     }
     
     //MARK: - Method for hiding Keyboard
@@ -459,14 +458,11 @@ extension ExchangePageViewController: UIPickerViewDelegate, UIPickerViewDataSour
             firstCurrencyChoose.text = selectedCurrency
             firstCurrency = firstCurrencyChoose.text!
             callNetwork()
-            
         } else {
             secondCurrencyChoose.text = selectedCurrency
             secondCurrency = secondCurrencyChoose.text!
             callNetwork()
-           
         }
-        
     }
     
 }

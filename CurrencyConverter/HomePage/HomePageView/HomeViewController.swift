@@ -21,17 +21,23 @@ protocol HomePageViewOutput {
     func nextPage()
 }
 
+//protocol UpdateData: AnyObject {
+//
+//    var homeCollectionView: UICollectionView { get set }
+//}
+
 protocol PassData: AnyObject {
     
     // Try to convert it into function with these parametres for futher comfortable delegation
-    
     var currencyConvertation: [CurrencyConvertation] {get set}
 }
 
-final class HomePageViewController: UIViewController, HomePageViewInput, PassData {
+final class HomePageViewController: UIViewController, HomePageViewInput, PassData, UIGestureRecognizerDelegate {
     
     // - Outlets
     var presenter: HomePageViewOutput?
+    
+    //var locationDelegate: PassLocation?
     
     // - Constants
     let locationManager = LocationManager()
@@ -43,7 +49,20 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
     //MARK: - Collection elements
     
     let layout = UICollectionViewFlowLayout()
-    var homeCollectionView: UICollectionView!
+    //var homeCollectionView: UICollectionView!
+    
+    let homeCollectionView: UICollectionView = {
+         
+         let layout = UICollectionViewFlowLayout()
+         
+         layout.scrollDirection = .vertical
+         
+         let tempCV =  UICollectionView(frame: .zero, collectionViewLayout: layout)
+         
+         return tempCV
+         
+     }()
+    
     var pulseLayers = [CAShapeLayer]()
     
     var currencyConvertation = [CurrencyConvertation]()
@@ -56,7 +75,25 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         setupCurrentLocation()
+        
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed))
+        longPressRecognizer.minimumPressDuration = 0.5
+        longPressRecognizer.delaysTouchesBegan = true
+        longPressRecognizer.delegate = self
+        self.view.addGestureRecognizer(longPressRecognizer)
+    }
     
+    @objc func longPressed(sender: UILongPressGestureRecognizer) {
+        
+        let longPressVC = LongpressViewController()
+        
+        longPressVC.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+        present(longPressVC, animated: true, completion: nil)
+        
+        DataManager.shared.deleteAllCurrencyConvertation()
+        print("Tapped")
+        homeCollectionView.reloadData()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -162,14 +199,14 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
         
         layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
         layout.itemSize = CGSize(width: view.frame.width - 40, height: 45)
-        homeCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        //homeCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         homeCollectionView.delegate   = self
         homeCollectionView.dataSource = self
         homeCollectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
         homeCollectionView.backgroundColor = .white
-        if let flowLayout = homeCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.scrollDirection = .vertical
-        }
+//        if let flowLayout = homeCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+//            flowLayout.scrollDirection = .vertical
+//        }
         
         view.addSubview(homeCollectionView)
         

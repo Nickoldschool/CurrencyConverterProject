@@ -51,6 +51,7 @@
 		40BB7A2924F2AD3500AF598F /* ExchangePageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BB7A2824F2AD3500AF598F /* ExchangePageInteractor.swift */; };
 		40E8C99724EEFC84007493B7 /* CurrencyConvertationEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E8C99524EEFC84007493B7 /* CurrencyConvertationEntity+CoreDataClass.swift */; };
 		40E8C99824EEFC84007493B7 /* CurrencyConvertationEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E8C99624EEFC84007493B7 /* CurrencyConvertationEntity+CoreDataProperties.swift */; };
+		40F539B024FED8C700EC28AF /* LongpressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F539AF24FED8C700EC28AF /* LongpressViewController.swift */; };
 		40FC4BE124E2A6F900257D02 /* CourceCollectionPageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FC4BE024E2A6F900257D02 /* CourceCollectionPageExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -135,6 +136,7 @@
 		40BB7A2824F2AD3500AF598F /* ExchangePageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangePageInteractor.swift; sourceTree = "<group>"; };
 		40E8C99524EEFC84007493B7 /* CurrencyConvertationEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyConvertationEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		40E8C99624EEFC84007493B7 /* CurrencyConvertationEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyConvertationEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		40F539AF24FED8C700EC28AF /* LongpressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongpressViewController.swift; sourceTree = "<group>"; };
 		40FC4BE024E2A6F900257D02 /* CourceCollectionPageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceCollectionPageExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -388,6 +390,7 @@
 				40347B9624C51ABF00E3BA84 /* HomePage */,
 				40982E2724D2173E00DB753C /* CourceCollectionPage */,
 				40413C1124D574D4002267BC /* ExchangePage */,
+				4062271E24FFEFD400473986 /* GraphicsPage */,
 				403D5DDD24BF4966002F4B88 /* Assets.xcassets */,
 			);
 			path = CurrencyConverter;
@@ -435,6 +438,7 @@
 				4091081E24C1A9F0007F37FF /* NewTabBarController.swift */,
 				403248CF24E17C5700192102 /* PopUpViewController.swift */,
 				404F40AE24FD91850022050B /* BlurViewController.swift */,
+				40F539AF24FED8C700EC28AF /* LongpressViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -450,6 +454,13 @@
 				40243CC224EEC279003FC7C5 /* ExchangePageRouter */,
 			);
 			path = ExchangePage;
+			sourceTree = "<group>";
+		};
+		4062271E24FFEFD400473986 /* GraphicsPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GraphicsPage;
 			sourceTree = "<group>";
 		};
 		4085616724D8B2C10006E94F /* CoreData */ = {
@@ -669,6 +680,7 @@
 				403047C424DB03CD0081CAD6 /* EndPointType.swift in Sources */,
 				40982E3124D2199900DB753C /* CourceCollectionPagePresenter.swift in Sources */,
 				40243CCD24EED4E0003FC7C5 /* ExchangePageEntity.swift in Sources */,
+				40F539B024FED8C700EC28AF /* LongpressViewController.swift in Sources */,
 				40E8C99824EEFC84007493B7 /* CurrencyConvertationEntity+CoreDataProperties.swift in Sources */,
 				403D5DDC24BF4964002F4B88 /* CurrencyConvertationStorage.xcdatamodeld in Sources */,
 				403047CF24DB04540081CAD6 /* JSONParameterEncoder.swift in Sources */,

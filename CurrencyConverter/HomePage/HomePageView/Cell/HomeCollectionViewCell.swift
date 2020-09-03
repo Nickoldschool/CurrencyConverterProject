@@ -158,7 +158,7 @@ class HomeCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate 
       }
     }
     
-    public func updateData(currencyConvertation: CurrencyConvertation){
+    func updateData(currencyConvertation: CurrencyConvertation) {
         firstLabel.text = String(currencyConvertation.enteredAmount)
         secondLabel.text = currencyConvertation.fromCurrency
         thirdlabel.text = String(currencyConvertation.convertedAmount)

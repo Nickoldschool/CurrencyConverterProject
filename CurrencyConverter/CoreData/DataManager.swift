@@ -84,11 +84,42 @@ final class DataManager {
         return nil
     }
     
-    func deleteCurrencyConvertation() {
+    func deleteCurrentCurrencyConvertation(model currencyConvertation: CurrencyConvertation) {
+        let fetchRequest: NSFetchRequest<CurrencyConvertationEntity> = CurrencyConvertationEntity.fetchRequest()
+        let predicate = NSPredicate(format: "fromCurrency == %@ && toCurrency == %@ && enteredAmount == %@ && convertedAmount == %@",                               currencyConvertation.fromCurrency,
+                                   currencyConvertation.toCurrency,
+                                   currencyConvertation.enteredAmount,
+                                   currencyConvertation.convertedAmount)
+
+        fetchRequest.predicate = predicate
+        do {
+            let currencyConvertation = try managedObjectContext.fetch(fetchRequest)
+            for currentConvertation in currencyConvertation {
+                managedObjectContext.delete(currentConvertation)
+                
+            }
+        } catch let err as NSError {
+            print("Failed to fetch user", err)
+        }
+        
+        if managedObjectContext.hasChanges {
+            do {
+                try managedObjectContext.save()
+            } catch let error as NSError {
+                print("Error in saving core data: ",
+                error)
+            }
+        }
+        
+    }
+    
+    func deleteAllCurrencyConvertation() {
         let fetchRequest: NSFetchRequest<CurrencyConvertationEntity> = CurrencyConvertationEntity.fetchRequest()
         do {
             let currencies = try managedObjectContext.fetch(fetchRequest)
-            for currency in currencies { managedObjectContext.delete(currency) }
+            for currency in currencies {
+                managedObjectContext.delete(currency)
+            }
         } catch let err as NSError {
             print("Failed to fetch user", err)
         }
@@ -99,16 +130,6 @@ final class DataManager {
             } catch let error as NSError {
                 print("Error in saving core data: ", error)
             }
-        }
-    }
-    
-    func deleteAllInstancesOf() {
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: Keys.currencyConvertation)
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        do {
-            try managedObjectContext.execute(deleteRequest)
-        } catch let error as NSError {
-            print(error)
         }
     }
     

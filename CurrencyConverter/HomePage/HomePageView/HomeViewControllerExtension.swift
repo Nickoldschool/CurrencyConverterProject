@@ -13,10 +13,11 @@ import UIKit
 extension HomePageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if currencies!.isEmpty  {
+        guard let newCurrencies = currencies else { return  0 }
+        if newCurrencies.isEmpty   {
             return 0
         } else {
-            return currencies!.count
+            return newCurrencies.count
         }
     }
 
@@ -47,9 +48,10 @@ extension HomePageViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-      currencies!.remove(at: indexPath.row)
-      collectionView.deleteItems(at: [indexPath])
-      DataManager.shared.deleteCurrencyConvertation()
+        DataManager.shared.deleteCurrentCurrencyConvertation(model: currencies![indexPath.row])
+        
+        currencies!.remove(at: indexPath.row)
+        collectionView.deleteItems(at: [indexPath])
     }
     
 }
