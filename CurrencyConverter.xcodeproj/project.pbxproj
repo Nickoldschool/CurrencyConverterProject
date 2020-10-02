@@ -35,7 +35,6 @@
 		403D5DE124BF4966002F4B88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 403D5DDF24BF4966002F4B88 /* LaunchScreen.storyboard */; };
 		403D5DEC24BF4966002F4B88 /* CurrencyConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D5DEB24BF4966002F4B88 /* CurrencyConverterTests.swift */; };
 		403D5DF724BF4966002F4B88 /* CurrencyConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D5DF624BF4966002F4B88 /* CurrencyConverterUITests.swift */; };
-		403D5E0724BF4AA0002F4B88 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D5E0624BF4AA0002F4B88 /* LocationManager.swift */; };
 		40413C0E24D44CC1002267BC /* CourceCollectionPageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40413C0D24D44CC1002267BC /* CourceCollectionPageViewCell.swift */; };
 		40413C1024D574CC002267BC /* ExchangePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40413C0F24D574CC002267BC /* ExchangePageViewController.swift */; };
 		404F40AF24FD91850022050B /* BlurViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404F40AE24FD91850022050B /* BlurViewController.swift */; };
@@ -120,7 +119,6 @@
 		403D5DF224BF4966002F4B88 /* CurrencyConverterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyConverterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		403D5DF624BF4966002F4B88 /* CurrencyConverterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterUITests.swift; sourceTree = "<group>"; };
 		403D5DF824BF4966002F4B88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		403D5E0624BF4AA0002F4B88 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		40413C0D24D44CC1002267BC /* CourceCollectionPageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourceCollectionPageViewCell.swift; sourceTree = "<group>"; };
 		40413C0F24D574CC002267BC /* ExchangePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangePageViewController.swift; sourceTree = "<group>"; };
 		404F40AE24FD91850022050B /* BlurViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurViewController.swift; sourceTree = "<group>"; };
@@ -385,12 +383,10 @@
 				403D5E0A24BF4CD7002F4B88 /* Application */,
 				4085616724D8B2C10006E94F /* CoreData */,
 				403047B824DB02650081CAD6 /* Network */,
-				403D5E0B24BF4D4C002F4B88 /* Location */,
 				403D5E0C24BF4D6A002F4B88 /* Controllers */,
 				40347B9624C51ABF00E3BA84 /* HomePage */,
 				40982E2724D2173E00DB753C /* CourceCollectionPage */,
 				40413C1124D574D4002267BC /* ExchangePage */,
-				4062271E24FFEFD400473986 /* GraphicsPage */,
 				403D5DDD24BF4966002F4B88 /* Assets.xcassets */,
 			);
 			path = CurrencyConverter;
@@ -424,14 +420,6 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
-		403D5E0B24BF4D4C002F4B88 /* Location */ = {
-			isa = PBXGroup;
-			children = (
-				403D5E0624BF4AA0002F4B88 /* LocationManager.swift */,
-			);
-			path = Location;
-			sourceTree = "<group>";
-		};
 		403D5E0C24BF4D6A002F4B88 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -454,13 +442,6 @@
 				40243CC224EEC279003FC7C5 /* ExchangePageRouter */,
 			);
 			path = ExchangePage;
-			sourceTree = "<group>";
-		};
-		4062271E24FFEFD400473986 /* GraphicsPage */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = GraphicsPage;
 			sourceTree = "<group>";
 		};
 		4085616724D8B2C10006E94F /* CoreData */ = {
@@ -599,7 +580,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Nick Chekmazov";
 				TargetAttributes = {
 					403D5DCD24BF4964002F4B88 = {
@@ -673,7 +654,6 @@
 				40FC4BE124E2A6F900257D02 /* CourceCollectionPageExtension.swift in Sources */,
 				403047C124DB03A40081CAD6 /* ApiClient.swift in Sources */,
 				40347BA424C5200500E3BA84 /* HomePageEntity.swift in Sources */,
-				403D5E0724BF4AA0002F4B88 /* LocationManager.swift in Sources */,
 				4091081F24C1A9F0007F37FF /* NewTabBarController.swift in Sources */,
 				403047C624DB03E60081CAD6 /* HTTPMethod.swift in Sources */,
 				40BB7A2924F2AD3500AF598F /* ExchangePageInteractor.swift in Sources */,
@@ -780,6 +760,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -840,6 +821,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -875,7 +857,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D988H4JU9C;
 				INFOPLIST_FILE = CurrencyConverter/Application/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -894,7 +876,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D988H4JU9C;
 				INFOPLIST_FILE = CurrencyConverter/Application/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

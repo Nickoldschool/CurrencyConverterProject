@@ -25,8 +25,6 @@ final class ExchangePageViewController: UIViewController, ExchangePageViewContro
     let firstDownArrow = UIImageView(image: UIImage(named: "DownArrow"))
     let secondUpArrow = UIImageView(image: UIImage(named: "UpArrow"))
     let secondDownArrow = UIImageView(image: UIImage(named: "DownArrow"))
-    //    let firstWhiteView = UIView()
-    //    let secondWhiteView = UIView()
     let purpleView = UIView()
     let scrollView = UIScrollView()
     let fromLabel = UILabel()
@@ -347,6 +345,9 @@ final class ExchangePageViewController: UIViewController, ExchangePageViewContro
             blurView.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
             present(blurView, animated: true, completion: nil)
         }
+        
+        fromTextField.text = ""
+        toTextField.text = ""
     }
     
     //MARK: - Validate textField input

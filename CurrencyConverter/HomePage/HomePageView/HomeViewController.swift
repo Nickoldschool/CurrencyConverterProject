@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreLocation
 
 protocol HomePageViewInput: AnyObject {
     
@@ -21,11 +20,6 @@ protocol HomePageViewOutput {
     func nextPage()
 }
 
-//protocol UpdateData: AnyObject {
-//
-//    var homeCollectionView: UICollectionView { get set }
-//}
-
 protocol PassData: AnyObject {
     
     // Try to convert it into function with these parametres for futher comfortable delegation
@@ -37,10 +31,7 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
     // - Outlets
     var presenter: HomePageViewOutput?
     
-    //var locationDelegate: PassLocation?
-    
     // - Constants
-    let locationManager = LocationManager()
     let locationLabel = UILabel()
     let button = UIButton()
     let infoLabel = UILabel()
@@ -49,7 +40,6 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
     //MARK: - Collection elements
     
     let layout = UICollectionViewFlowLayout()
-    //var homeCollectionView: UICollectionView!
     
     let homeCollectionView: UICollectionView = {
          
@@ -91,9 +81,15 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
         present(longPressVC, animated: true, completion: nil)
         
         DataManager.shared.deleteAllCurrencyConvertation()
-        print("Tapped")
+        currencies = DataManager.shared.retrieveCurrencyConvertation()
         homeCollectionView.reloadData()
         
+        configureEmptyScreenMode()
+        button.isHidden = false
+        infoLabel.isHidden = false
+        recentConvertationsLabel.isHidden = true
+        
+        print("Tapped")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -199,15 +195,11 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
         
         layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
         layout.itemSize = CGSize(width: view.frame.width - 40, height: 45)
-        //homeCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         homeCollectionView.delegate   = self
         homeCollectionView.dataSource = self
         homeCollectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
         homeCollectionView.backgroundColor = .white
-//        if let flowLayout = homeCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-//            flowLayout.scrollDirection = .vertical
-//        }
-        
+
         view.addSubview(homeCollectionView)
         
         homeCollectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -238,24 +230,6 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
             locationLabel.heightAnchor.constraint(equalToConstant: 90),
             locationLabel.widthAnchor.constraint(equalToConstant: 250),
         ])
-    
-        guard let exposedLocation = self.locationManager.exposedLocation else {
-            print("*** Error in \(#function): exposedLocation is nil")
-            return
-        }
-        
-        self.locationManager.getPlace(for: exposedLocation) { placemark in
-            guard let placemark = placemark else { return }
-            
-            var output = "Our location is:"
-            if let country = placemark.country {
-                output = output + "\n\(country)"
-            }
-            if let town = placemark.locality {
-                output = output + "\n\(town)"
-            }
-            self.locationLabel.text = output
-        }
     }
     
     lazy var puslsatingLayer: CAShapeLayer = {

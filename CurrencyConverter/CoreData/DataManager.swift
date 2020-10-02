@@ -86,7 +86,7 @@ final class DataManager {
     
     func deleteCurrentCurrencyConvertation(model currencyConvertation: CurrencyConvertation) {
         let fetchRequest: NSFetchRequest<CurrencyConvertationEntity> = CurrencyConvertationEntity.fetchRequest()
-        let predicate = NSPredicate(format: "fromCurrency == %@ && toCurrency == %@ && enteredAmount == %@ && convertedAmount == %@",                               currencyConvertation.fromCurrency,
+        let predicate = NSPredicate(format: "fromCurrency == %@ && toCurrency == %@ && enteredAmount == %f && convertedAmount == %f",                               currencyConvertation.fromCurrency,
                                    currencyConvertation.toCurrency,
                                    currencyConvertation.enteredAmount,
                                    currencyConvertation.convertedAmount)
