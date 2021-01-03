@@ -33,12 +33,11 @@ extension CurrencyApi: EndPointType {
     
     var path: String {
         switch self {
-            
-        case .base( _):                         // (let rate)
+        case .base:
             return "/latest"
-        case .fromBaseToCurrent( _, _):         // (let firstRate, let secondRate)
+        case .fromBaseToCurrent:
             return "/latest"
-        case .timePeriodRate( _, _, _, _):      // (let firstRate, let secondRate, let startDate, let endDate)
+        case .timePeriodRate:      
             return "/history"
             
         }

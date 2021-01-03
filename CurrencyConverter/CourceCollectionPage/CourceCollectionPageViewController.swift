@@ -8,17 +8,7 @@
 
 import UIKit
 
-protocol CourceCollectionPageViewInput: AnyObject {
-    
-}
-
-protocol CourceCollectionPageViewOutput {
-    
-}
-
-final class CourceCollectionPageViewController: UIViewController, CourceCollectionPageViewInput {
-    
-    var presenter: CourceCollectionPageViewOutput?
+final class CourceCollectionPageViewController: UIViewController {
     
     //MARK: - Constants
     

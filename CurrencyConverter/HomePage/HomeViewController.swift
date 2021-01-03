@@ -9,17 +9,6 @@
 import UIKit
 import CoreLocation
 
-protocol HomePageViewInput: AnyObject {
-    
-    func updateView()
-}
-
-protocol HomePageViewOutput {
-    
-    func viewready()
-    
-    func nextPage()
-}
 
 protocol PassData: AnyObject {
     
@@ -28,10 +17,7 @@ protocol PassData: AnyObject {
     var currencyConvertation: [CurrencyConvertation] {get set}
 }
 
-final class HomePageViewController: UIViewController, HomePageViewInput, PassData {
-    
-    // - Outlets
-    var presenter: HomePageViewOutput?
+final class HomePageViewController: UIViewController, PassData {
     
     // - Constants
     let locationManager = LocationManager()
@@ -255,18 +241,12 @@ final class HomePageViewController: UIViewController, HomePageViewInput, PassDat
     
     @objc private func moveToExchangeController() {
         
-        presenter?.nextPage()
-        
         let blurView = BlurViewController()
-        
         blurView.textLabel.text = "Please, go to Exchange page for convertation"
         blurView.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
         present(blurView, animated: true, completion: nil)
         
     }
 
-    func updateView() {
-        
-    }
 }
 

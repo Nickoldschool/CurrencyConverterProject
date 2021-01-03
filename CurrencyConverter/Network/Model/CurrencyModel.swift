@@ -20,7 +20,7 @@ struct CurrencyData: Decodable {
     }
 }
 
-class Rate: Decodable {
+struct Rate: Decodable {
     let currency: String
     let rate: Double
     

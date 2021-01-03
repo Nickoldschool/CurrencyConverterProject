@@ -8,25 +8,13 @@
 
 import UIKit
 
-protocol ExchangePageViewControllerInput: AnyObject {
-    
-}
-
-protocol ExchangePageViewControllerOutput {
-    
-}
-
-final class ExchangePageViewController: UIViewController, ExchangePageViewControllerInput {
-    
-    var presenter: ExchangePageViewControllerOutput?
+final class ExchangePageViewController: UIViewController {
     
     let exchangeImage = UIImageView(image: UIImage(named: "ExchangeIllustration"))
     let firstUpArrow = UIImageView(image: UIImage(named: "UpArrow"))
     let firstDownArrow = UIImageView(image: UIImage(named: "DownArrow"))
     let secondUpArrow = UIImageView(image: UIImage(named: "UpArrow"))
     let secondDownArrow = UIImageView(image: UIImage(named: "DownArrow"))
-    //    let firstWhiteView = UIView()
-    //    let secondWhiteView = UIView()
     let purpleView = UIView()
     let scrollView = UIScrollView()
     let fromLabel = UILabel()
@@ -332,7 +320,7 @@ final class ExchangePageViewController: UIViewController, ExchangePageViewContro
     @objc private func saveConvertations() {
         
         if fromTextField.text!.isEmpty {
-                
+            
             blurView.textLabel.text = "Please, enter ammount for convertation"
             blurView.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
             present(blurView, animated: true, completion: nil)
@@ -340,12 +328,14 @@ final class ExchangePageViewController: UIViewController, ExchangePageViewContro
             
             blurView.textLabel.text = "Your convertation was saved, please, check Home page"
             let currencyConvertation = CurrencyConvertation(fromCurrency: firstCurrency,
-                                                                   toCurrency: secondCurrency,
-                                                                   enteredAmount: firstRate,
-                                                                   convertedAmount: secondRate)
-                   DataManager.shared.createCurrencyConvertation(model: currencyConvertation)
+                                                            toCurrency: secondCurrency,
+                                                            enteredAmount: firstRate,
+                                                            convertedAmount: secondRate)
+            DataManager.shared.createCurrencyConvertation(model: currencyConvertation)
             blurView.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
             present(blurView, animated: true, completion: nil)
+            fromTextField.text = nil
+            toTextField.text = nil
         }
     }
     
@@ -393,20 +383,25 @@ extension ExchangePageViewController: UIPickerViewDelegate, UIPickerViewDataSour
     //MARK: - Add Keyboard Observer for Notification Center
     
     private func registerForKeyboardNotifications() {
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
-                                               name: UIResponder.keyboardWillShowNotification, object: nil);
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
-                                               name: UIResponder.keyboardWillHideNotification, object: nil);
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil);
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil);
     }
     
     //MARK: - Remove Keyboard Observer for Notification Center
     
     private func removeForKeyboardNotification() {
-        
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillShowNotification,
+                                                  object: nil)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillHideNotification,
+                                                  object: nil)
     }
     
     //MARK: - Method for showing Keyboard
