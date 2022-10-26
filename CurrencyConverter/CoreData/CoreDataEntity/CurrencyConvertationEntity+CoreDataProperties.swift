@@ -7,19 +7,17 @@
 //
 //
 
-import Foundation
 import CoreData
-
 
 extension CurrencyConvertationEntity {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<CurrencyConvertationEntity> {
-        return NSFetchRequest<CurrencyConvertationEntity>(entityName: "CurrencyConvertationEntity")
-    }
+	@nonobjc public class func fetchRequest() -> NSFetchRequest<CurrencyConvertationEntity> {
+		return NSFetchRequest<CurrencyConvertationEntity>(entityName: "CurrencyConvertationEntity")
+	}
 
-    @NSManaged public var convertedAmount: Double
-    @NSManaged public var enteredAmount: Double
-    @NSManaged public var fromCurrency: String?
-    @NSManaged public var toCurrency: String?
+	@NSManaged public var convertedAmount: Double
+	@NSManaged public var enteredAmount: Double
+	@NSManaged public var fromCurrency: String?
+	@NSManaged public var toCurrency: String?
 
 }

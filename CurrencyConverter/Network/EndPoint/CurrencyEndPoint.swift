@@ -22,7 +22,7 @@ extension CurrencyApi: EndPointType {
 
         var components = URLComponents()
         components.scheme = "https"
-        components.host = "api.exchangeratesapi.io"
+        components.host = "api.exchangerate.host"
         components.path =  path
         components.queryItems = queryItems
         print(components.url?.absoluteString as Any)

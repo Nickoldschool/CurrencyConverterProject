@@ -1,12 +1,12 @@
 //
-//  CurrencyConvertationEntity+CoreDataClass.swift
+//  ExchangePage.Entity.swift
 //  CurrencyConverter
 //
 //  Created by Nick Chekmazov on 20.08.2020.
 //  Copyright © 2020 Nick Chekmazov. All rights reserved.
 //
-//
 
-import CoreData
+extension ExchangePage {
 
-public class CurrencyConvertationEntity: NSManagedObject {}
+	final class Entity {}
+}
