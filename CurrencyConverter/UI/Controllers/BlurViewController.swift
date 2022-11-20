@@ -10,7 +10,6 @@ import UIKit
 
 final class BlurViewController: UIViewController {
 
-
 	//MARK: - Properties
 	let blurView = UIVisualEffectView()
 	let blurEffect = UIBlurEffect(style: .light)

@@ -22,7 +22,7 @@ final class DataManager {
 		let container = NSPersistentContainer(name: "CurrencyConvertationStorage")
 		container.loadPersistentStores(completionHandler: { (storeDescription, error) in
 			if let error = error as NSError? {
-				fatalError("Unresolved error \(error), \(error.userInfo)")
+				fatalError("Unresolved error: \(error), \(error.userInfo)")
 			}
 		})
 		return container
@@ -40,7 +40,7 @@ final class DataManager {
 	}
 
 	// MARK: - CurrencyConvertation CRUD
-	func createCurrencyConvertation(model currencyConvertation: CurrencyConvertation) {
+	func createCurrencyConvertation(model currencyConvertation: ExchangePage.Entity.CurrencyConvertation) {
 
 		let newCurrencyConvertation = NSEntityDescription.insertNewObject(forEntityName: Keys.currencyConvertation,
 																		  into: managedObjectContext) as! CurrencyConvertationEntity
@@ -57,20 +57,19 @@ final class DataManager {
 		}
 	}
 
-	func retrieveCurrencyConvertation() -> [CurrencyConvertation]? {
-
+	func retrieveCurrencyConvertation() -> [ExchangePage.Entity.CurrencyConvertation]? {
 		let fetchRequest = NSFetchRequest<CurrencyConvertationEntity>(entityName: Keys.currencyConvertation)
 		do {
 			let currencies = try managedObjectContext.fetch(fetchRequest)
 
-			var result: [CurrencyConvertation] = []
+			var result: [ExchangePage.Entity.CurrencyConvertation] = []
 			for currency in currencies {
 				guard let fromCurrency = currency.fromCurrency,
 					  let toCurrency = currency.toCurrency else { return nil }
-				let currencyModel = CurrencyConvertation(fromCurrency: fromCurrency,
-														 toCurrency: toCurrency,
-														 enteredAmount: currency.enteredAmount,
-														 convertedAmount: currency.convertedAmount)
+				let currencyModel = ExchangePage.Entity.CurrencyConvertation(fromCurrency: fromCurrency,
+																			 toCurrency: toCurrency,
+																			 enteredAmount: currency.enteredAmount,
+																			 convertedAmount: currency.convertedAmount)
 				result.append(currencyModel)
 			}
 			return result
@@ -80,7 +79,7 @@ final class DataManager {
 		return nil
 	}
 
-	func deleteCurrentCurrencyConvertation(model currencyConvertation: CurrencyConvertation) {
+	func deleteCurrentCurrencyConvertation(model currencyConvertation: ExchangePage.Entity.CurrencyConvertation) {
 		let fetchRequest: NSFetchRequest<CurrencyConvertationEntity> = CurrencyConvertationEntity.fetchRequest()
 		let predicate = NSPredicate(format: "fromCurrency == %@ && toCurrency == %@ && enteredAmount == %f && convertedAmount == %f",                               currencyConvertation.fromCurrency,
 									currencyConvertation.toCurrency,
@@ -92,18 +91,16 @@ final class DataManager {
 			let currencyConvertation = try managedObjectContext.fetch(fetchRequest)
 			for currentConvertation in currencyConvertation {
 				managedObjectContext.delete(currentConvertation)
-
 			}
-		} catch let err as NSError {
-			print("Failed to fetch user", err)
+		} catch let error as NSError {
+			print("Failed to fetch user: ", error)
 		}
 
 		if managedObjectContext.hasChanges {
 			do {
 				try managedObjectContext.save()
 			} catch let error as NSError {
-				print("Error in saving core data: ",
-					  error)
+				print("Error in saving core data: ", error)
 			}
 		}
 
@@ -116,8 +113,8 @@ final class DataManager {
 			for currency in currencies {
 				managedObjectContext.delete(currency)
 			}
-		} catch let err as NSError {
-			print("Failed to fetch user", err)
+		} catch let error as NSError {
+			print("Failed to fetch user: ", error)
 		}
 
 		if managedObjectContext.hasChanges {

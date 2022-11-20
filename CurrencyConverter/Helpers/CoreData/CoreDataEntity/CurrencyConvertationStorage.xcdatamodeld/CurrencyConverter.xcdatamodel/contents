@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21512" systemVersion="22A380" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CurrencyConvertationEntity" representedClassName=".CurrencyConvertationEntity" syncable="YES">
         <attribute name="convertedAmount" attributeType="Double" usesScalarValueType="YES"/>
         <attribute name="enteredAmount" attributeType="Double" usesScalarValueType="YES"/>
         <attribute name="fromCurrency" attributeType="String"/>
         <attribute name="toCurrency" attributeType="String"/>
     </entity>
-    <elements>
-        <element name="CurrencyConvertationEntity" positionX="-63" positionY="-18" width="128" height="103"/>
-    </elements>
 </model>

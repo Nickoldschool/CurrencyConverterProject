@@ -335,10 +335,10 @@ extension ExchangePage {
 			} else {
 
 				blurView.textLabel.text = "Your convertation was saved, please, check Home page"
-				let currencyConvertation = CurrencyConvertation(fromCurrency: firstCurrency,
-																toCurrency: secondCurrency,
-																enteredAmount: firstRate,
-																convertedAmount: secondRate)
+				let currencyConvertation = ExchangePage.Entity.CurrencyConvertation(fromCurrency: firstCurrency,
+																					toCurrency: secondCurrency,
+																					enteredAmount: firstRate,
+																					convertedAmount: secondRate)
 				DataManager.shared.createCurrencyConvertation(model: currencyConvertation)
 				blurView.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
 				present(blurView, animated: true, completion: nil)

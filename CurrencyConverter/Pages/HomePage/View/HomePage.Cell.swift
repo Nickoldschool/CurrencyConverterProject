@@ -151,7 +151,7 @@ extension HomePage {
 			}
 		}
 
-		func updateData(currencyConvertation: CurrencyConvertation) {
+		func updateData(currencyConvertation: ExchangePage.Entity.CurrencyConvertation) {
 			firstLabel.text = String(currencyConvertation.enteredAmount)
 			secondLabel.text = currencyConvertation.fromCurrency
 			thirdlabel.text = String(currencyConvertation.convertedAmount)

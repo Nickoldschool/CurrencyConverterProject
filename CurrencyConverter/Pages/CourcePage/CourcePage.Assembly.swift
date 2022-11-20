@@ -1,24 +1,24 @@
 //
-//  ExchangePage.Assembly.swift
+//  CourcePage.Assembly.swift
 //  CurrencyConverter
 //
-//  Created by Nick Chekmazov on 20.08.2020.
+//  Created by Nick Chekmazov on 29.07.2020.
 //  Copyright © 2020 Nick Chekmazov. All rights reserved.
 //
 
 import UIKit
 
-enum ExchangePage {}
+enum CourcePage {}
 
-extension ExchangePage {
+extension CourcePage {
 
 	final class Assembly {
 
-		func assembly() -> UIViewController {
+		static func build() -> UIViewController {
 
 			let view = ViewController()
-			let interactor = Interactor()
 			let presenter = Presenter()
+			let interactor = Interactor()
 			let router = Router()
 
 			view.presenter = presenter

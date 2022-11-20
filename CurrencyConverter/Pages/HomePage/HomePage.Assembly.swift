@@ -14,7 +14,7 @@ extension HomePage {
 
 	final class Assembly {
 
-		static func assembly() -> UIViewController {
+		static func build() -> UIViewController {
 
 			let view = ViewController()
 			let interactor = Interactor()
